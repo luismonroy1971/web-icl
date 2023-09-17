@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css';
 import MegaMenu from '../components/Megamenu';
 import { Navbar } from '../components/Navbar';
 import { useState } from 'react';
+import { Banner } from '../components/Banner';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +21,53 @@ export default function Home() {
       </Head>
       <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu} />
       <MegaMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
+      <Banner />
+      <div className="text-center py-20 sm:w-2/3 mx-auto">
+        <h2 className="font-acto text-primary text-4xl">Sobre Nosotros</h2>
+        <p className="font-lato mt-4">
+          El Instituto Catastral de Lima es el pilar que sustenta el desarrollo
+          sostenible y planificado de nuestra vibrante ciudad. Con una rica
+          historia de dedicación y servicio, nos esforzamos por ser la fuente
+          confiable y precisa de información catastral y territorial. Nuestra
+          misión es trascender como una entidad que promueve la armonía entre la
+          modernidad urbana y la preservación de la riqueza natural y cultural
+          de Lima.
+        </p>
+        <div className="flex gap-4 mt-8">
+          <Image
+            src="/images/aboutPresident.png"
+            width={400}
+            height={489}
+            alt="Foto presidente"
+          />
+          <div className="flex flex-col">
+            <div className="flex gap-2">
+              <Image
+                src="/images/shortArrow.svg"
+                width={10}
+                height={5}
+                alt="Flecha"
+              />
+              <h3 className="font-acto text-primary text-3xl">
+                Presidente Ejecutivo
+              </h3>
+            </div>
+            <p className="font-lato mt-2 text-left text-lg">
+              Molina Arles, Luis Alfonso
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="text-center py-20 sm:w-2/3 mx-auto">
+        <h2 className="font-acto text-primary text-4xl">Nuestros Recursos</h2>
+        <p className="font-lato mt-4">
+          En el Instituto Catastral de Lima, estamos comprometidos a brindar
+          servicios de alta calidad que faciliten una gestión territorial
+          efectiva y sostenible. Descubre cómo podemos ayudarte a navegar por el
+          paisaje urbano en constante cambio de Lima.
+        </p>
+        <div className="flex"></div>
+      </div>
     </>
   );
 }
