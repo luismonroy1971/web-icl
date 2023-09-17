@@ -9,3 +9,66 @@
   flex-direction: column;
   width: 100%;
 }
+
+@font-face {
+  font-family: 'Acto';
+  src: url('/fonts/Acto-Semibold.otf') format('opentype');
+}
+
+.font-acto {
+  font-family: 'Acto', sans-serif;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('/fonts/Lato-Regular.ttf') format('truetype');
+}
+
+.font-lato {
+  font-family: 'Lato', sans-serif;
+}
+
+@keyframes customBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes customFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes customFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+
+  
+}
+
+.one-time-bounce {
+  animation: customBounce 2s 1;
+  animation-delay: 2s;
+}
+
+.one-time-fade-in {
+  animation: customFadeIn 0.3s 1;
+}
+
+.one-time-fade-out {
+  animation: customFadeOut 0.2s 1;
+}

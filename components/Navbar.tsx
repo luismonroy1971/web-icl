@@ -1,193 +1,117 @@
-import Link from 'next/link';
-import { SetStateAction, useState } from 'react';
+import Image from 'next/image';
+import React, { FC } from 'react';
 
-const MegaMenu = () => {
-  const [firstChildren, setFirstChildren] = useState([]);
-  const [secondChildren, setSecondChildren] = useState([]);
-  const categories = [
-    {
-      id: 1,
-      name: 'Electronics',
-      slug: 'electronics',
-      children: [
-        {
-          id: 2,
-          name: 'Mobile Phones',
-          slug: 'mobile-phones',
-          children: [
-            {
-              id: 3,
-              name: 'Smartphones',
-              slug: 'smartphones',
-              children: [
-                {
-                  id: 4,
-                  name: 'Android',
-                  slug: 'android',
-                  children: [],
-                },
-                {
-                  id: 5,
-                  name: 'iOS',
-                  slug: 'ios',
-                  children: [],
-                },
-              ],
-            },
-            {
-              id: 6,
-              name: 'Tablets',
-              slug: 'tablets',
-              children: [],
-            },
-          ],
-        },
-        {
-          id: 7,
-          name: 'Laptops',
-          slug: 'laptops',
-          children: [],
-        },
-        {
-          id: 8,
-          name: 'Accessories',
-          slug: 'accessories',
-          children: [],
-        },
-      ],
-    },
-    {
-      id: 9,
-      name: 'Fashion',
-      slug: 'fashion',
-      children: [
-        {
-          id: 10,
-          name: 'Clothes',
-          slug: 'clothes',
-          children: [],
-        },
-        {
-          id: 11,
-          name: 'Shoes',
-          slug: 'shoes',
-          children: [],
-        },
-        {
-          id: 12,
-          name: 'Watches',
-          slug: 'watches',
-          children: [],
-        },
-      ],
-    },
-  ];
+interface NavbarProps {
+  openMenu: boolean;
+  setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-  const showChildrenSecondColumn = (category: { children: SetStateAction<never[]>; }) => {
-    setSecondChildren(category.children);
-    };
+export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
   return (
-    <div className="flex min-h-screen py-2">
-      <div id="first-column" className="flex flex-col">
-        {categories.map((category) => (
-          <div key={category.id} className="my-10 ml-4">
-            <div className='cursor-pointer' onClick={() => showChildrenSecondColumn(category as any)}>
-              <span className="text-gray-700 text-4xl font-semibold hover:text-gray-900">
-                {category.name}
-              </span>
-            </div>
-          </div>
-        ))}
+    <div className="flex justify-between items-center h-24 bg-white text-black relative shadow-md font-acto">
+      <div className="flex space-x-4 ml-10">
+        <div className="my-auto">
+          <a
+            href="#"
+            className="justify-center items-center  text-gray-700 hover:text-gray-900 my-auto"
+          >
+            <Image
+              src="/images/institutoCatastral.png"
+              alt="logo"
+              width={140}
+              height={80}
+            />
+          </a>
+        </div>
+        <div className="w-0.5 h-20 bg-primary justify-center items-center my-auto"></div>
+        <div className="my-auto">
+          <a
+            href="#"
+            className=" text-gray-700 hover:text-gray-900 justify-center items-center my-auto"
+          >
+            <Image
+              src="/images/muniLima.png"
+              alt="logo"
+              width={100}
+              height={24}
+            />
+          </a>
+        </div>
       </div>
-      <div id="second-column" className="flex flex-col">
-        {categories.map((category) => (
-          <div key={category.id}>
-            <Link href={`/category/${category.slug}`}>
-              <span className="text-gray-700 text-lg font-semibold hover:text-gray-900">
-                {category.name}
-              </span>
-            </Link>
-            <div className="flex flex-col">
-              {category.children.map((child) => (
-                <div key={child.id}>
-                  <Link href={`/category/${child.slug}`}>
-                    <span className="text-gray-700 text-lg font-semibold hover:text-gray-900">
-                      {child.name}
-                    </span>
-                  </Link>
-                  <div className="flex flex-col">
-                    {child.children.map((child) => (
-                      <div key={child.id}>
-                        <Link href={`/category/${child.slug}`}>
-                          <span className="text-gray-700 text-lg font-semibold hover:text-gray-900">
-                            {child.name}
-                          </span>
-                        </Link>
-                        <div className="flex flex-col">
-                          {child.children.map((child) => (
-                            <div key={child.id}>
-                              <Link href={`/category/${child.slug}`}>
-                                <span className="text-gray-700 text-lg font-semibold hover:text-gray-900">
-                                  {child.name}
-                                </span>
-                              </Link>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div id="third-column" className="flex flex-col">
-        {categories.map((category) => (
-          <div key={category.id}>
-            <Link href={`/category/${category.slug}`}>
-              <span className="text-gray-700 text-lg font-semibold hover:text-gray-900">
-                {category.name}
-              </span>
-            </Link>
-            <div className="flex flex-col">
-              {category.children.map((child) => (
-                <div key={child.id}>
-                  <Link href={`/category/${child.slug}`}>
-                    <span className="text-gray-700 text-lg font-semibold hover:text-gray-900">
-                      {child.name}
-                    </span>
-                  </Link>
-                  <div className="flex flex-col">
-                    {child.children.map((child) => (
-                      <div key={child.id}>
-                        <Link href={`/category/${child.slug}`}>
-                          <span className="text-gray-700 text-lg font-semibold hover:text-gray-900">
-                            {child.name}
-                          </span>
-                        </Link>
-                        <div className="flex flex-col">
-                          {child.children.map((child) => (
-                            <div key={child.id}>
-                              <Link href={`/category/${child.slug}`}>
-                                <span className="text-gray-700 text-lg font-semibold hover:text-gray-900">
-                                  {child.name}
-                                </span>
-                              </Link>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className="flex gap-8 h-full">
+        <div
+          className="my-auto cursor-pointer"
+          onClick={() =>
+            window.open(
+              'https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=13132',
+              '_blank'
+            )
+          }
+        >
+          <Image
+            src="/images/portalTransparencia.svg"
+            alt="logo"
+            width={230}
+            height={48}
+          />
+        </div>
+        <div
+          className="flex space-x-4 mr-10 gap-2 cursor-pointer items-center border-l border-x-[#D9D9D9] h-full px-8 transition-transform duration-300 ease-in-out"
+          onClick={() => setOpenMenu(!openMenu)}
+        >
+          {!openMenu ? (
+            <>
+              <svg
+                className="transition-transform duration-300 ease-in-out transform rotate-0"
+                width="35"
+                height="11"
+                viewBox="0 0 35 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line y1="1" x2="35" y2="1" stroke="#16236E" stroke-width="2" />
+                <line
+                  y1="10"
+                  x2="35"
+                  y2="10"
+                  stroke="#16236E"
+                  stroke-width="2"
+                />
+              </svg>
+              <span className="text-2xl text-primary">Menú</span>
+            </>
+          ) : (
+            <>
+              <svg
+                className="transition-transform duration-300 ease-in-out transform rotate-180"
+                width="27"
+                height="26"
+                viewBox="0 0 27 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="1.70711"
+                  y1="1.29289"
+                  x2="25.7071"
+                  y2="25.2929"
+                  stroke="#16236E"
+                  stroke-width="2"
+                />
+                <line
+                  x1="1.29289"
+                  y1="25.2929"
+                  x2="25.2929"
+                  y2="1.29289"
+                  stroke="#16236E"
+                  stroke-width="2"
+                />
+              </svg>
+              <span className="text-2xl text-primary">Cerrar</span>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
 };
-export default MegaMenu;
