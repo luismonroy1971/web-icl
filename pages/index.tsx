@@ -6,8 +6,38 @@ import MegaMenu from '../components/Megamenu';
 import { Navbar } from '../components/Navbar';
 import { useState } from 'react';
 import { Banner } from '../components/Banner';
+import { Card } from '../components/Card';
 
 const inter = Inter({ subsets: ['latin'] });
+
+const resources = [
+  {
+    title: 'Consulta Catastral en Línea',
+    description:
+      'Permite a los usuarios obtener detalles específicos sobre propiedades en Lima, como ubicación y dimensiones.',
+    buttonText: 'Realizar Consulta',
+    img: '/images/consultaCatastral.svg',
+  },
+  {
+    title: 'Sistema de información territorial',
+    description:
+      'Provee información detallada sobre el uso del suelo, zonificación, y otros aspectos territoriales en Lima.',
+    buttonText: 'Acceder al Sistema',
+    img: '/images/sistemaInformacion.svg',
+  },
+  {
+    title: 'Portafolio de Aplicaciones GIS',
+    description: 'Herramientas y aplicaciones que facilitan el análisis espacial y la visualización de datos georreferenciados.',
+    buttonText: 'Explorar Aplicaciones',
+    img: '/images/portafolioAplicaciones.svg',
+  },
+  {
+    title: 'Mesa de Partes Virtual',
+    description: 'Facilita la presentación de documentos y la realización de trámites administrativos de manera virtual.',
+    buttonText: 'Iniciar Trámite',
+    img: '/images/mesaDePartes.svg',
+  }
+];
 
 export default function Home() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -66,7 +96,11 @@ export default function Home() {
           efectiva y sostenible. Descubre cómo podemos ayudarte a navegar por el
           paisaje urbano en constante cambio de Lima.
         </p>
-        <div className="flex"></div>
+        <div className="flex gap-4 justify-center mt-8">
+          {resources.map((resource, index) => (
+            <Card key={index} {...resource} />
+          ))}
+        </div>
       </div>
     </>
   );
