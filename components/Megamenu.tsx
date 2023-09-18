@@ -164,10 +164,10 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
   ];
   return (
     <div
-      className={`absolute top-24 w-full opacity-0 h-[calc(100vh-6rem)] bg-lightBlue flex ${
+      className={` absolute top-24 w-full z-0 h-[calc(100vh-6rem)] bg-lightBlue ${
         openMenu
-          ? 'one-time-fade-in opacity-100'
-          : 'one-time-fade-out opacity-0'
+          ? 'one-time-fade-in opacity-100 z-20 flex'
+          : 'one-time-fade-out opacity-0 z-0 hidden'
       }`}
       style={{ transitionDelay: openMenu ? '0ms' : '1000ms' }}
     >

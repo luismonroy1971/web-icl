@@ -9,7 +9,7 @@ interface NavbarProps {
 export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
   return (
     <div className="flex justify-between items-center h-24 bg-white text-black relative shadow-md font-acto">
-      <div className="flex space-x-4 ml-10">
+      <div className="flex space-x-4 sm:mx-10 mx-4">
         <div className="my-auto">
           <a
             href="#"
@@ -40,7 +40,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
       </div>
       <div className="flex gap-8 h-full">
         <div
-          className="my-auto cursor-pointer"
+          className="my-auto cursor-pointer hidden sm:block"
           onClick={() =>
             window.open(
               'https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=13132',
@@ -56,7 +56,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
           />
         </div>
         <div
-          className="flex space-x-4 mr-10 gap-2 cursor-pointer items-center border-l border-x-[#D9D9D9] h-full px-8 transition-transform duration-300 ease-in-out"
+          className="flex space-x-4 sm:mr-10 gap-2 cursor-pointer items-center border-l border-x-[#D9D9D9] h-full px-8 transition-transform duration-300 ease-in-out"
           onClick={() => setOpenMenu(!openMenu)}
         >
           {!openMenu ? (
@@ -78,12 +78,12 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
                   stroke-width="2"
                 />
               </svg>
-              <span className="text-2xl text-primary">Menú</span>
+              <span className="text-lg sm:text-2xl text-primary">Menú</span>
             </>
           ) : (
             <>
               <svg
-                className="transition-transform duration-300 ease-in-out transform rotate-180"
+                className="transition-transform duration-300 ease-in-out transform rotate-90"
                 width="27"
                 height="26"
                 viewBox="0 0 27 26"
@@ -107,7 +107,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
                   stroke-width="2"
                 />
               </svg>
-              <span className="text-2xl text-primary">Cerrar</span>
+              <span className="text-lg sm:text-2xl text-primary">Cerrar</span>
             </>
           )}
         </div>
