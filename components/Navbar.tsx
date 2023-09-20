@@ -12,7 +12,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
       <div className="flex space-x-4 sm:mx-10 mx-4">
         <div className="my-auto">
           <a
-            href="#"
+            href="/"
             className="justify-center items-center  text-gray-700 hover:text-gray-900 my-auto"
           >
             <Image

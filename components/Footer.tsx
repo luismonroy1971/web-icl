@@ -10,7 +10,7 @@ export const Footer = () => {
         </div>
         <div className="flex flex-col gap-4">
           <h2 className="text-white font-acto text-xl">Enlaces Rápidos</h2>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 font-lato">
             <Link href="/sobre-nosotros">
               <span className="text-white">¿Quiénes somos?</span>
             </Link>

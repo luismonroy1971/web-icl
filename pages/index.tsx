@@ -106,7 +106,7 @@ export default function Home() {
       <RevealOnScroll>
         <div className="text-center py-20 sm:w-10/12 mx-auto">
           <h2 className="font-acto text-primary text-4xl">Sobre Nosotros</h2>
-          <p className="font-lato mt-4">
+          <p className="font-lato mt-2">
             El Instituto Catastral de Lima es el pilar que sustenta el
             desarrollo sostenible y planificado de nuestra vibrante ciudad. Con
             una rica historia de dedicación y servicio, nos esforzamos por ser
@@ -115,14 +115,15 @@ export default function Home() {
             promueve la armonía entre la modernidad urbana y la preservación de
             la riqueza natural y cultural de Lima.
           </p>
-          <div className="sm:flex gap-4 sm:mt-8">
-            <div className="sm:h-[600px]">
+          <div className="sm:flex gap-4 sm:mt-8 sm:w-10/12 mx-auto">
+            <div className="sm:h-[200px]">
               <Image
-                src="/images/aboutPresident.png"
+                src="/images/aboutPresident.jpeg"
                 alt="Foto presidente"
                 objectFit="cover"
                 width={600}
                 height={600}
+                className="rounded-md"
               />
             </div>
             <div className="flex flex-col w-full">
@@ -137,11 +138,24 @@ export default function Home() {
                   Presidente Ejecutivo
                 </h3>
               </div>
-              <p className="font-lato mt-2 text-left text-lg mb-2">
+              <p className="font-lato mt-2 text-left text-lg mb-2 ml-4">
                 Molina Arles, Luis Alfonso
               </p>
-              <FAQComponent items={faqItems} />
+              {/* <FAQComponent items={faqItems} /> */}
+              <div className="mt-4">
+                <p className="font-lato italic text-left text-lg ml-4">
+                  "¡Bienvenidos a la página web del Instituto Catastral de Lima!
+                  Bajo mi liderazgo y compromiso, nos enorgullece brindarles una
+                  ventana digital a nuestro trabajo y a la información catastral
+                  de nuestra ciudad. Espero que encuentren en este espacio una
+                  herramienta valiosa para explorar, aprender y colaborar en la
+                  construcción de una Lima mejor y más informada."
+                </p>
+              </div>
             </div>
+          </div>
+          <div className="flex flex-col w-96 justify-center mx-auto sm:mt-20">
+            <Button>Conoce más</Button>
           </div>
         </div>
       </RevealOnScroll>
