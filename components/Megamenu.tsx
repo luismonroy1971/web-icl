@@ -12,6 +12,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
   const [secondChildren, setSecondChildren] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
   const [classNameTransition, setClassNameTransition] = useState<any>('');
+
   const categories = [
     {
       id: 1,
@@ -25,6 +26,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           description:
             'Resumen del Texto Único de Procedimiento Administrativo',
           children: [],
+          link: '/servicios/tupa',
         },
         {
           id: 7,
@@ -32,6 +34,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           slug: 'tusne',
           description: 'Resumen del Texto Único de Servicios No Exclusivos',
           children: [],
+          link: '/servicios/tusne',
         },
       ],
     },
@@ -205,25 +208,29 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
         {firstChildren.length > 0 &&
           firstChildren.map((category: any) => (
             <div key={category.id} className="my-4 ml-4">
-              <div
-                className="cursor-pointer flex flex-col gap-2"
-                onClick={() => setSecondChildren(category.children)}
-              >
-                <div className="flex gap-4">
-                  <span className="text-primary font-acto text-2xl ">
-                    {category.name}
-                  </span>
-                  <Image
-                    src="/images/arrow.svg"
-                    width={20}
-                    height={20}
-                    alt="flecha"
-                  />
+              <Link href={category.link}>
+                <div
+                  className="cursor-pointer flex flex-col gap-2"
+                  onClick={() => {
+                    setOpenMenu(false);
+                  }}
+                >
+                  <div className="flex gap-4">
+                    <span className="text-primary font-acto text-2xl ">
+                      {category.name}
+                    </span>
+                    <Image
+                      src="/images/arrow.svg"
+                      width={20}
+                      height={20}
+                      alt="flecha"
+                    />
+                  </div>
+                  <div className="text-md font-lato font-light">
+                    {category.description}
+                  </div>
                 </div>
-                <div className="text-md font-lato font-light">
-                  {category.description}
-                </div>
-              </div>
+              </Link>
             </div>
           ))}
       </div>

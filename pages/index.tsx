@@ -144,12 +144,12 @@ export default function Home() {
               {/* <FAQComponent items={faqItems} /> */}
               <div className="mt-4">
                 <p className="font-lato italic text-left text-lg ml-4">
-                  "¡Bienvenidos a la página web del Instituto Catastral de Lima!
+                  {`"¡Bienvenidos a la página web del Instituto Catastral de Lima!
                   Bajo mi liderazgo y compromiso, nos enorgullece brindarles una
                   ventana digital a nuestro trabajo y a la información catastral
                   de nuestra ciudad. Espero que encuentren en este espacio una
                   herramienta valiosa para explorar, aprender y colaborar en la
-                  construcción de una Lima mejor y más informada."
+                  construcción de una Lima mejor y más informada."`}
                 </p>
               </div>
             </div>
