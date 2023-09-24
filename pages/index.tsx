@@ -107,13 +107,14 @@ export default function Home() {
         <div className="text-center py-20 sm:w-10/12 mx-auto">
           <h2 className="font-acto text-primary text-4xl">Sobre Nosotros</h2>
           <p className="font-lato mt-2">
-            El Instituto Catastral de Lima es el pilar que sustenta el
-            desarrollo sostenible y planificado de nuestra vibrante ciudad. Con
-            una rica historia de dedicación y servicio, nos esforzamos por ser
-            la fuente confiable y precisa de información catastral y
-            territorial. Nuestra misión es trascender como una entidad que
-            promueve la armonía entre la modernidad urbana y la preservación de
-            la riqueza natural y cultural de Lima.
+            "¡Bienvenidos a la página web del Instituto Catastral de Lima! Bajo
+            mi liderazgo y firme compromiso con la transparencia y gobierno
+            electrónico, nos enorgullece brindarles una ventana digital a
+            nuestro trabajo e información territorial y servicios catastrales.
+            Espero que encuentren en este espacio web una herramienta valiosa
+            para explorar, aprender y colaborar con el Sistema Nacional
+            Integrado de Catastro para el desarrollo de la ciudad de Lima y de
+            nuestro país."
           </p>
           <div className="sm:flex gap-4 sm:mt-8 sm:w-10/12 mx-auto">
             <div className="sm:h-[200px]">
