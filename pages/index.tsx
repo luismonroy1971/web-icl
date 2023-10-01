@@ -106,20 +106,17 @@ export default function Home() {
       <RevealOnScroll>
         <div className="text-center py-20 sm:w-10/12 mx-auto">
           <h2 className="font-acto text-primary text-4xl">Sobre Nosotros</h2>
-          <p className="font-lato mt-2">
-            "¡Bienvenidos a la página web del Instituto Catastral de Lima! Bajo
-            mi liderazgo y firme compromiso con la transparencia y gobierno
-            electrónico, nos enorgullece brindarles una ventana digital a
-            nuestro trabajo e información territorial y servicios catastrales.
-            Espero que encuentren en este espacio web una herramienta valiosa
-            para explorar, aprender y colaborar con el Sistema Nacional
-            Integrado de Catastro para el desarrollo de la ciudad de Lima y de
-            nuestro país."
+          <p className="font-lato text-lg mt-2">
+            El Instituto Catastral de Lima se dedica a proporcionar servicios
+            catastrales precisos y actualizados, contribuyendo al desarrollo
+            ordenado y sostenible de la región. Con un equipo de profesionales
+            altamente calificados, nos esforzamos por mantener la integridad y
+            la transparencia en todas nuestras operaciones.
           </p>
-          <div className="sm:flex gap-4 sm:mt-8 sm:w-10/12 mx-auto">
+          <div className="sm:flex gap-4 sm:mt-8 mx-auto">
             <div className="sm:h-[200px]">
               <Image
-                src="/images/aboutPresident.jpeg"
+                src="/images/aboutPresident.png"
                 alt="Foto presidente"
                 objectFit="cover"
                 width={600}
@@ -127,7 +124,7 @@ export default function Home() {
                 className="rounded-md"
               />
             </div>
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col w-full justify-center my-auto mt-8">
               <div className="flex gap-2">
                 <Image
                   src="/images/shortArrow.svg"
@@ -153,10 +150,10 @@ export default function Home() {
                   construcción de una Lima mejor y más informada."`}
                 </p>
               </div>
+              <div className="flex flex-col w-72 justify-center mx-auto sm:mt-8">
+                <Button>Conoce más</Button>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col w-96 justify-center mx-auto sm:mt-20">
-            <Button>Conoce más</Button>
           </div>
         </div>
       </RevealOnScroll>

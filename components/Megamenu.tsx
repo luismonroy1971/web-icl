@@ -98,68 +98,82 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
       children: [
         {
           id: 17,
-          name: 'Misión y Visión',
-          slug: 'mision-y-vision',
+          name: '¿Quiénes somos?',
+          slug: 'quienes-somos',
+          description:
+            'Conozca la misión, visión y valores que guían nuestras operaciones en el Instituto Catastral de Lima.',
           children: [],
         },
         {
           id: 18,
-          name: 'Organigrama',
-          slug: 'organigrama',
+          name: 'Objetivos',
+          slug: 'objetivos',
+          description:
+            'Descubra los objetivos estratégicos que guían nuestras acciones y decisiones hacia el cumplimiento de nuestra misión en el Instituto Catastral de Lima.',
           children: [],
         },
         {
           id: 19,
-          name: 'Directorio',
-          slug: 'directorio',
+          name: 'Funcionarios',
+          slug: 'funcionarios',
+          description:
+            'Descubra el equipo de profesionales dedicados que trabajan para servir a la comunidad en nuestra institución.',
           children: [],
         },
         {
           id: 20,
-          name: 'Marco Normativo',
-          slug: 'marco-normativo',
+          name: 'Normas de la Institución',
+          slug: 'normas-la-institucion',
+          description:
+            'Explore los instrumentos de gestión y planes que guían nuestras operaciones, junto con las políticas que aseguran la transparencia y la eficiencia en el Instituto Catastral de Lima.',
           children: [],
+          link: '/sobre-nosotros/normas-de-la-institucion',
         },
-        {
-          id: 21,
-          name: 'Transparencia',
-          slug: 'transparencia',
-          children: [],
-        },
+      ],
+    },
+    {
+      id: 21,
+      name: 'Marco Legal',
+      slug: 'marco-legal',
+      children: [
         {
           id: 22,
-          name: 'Convocatorias',
-          slug: 'convocatorias',
+          name: 'Ley Nº 27972 – Ley Orgánica de Municipalidades',
+          slug: 'ley-organica',
+          description:
+            'Explore los instrumentos de gestión y planes que guían nuestras operaciones, junto con las políticas que aseguran la transparencia y la eficiencia en el Instituto Catastral de Lima.',
           children: [],
         },
         {
           id: 23,
-          name: 'Proyectos',
-          slug: 'proyectos',
+          name: 'Ley Tributación Municipal',
+          slug: 'reglamento-de-organizacion-y-funciones',
+          description:
+            'Explore los instrumentos de gestión y planes que guían nuestras operaciones, junto con las políticas que aseguran la transparencia y la eficiencia en el Instituto Catastral de Lima.',
           children: [],
         },
         {
           id: 24,
-          name: 'Publicaciones',
-          slug: 'publicaciones',
+          name: 'Ley Nº 27867 – Ley Orgánica de Gobiernos Regionales',
+          slug: 'reglamento-de-organizacion-y-funciones',
+          description:
+            'Explore los instrumentos de gestión y planes que guían nuestras operaciones, junto con las políticas que aseguran la transparencia y la eficiencia en el Instituto Catastral de Lima.',
           children: [],
         },
         {
           id: 25,
-          name: 'Noticias',
-          slug: 'noticias',
+          name: 'Reglamento de Acondicionamiento Territorial',
+          slug: 'reglamento-de-organizacion-y-funciones',
+          description:
+            'Explore los instrumentos de gestión y planes que guían nuestras operaciones, junto con las políticas que aseguran la transparencia y la eficiencia en el Instituto Catastral de Lima.',
           children: [],
         },
         {
           id: 26,
-          name: 'Galería',
-          slug: 'galeria',
-          children: [],
-        },
-        {
-          id: 27,
-          name: 'Contacto',
-          slug: 'contacto',
+          name: 'Ley que crea el SNCP',
+          slug: 'ley-que-crea-el-sncp',
+          description:
+            '¿Realiza trámites administrativos en línea, enviando documentos y solicitudes de manera eficiente y segura desde cualquier lugar.',
           children: [],
         },
       ],
@@ -208,11 +222,35 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
         {firstChildren.length > 0 &&
           firstChildren.map((category: any) => (
             <div key={category.id} className="my-4 ml-4">
-              <Link href={category.link}>
+              {category.link ? (
+                <Link href={category.link}>
+                  <div
+                    className="cursor-pointer flex flex-col gap-2"
+                    onClick={() => {
+                      setOpenMenu(false);
+                    }}
+                  >
+                    <div className="flex gap-4">
+                      <span className="text-primary font-acto text-2xl ">
+                        {category.name}
+                      </span>
+                      <Image
+                        src="/images/arrow.svg"
+                        width={20}
+                        height={20}
+                        alt="flecha"
+                      />
+                    </div>
+                    <div className="text-md font-lato font-light">
+                      {category.description}
+                    </div>
+                  </div>
+                </Link>
+              ) : (
                 <div
                   className="cursor-pointer flex flex-col gap-2"
                   onClick={() => {
-                    setOpenMenu(false);
+                    setSecondChildren(category.children);
                   }}
                 >
                   <div className="flex gap-4">
@@ -230,7 +268,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
                     {category.description}
                   </div>
                 </div>
-              </Link>
+              )}
             </div>
           ))}
       </div>
