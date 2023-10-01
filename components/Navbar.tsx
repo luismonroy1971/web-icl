@@ -11,20 +11,20 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
   return (
     <>
       <div className={`${openMenu ? 'hidden' : 'block'}`}>
-        <div className="flex justify-between items-center h-fit bg-lightBlue text-primary relative shadow-md font-acto sm:px-10 py-2">
+        <div className="flex justify-between items-center h-fit bg-lightBlue text-primary relative shadow-md font-acto sm:px-8 py-1">
           <div className="flex justify-center items-center">
             Inscríbete a nuestros cursos de capacitación{' '}
             <Link href="/cursos">
               <span className="underline ml-1">AQUÍ</span>
             </Link>
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center gap-4">
             <p>Síguenos en nuestras redes sociales:</p>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center gap-2">
               <a
-                href="https://www.facebook.com/Instituto-Catastral-de-Lima-100353078420425"
+                href="https://www.facebook.com/instcatastraldelima"
                 target="_blank"
-                className="mx-2"
+                className=""
               >
                 <Image
                   src="/images/redes-sociales/facebook.svg"
@@ -34,9 +34,9 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
                 />
               </a>
               <a
-                href="https://www.instagram.com/institutocatastral/"
+                href="https://www.instagram.com/instcatastraldelima/?igshid=YmMyMTA2M2Y%3D"
                 target="_blank"
-                className="mx-2"
+                className=""
               >
                 <Image
                   src="/images/redes-sociales/instagram.svg"
@@ -46,12 +46,20 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
                 />
               </a>
               <a
-                href="https://www.youtube.com/channel/UCg3Z5h2wvYlUqzY7bVX4bOQ"
+                href="https://www.youtube.com/@InstitutoCatastraldeLimaICL"
                 target="_blank"
-                className="mx-2"
+                className=""
               >
                 <Image
                   src="/images/redes-sociales/youtube.svg"
+                  alt="logo"
+                  width={30}
+                  height={30}
+                />
+              </a>
+              <a href='https://api.whatsapp.com/send?phone=969670703' target="_blank" className="">
+                <Image
+                  src="/images/redes-sociales/whatsapp.svg"
                   alt="logo"
                   width={30}
                   height={30}
@@ -108,7 +116,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
             />
           </div>
           <div
-            className="flex space-x-4 sm:mr-10 gap-2 cursor-pointer items-center border-l border-x-[#D9D9D9] h-full px-8 transition-transform duration-300 ease-in-out"
+            className="flex space-x-4 sm:mr-4 gap-2 cursor-pointer items-center border-l border-x-[#D9D9D9] h-full px-8 transition-transform duration-300 ease-in-out"
             onClick={() => setOpenMenu(!openMenu)}
           >
             {!openMenu ? (
