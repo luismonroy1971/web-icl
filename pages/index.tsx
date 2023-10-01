@@ -102,7 +102,64 @@ export default function Home() {
       </Head>
       <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu} />
       <MegaMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
-      <Banner />
+      <Banner
+        slides={[
+          {
+            id: 0,
+            titleFirst: 'Dando forma a la',
+            titleSecond: 'Lima del mañana',
+            description:
+              'Tu aliado en la gestión catastral y territorial, facilitando un desarrollo urbano sostenible y planificado.',
+            image: '/images/pagina-1/banner-1.jpg',
+            buttonText: 'Accede a nuestros servicios',
+            background: 'bg-primary',
+            align: 'text-left',
+          },
+          {
+            id: 1,
+            titleFirst: 'Un equipo',
+            titleSecond: 'comprometido',
+            description:
+              'Nuestro equipo: pasión y compromiso en cada paso hacia el futuro de Lima. ',
+            image: '/images/pagina-1/banner-2.jpg',
+            buttonText: 'Conoce a nuestro equipo',
+            background: 'bg-primary',
+            align: 'text-left',
+          },
+          {
+            id: 2,
+            titleFirst: 'Convenios',
+            titleSecond: 'Institucionales:',
+            description: 'Alianzas estratégicas para un desarrollo responsable',
+            image: '/images/pagina-1/banner-3.jpg',
+            buttonText: 'Ver Convenios',
+            background: 'bg-primary',
+            align: 'text-left',
+          },
+          {
+            id: 3,
+            titleFirst: 'Capacitaciones del',
+            titleSecond: 'ICL',
+            description:
+              'Desde desarrollos recientes hasta seminarios y talleres, aquí encontrarás todo lo que necesitas saber para estar al tanto de nuestras actividades.',
+            image: '/images/pagina-1/banner-4.jpg',
+            buttonText: 'Ver Capacitaciones',
+            background: 'bg-primary',
+            align: 'text-left',
+          },
+          {
+            id: 4,
+            titleFirst: 'Juntos construimos',
+            titleSecond: 'un mañana mejor',
+            description:
+              'Nuestra misión: Transformar el futuro a través de una gestión territorial sólida.',
+            image: '/images/pagina-1/banner-5.jpg',
+            buttonText: 'Ver Recursos',
+            background: 'bg-primary',
+            align: 'text-left',
+          },
+        ]}
+      />
       <RevealOnScroll>
         <div className="text-center py-20 sm:w-10/12 mx-auto">
           <h2 className="font-acto text-primary text-4xl">Sobre Nosotros</h2>

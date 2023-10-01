@@ -28,6 +28,16 @@
   font-family: 'Lato', sans-serif;
 }
 
+@font-face {
+  font-family: 'LatoBold';
+  src: url('/fonts/Lato-Bold.ttf') format('truetype');
+}
+
+.font-lato-bold {
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+}
+
 @keyframes customBounce {
   0%, 20%, 50%, 80%, 100% {
     transform: translateY(0);
@@ -82,4 +92,8 @@
 .banner-transition {
   opacity: 1;
   transform: translateY(0);
+}
+
+*{
+  -webkit-font-smoothing: antialiased;
 }
