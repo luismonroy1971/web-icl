@@ -10,7 +10,57 @@ interface NavbarProps {
 export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
   return (
     <>
-      <div className={`${openMenu ? 'block' : 'hidden'} sm:hidden`}></div>
+      <div className={`${openMenu ? 'hidden' : 'block'}`}>
+        <div className="flex justify-between items-center h-fit bg-lightBlue text-primary relative shadow-md font-acto sm:px-10 py-2">
+          <div className="flex justify-center items-center">
+            Inscríbete a nuestros cursos de capacitación{' '}
+            <Link href="/cursos">
+              <span className="underline ml-1">AQUÍ</span>
+            </Link>
+          </div>
+          <div className="flex justify-center items-center">
+            <p>Síguenos en nuestras redes sociales:</p>
+            <div className="flex justify-center items-center">
+              <a
+                href="https://www.facebook.com/Instituto-Catastral-de-Lima-100353078420425"
+                target="_blank"
+                className="mx-2"
+              >
+                <Image
+                  src="/images/redes-sociales/facebook.svg"
+                  alt="logo"
+                  width={30}
+                  height={30}
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/institutocatastral/"
+                target="_blank"
+                className="mx-2"
+              >
+                <Image
+                  src="/images/redes-sociales/instagram.svg"
+                  alt="logo"
+                  width={30}
+                  height={30}
+                />
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCg3Z5h2wvYlUqzY7bVX4bOQ"
+                target="_blank"
+                className="mx-2"
+              >
+                <Image
+                  src="/images/redes-sociales/youtube.svg"
+                  alt="logo"
+                  width={30}
+                  height={30}
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="flex justify-between items-center h-24 bg-white text-black relative shadow-md font-acto">
         <div className="flex space-x-4 sm:mx-10 mx-4">
           <div className="my-auto">
