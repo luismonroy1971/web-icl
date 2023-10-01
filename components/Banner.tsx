@@ -105,7 +105,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
             style={{
               backgroundImage: `url(${slides[currentSlide].image})`,
               backgroundPosition: 'left center', // Adjusted this line
-              backgroundSize: 'cover',
+              backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
               height: '100vh',
               width: '100vw',

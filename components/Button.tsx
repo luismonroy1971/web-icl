@@ -11,7 +11,7 @@ export const Button: FC<ButtonProps> = ({ children, color, onClick }) => {
     <button
       className={`${
         color ? color : 'bg-primary'
-      } text-white font-lato rounded-md px-2 py-2 w-full`}
+      } text-white font-lato-bold rounded-md px-2 py-2 w-full`}
         onClick={onClick}
     >
       {children}

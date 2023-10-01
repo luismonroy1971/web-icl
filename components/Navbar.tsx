@@ -83,7 +83,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
               </div>
             </Link>
           </div>
-          <div className="w-0.5 h-20 bg-primary justify-center items-center my-auto"></div>
+          <div className="w-0.5 h-14 bg-primary justify-center items-center my-auto"></div>
           <div className="my-auto">
             <a
               href="#"

@@ -11,7 +11,7 @@ interface FAQProps {
 }
 
 const FAQComponent: React.FC<FAQProps> = ({ items }) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
     <div className="faq-component w-full">
@@ -19,7 +19,7 @@ const FAQComponent: React.FC<FAQProps> = ({ items }) => {
         <div key={index} className="mb-4 w-full">
           <div
             onClick={() => setOpenIndex(index === openIndex ? null : index)}
-            className={`flex justify-between items-center cursor-pointer px-10 py-4 border-2 border-primary rounded-t-md font-lato w-full ${
+            className={`flex justify-between items-center cursor-pointer px-10 py-4 border-2 border-primary rounded-t-md font-lato-bold w-full ${
               openIndex === index
                 ? 'bg-primary text-white'
                 : 'bg-white text-primary'
