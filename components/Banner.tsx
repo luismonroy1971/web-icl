@@ -95,7 +95,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
 
   return (
     <div className="w-full">
-      <div className="overflow-hidden relative h-[calc(100vh-120px)] w-screen bg-gradient-to-r from-primary from-5% via-[#0066AB] via-30% to-transparent ">
+      <div className="overflow-hidden relative h-[calc(100vh-140px)] w-screen bg-gradient-to-r from-primary from-5% via-[#0066AB] via-30% to-transparent ">
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -121,7 +121,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                 'transform 0.5s ease-in-out, background-image 0.5s ease-in-out', // Adjusted this line
             }}
           >
-            <div className="sm:max-w-[5vw]">
+            <div className="sm:max-w-[2.5vw]">
               <button className="" onClick={prevSlide}>
                 <svg
                   width="17"
@@ -145,35 +145,37 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                 </svg>
               </button>
             </div>
-            <div className="sm:w-[90vw]">
+            <div className="sm:w-[95vw]">
               <div
                 className={`flex flex-col gap-4 px-20 justify-center w-[50vw] sm:text-left h-full`}
               >
                 {renderContent(slide)}
               </div>
             </div>
-            <button className="rotate-180" onClick={nextSlide}>
-              <svg
-                width="17"
-                height="35"
-                viewBox="0 0 17 35"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M2 18.0107L15 32.5107"
-                  stroke="white"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M15 3L2 17.5"
-                  stroke="white"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </button>
+            <div className="sm:max-w-[2.5vw]">
+              <button className="rotate-180" onClick={nextSlide}>
+                <svg
+                  width="17"
+                  height="35"
+                  viewBox="0 0 17 35"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 18.0107L15 32.5107"
+                    stroke="white"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M15 3L2 17.5"
+                    stroke="white"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         ))}
         <div className="flex gap-2 justify-center items-end w-full absolute bottom-8">

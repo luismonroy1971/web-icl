@@ -238,7 +238,7 @@ export default function Home() {
       </RevealOnScroll>
       <RevealOnScroll>
         <div className="text-center py-20 sm:w-10/12 mx-auto">
-          <h2 className="font-acto text-primary text-4xl">
+          <h2 className="font-acto text-primary sm:text-[3vw]">
             Noticias y eventos
           </h2>
           <p className="font-lato mt-4">
