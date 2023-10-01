@@ -179,6 +179,7 @@ const MidPagination: FC<any> = ({
                 gotoPage={gotoPage}
                 index={index}
                 arrayIndex={page}
+                key={i}
               />
             );
           })}

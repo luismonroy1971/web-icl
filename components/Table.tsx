@@ -223,6 +223,7 @@ export const Table = ({
                   paddingLeft: '1rem',
                   paddingRight: '1rem',
                 }}
+                key={headerGroup.id}
               >
                 {headerGroup.headers.map((column: any, index: any) => {
                   return (
@@ -232,6 +233,7 @@ export const Table = ({
                         cursor: column.canFilter ? 'pointer' : 'default',
                       }}
                       className='text-left pb-1'
+                      key={index}
                     >
                       <HeaderWrapper>
                         <p className="text-lg text-primary font-acto">{column.render('Header')}</p>
@@ -272,6 +274,7 @@ export const Table = ({
                     paddingLeft: '1rem',
                     paddingRight: '1rem',
                   }}
+                  key={row.id}
                 >
                   {row.cells.map((cell: any, index: any) => {
                     const RenderedCell = cell.render('Cell');
