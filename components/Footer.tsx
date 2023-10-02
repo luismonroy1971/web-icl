@@ -54,7 +54,7 @@ export const Footer = () => {
               />
             </Link>
             <Link href="/">
-              <img src="/images/whatsapp.svg" alt="whatsapp" className="h-8" />
+              <img src="/images/whatsApp.svg" alt="whatsapp" className="h-8" />
             </Link>
             <Link href="/">
               <img src="/images/youtube.svg" alt="youtube" className="h-8" />
