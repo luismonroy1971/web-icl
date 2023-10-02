@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Inter } from '@next/font/google';
 import MegaMenu from '../components/Megamenu';
 import { Navbar } from '../components/Navbar';
-import { useState } from 'react';
+import { Key, useState } from 'react';
 import { Banner } from '../components/Banner';
 import { Card } from '../components/Card';
 import { News } from '../components/News';
@@ -11,6 +11,9 @@ import { Button } from '../components/Button';
 import { Footer } from '../components/Footer';
 import FAQComponent from '../components/Faq';
 import { RevealOnScroll } from '../components/Fade';
+import { useGetNewsQuery } from '../redux/reduxQuery/news';
+import { NewsType, VideoType } from '../utils/types';
+import { useGetVideosQuery } from '../redux/reduxQuery/videos';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -54,11 +57,24 @@ const resources = [
 
 export default function Home() {
   const [openMenu, setOpenMenu] = useState(false);
-
+  const { data: newsData, error, refetch } = useGetNewsQuery('');
+  const {
+    data: videosData,
+    error: errorVideos,
+    refetch: refetchVideos,
+  } = useGetVideosQuery('');
+  const newsData4 = newsData?.slice(0, 4);
+  const videosData4 = videosData?.slice(0, 4);
+  console.log(videosData4);
   const getDriveFileId = (url: string) => {
     const match = url?.match(/file\/d\/([^/]+)/);
     console.log(match);
     return match ? match[0] : '';
+  };
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleImageClick = () => {
+    setIsClicked(true);
   };
 
   const news = [
@@ -241,80 +257,140 @@ export default function Home() {
           <h2 className="font-acto text-primary sm:text-[3vw]">
             Noticias y eventos
           </h2>
-          <p className="font-lato mt-4">
+          <p className="font-lato mt-4 sm:text-[1.3vw]">
             Mantente al día con las últimas noticias y eventos del Instituto
             Catastral de Lima.
           </p>
-          <div className="flex flex-col gap-4 justify-center mt-8">
-            {news.map((news, index) => (
+          <div className="flex flex-col gap-6 justify-center mt-8">
+            {newsData4?.map((news: NewsType, index: Key | null | undefined) => (
               <News key={index} {...news} />
             ))}
           </div>
-          <div className="mt-12 w-40 mx-auto">
-            <Button>Ver más noticias</Button>
+          <div className="mt-8 w-60 mx-auto">
+            <Button>Ver todas las noticias</Button>
           </div>
         </div>
       </RevealOnScroll>
       <RevealOnScroll>
-        <div className="py-20 sm:w-10/12 mx-auto sm:flex gap-20 text-left">
-          <div className="sm:w-1/4 flex flex-col items-center gap-4">
-            <div className="flex items-center justify-center h-28">
-              <Image
-                src="/images/levantamientoCatastral.svg"
-                width={127}
-                height={120}
-                alt="Mapa"
-              />
-            </div>
-            <h3 className="font-acto text-primary text-xl h-20">
-              Manual de Levantamiento Catastral
-            </h3>
-            <Button>Ir a Manual</Button>
+        <div className="py-20 sm:w-10/12 mx-auto flex flex-col justify-center items-center gap-20 text-left">
+          <div className="text-center">
+            <h2 className="font-acto text-primary sm:text-[3vw]">Recursos</h2>
+            <p className="font-lato mt-4 sm:text-[1.3vw]">
+              Mantente al día con las últimas noticias y eventos del Instituto
+              Catastral de Lima. Desde desarrollos recientes hasta seminarios y
+              talleres, aquí encontrarás todo lo que necesitas saber para estar
+              al tanto de nuestras actividades.
+            </p>
           </div>
-          <div className="sm:w-1/4 flex flex-col items-center gap-4">
-            <div className="flex items-center justify-center h-28">
-              <Image
-                src="/images/covid-19.svg"
-                width={127}
-                height={120}
-                alt="Mapa"
-              />
+          <div className="flex gap-8">
+            <div className="sm:w-1/4 flex flex-col items-center gap-4">
+              <div className="flex items-center justify-center h-28">
+                <Image
+                  src="/images/levantamientoCatastral.svg"
+                  width={127}
+                  height={120}
+                  alt="Mapa"
+                />
+              </div>
+              <h3 className="font-acto text-primary text-[1.5vw] leading-tight h-20">
+                Manual de Levantamiento Catastral
+              </h3>
+              <Button>Ir a Manual</Button>
             </div>
-            <h3 className="font-acto text-primary text-xl h-20">
-              Plan para vigilancia, prevención y control de Covid-19
-            </h3>
-            <Button>Ir a Plan</Button>
+            <div className="sm:w-1/4 flex flex-col items-center gap-4">
+              <div className="flex items-center justify-center h-28">
+                <Image
+                  src="/images/covid-19.svg"
+                  width={127}
+                  height={120}
+                  alt="Mapa"
+                />
+              </div>
+              <h3 className="font-acto text-primary text-[1.5vw] leading-tight h-20">
+                Plan para vigilancia, prevención y control de Covid-19
+              </h3>
+              <Button>Ir a Plan</Button>
+            </div>
+            <div className="sm:w-1/4 flex flex-col items-center gap-4">
+              <div className="flex items-center justify-center h-28">
+                <Image
+                  src="/images/sistemaNacionalControl.svg"
+                  width={127}
+                  height={120}
+                  alt="Mapa"
+                />
+              </div>
+              <h3 className="font-acto text-primary text-[1.5vw] leading-tight h-20">
+                Atención de denuncias ciudadanas por el Sistema Nacional de
+                Control
+              </h3>
+              <Button>Ir a Portal Denuncias</Button>
+            </div>
+            <div className="sm:w-1/4 flex flex-col items-center gap-4">
+              <div className="flex items-center justify-center h-28">
+                <Image
+                  src="/images/libroReclamaciones.svg"
+                  width={220}
+                  height={120}
+                  alt="Mapa"
+                />
+              </div>
+              <h3 className="font-acto text-primary text-[1.5vw] leading-tight h-20">
+                Libro de Reclamaciones Digital
+              </h3>
+              <div className="w-full">
+                <Button>Ir a Libro de Reclamaciones</Button>
+              </div>
+            </div>
           </div>
-          <div className="sm:w-1/4 flex flex-col items-center gap-4">
-            <div className="flex items-center justify-center h-28">
-              <Image
-                src="/images/sistemaNacionalControl.svg"
-                width={127}
-                height={120}
-                alt="Mapa"
-              />
-            </div>
-            <h3 className="font-acto text-primary text-xl h-20">
-              Atención de denuncias ciudadanas por el Sistema Nacional de
-              Control
-            </h3>
-            <Button>Ir a Portal Denuncias</Button>
+        </div>
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <div className="text-center py-20 sm:w-10/12 mx-auto">
+          <h2 className="font-acto text-primary sm:text-[3vw]">Videoteca</h2>
+          <p className="font-lato mt-4 sm:text-[1.3vw]">
+            Mantente al día con las últimas noticias y eventos del Instituto
+            Catastral de Lima. Desde desarrollos recientes hasta seminarios y
+            talleres, aquí encontrarás todo lo que necesitas saber para estar al
+            tanto de nuestras actividades.
+          </p>
+          <div className="flex gap-4 justify-center mt-8">
+            {videosData4?.map(
+              (video: VideoType, index: Key | null | undefined) => (
+                <div
+                  key={index}
+                  className="flex flex-col gap-4  w-[20vw] h-[280px]"
+                >
+                  <div className="flex items-center justify-center h-full relative">
+                    {!isClicked && (
+                      <div
+                        className="absolute h-full w-full cursor-pointer bg-cover bg-center flex items-center justify-center rounded-md"
+                        style={{
+                          backgroundImage: `url(${video.url_imagen_video})`,
+                        }}
+                        onClick={handleImageClick}
+                      >
+                        <img src="/images/play.svg" alt="Play" className='absolute top-[56px]' />{' '}
+                        {/* replace 'play-icon-url-here' with your play icon's URL */}
+                      </div>
+                    )}
+                    <iframe
+                      src={`https://drive.google.com/${getDriveFileId(
+                        video.url_video
+                      )}/preview`}
+                      className={`w-full h-full ${isClicked ? '' : 'hidden'}`}
+                    ></iframe>
+                  </div>
+
+                  <h3 className="font-acto text-primary text-xl h-[120px]">
+                    {video.titulo_video}
+                  </h3>
+                </div>
+              )
+            )}
           </div>
-          <div className="sm:w-1/4 flex flex-col items-center gap-4">
-            <div className="flex items-center justify-center h-28">
-              <Image
-                src="/images/libroReclamaciones.svg"
-                width={220}
-                height={120}
-                alt="Mapa"
-              />
-            </div>
-            <h3 className="font-acto text-primary text-xl h-20">
-              Libro de Reclamaciones Digital
-            </h3>
-            <div className="w-full">
-              <Button>Ir a Libro de Reclamaciones</Button>
-            </div>
+          <div className="w-60 mx-auto">
+            <Button>Ir al canal de videos</Button>
           </div>
         </div>
       </RevealOnScroll>
