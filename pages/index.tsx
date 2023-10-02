@@ -14,6 +14,7 @@ import { RevealOnScroll } from '../components/Fade';
 import { useGetNewsQuery } from '../redux/reduxQuery/news';
 import { NewsType, VideoType } from '../utils/types';
 import { useGetVideosQuery } from '../redux/reduxQuery/videos';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -71,11 +72,12 @@ export default function Home() {
     console.log(match);
     return match ? match[0] : '';
   };
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(null);
 
-  const handleImageClick = () => {
-    setIsClicked(true);
+  const handleImageClick = (index: any) => {
+    setIsClicked(index);
   };
+
 
   const news = [
     {
@@ -184,11 +186,11 @@ export default function Home() {
         ]}
       />
       <RevealOnScroll>
-        <div className="text-center py-20 sm:w-10/12 mx-auto">
-          <h2 className="font-acto text-primary sm:text-[3vw]">
+        <div className="text-center py-20 sm:w-10/12 mx-auto w-11/12">
+          <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">
             Sobre Nosotros
           </h2>
-          <p className="font-lato text-lg mt-2">
+          <p className="font-lato sm:text-[1.5vw] text-md mt-4 sm:mb-0 mb-4">
             ¡Bienvenidos a la página web del Instituto Catastral de Lima!
             <br /> Bajo mi liderazgo y firme compromiso con la transparencia y
             gobierno electrónico, nos enorgullece brindarles una ventana digital
@@ -209,7 +211,7 @@ export default function Home() {
                 className="rounded-md"
               />
             </div>
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col w-full sm:mt-0 mt-4">
               <div className="flex gap-2">
                 <Image
                   src="/images/shortArrow.svg"
@@ -235,8 +237,8 @@ export default function Home() {
         </div>
       </RevealOnScroll>
       <RevealOnScroll>
-        <div className="text-center py-12 sm:w-[92vw] mx-auto">
-          <h2 className="font-acto text-primary sm:text-[3vw]">
+        <div className="text-center py-12 sm:w-[92vw] mx-auto w-11/12">
+          <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">
             Nuestros Recursos
           </h2>
           <p className="font-lato mt-4">
@@ -254,7 +256,7 @@ export default function Home() {
       </RevealOnScroll>
       <RevealOnScroll>
         <div className="text-center py-20 sm:w-10/12 mx-auto">
-          <h2 className="font-acto text-primary sm:text-[3vw]">
+          <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">
             Noticias y eventos
           </h2>
           <p className="font-lato mt-4 sm:text-[1.3vw]">
@@ -282,7 +284,7 @@ export default function Home() {
               al tanto de nuestras actividades.
             </p>
           </div>
-          <div className="flex gap-8">
+          <div className="flex  sm:flex-row flex-col gap-8">
             <div className="sm:w-1/4 flex flex-col items-center gap-4">
               <div className="flex items-center justify-center h-28">
                 <Image
@@ -362,15 +364,19 @@ export default function Home() {
                   className="flex flex-col gap-4  w-[20vw] h-[280px]"
                 >
                   <div className="flex items-center justify-center h-full relative">
-                    {!isClicked && (
+                    {index !== isClicked && (
                       <div
                         className="absolute h-full w-full cursor-pointer bg-cover bg-center flex items-center justify-center rounded-md"
                         style={{
                           backgroundImage: `url(${video.url_imagen_video})`,
                         }}
-                        onClick={handleImageClick}
+                        onClick={() => handleImageClick(index)}
                       >
-                        <img src="/images/play.svg" alt="Play" className='absolute top-[56px]' />{' '}
+                        <img
+                          src="/images/play.svg"
+                          alt="Play"
+                          className="absolute top-[56px]"
+                        />{' '}
                         {/* replace 'play-icon-url-here' with your play icon's URL */}
                       </div>
                     )}
@@ -378,6 +384,9 @@ export default function Home() {
                       src={`https://drive.google.com/${getDriveFileId(
                         video.url_video
                       )}/preview`}
+                      allow="autoplay"
+                      allowFullScreen
+                      allowTransparency
                       className={`w-full h-full ${isClicked ? '' : 'hidden'}`}
                     ></iframe>
                   </div>
@@ -390,7 +399,9 @@ export default function Home() {
             )}
           </div>
           <div className="w-60 mx-auto">
-            <Button>Ir al canal de videos</Button>
+            <Link href="https://www.youtube.com/@InstitutoCatastraldeLimaICL?themeRefresh=1" target='_blank' rel='noopener noreferrer' >
+              <Button>Ir al canal de videos</Button>
+            </Link>
           </div>
         </div>
       </RevealOnScroll>

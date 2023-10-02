@@ -97,3 +97,12 @@
 *{
   -webkit-font-smoothing: antialiased;
 }
+
+/* Banner.module.css */
+@media (max-width: 768px) {
+  .smallScreenMaxWidth {
+    max-width: 200vw;
+    background-size: 200vw 100vh;
+    background-position-x: -50vw !important;
+  }
+}

@@ -4,7 +4,7 @@ import React from 'react';
 export const Footer = () => {
   return (
     <div className="flex flex-col  bg-primary p-10">
-      <div className="flex justify-between  gap-4">
+      <div className="flex sm:flex-row flex-col justify-between  gap-4">
         <div className="flex items-center h-28">
           <img src="/images/logo.svg" alt="logo" className="h-20" />
         </div>

@@ -15,12 +15,12 @@ export const Card: FC<CardProps> = ({
   buttonText,
 }) => {
   return (
-    <div className="flex flex-col border-2 border-primary rounded-md max-w-[260px] p-2">
-      <img src={img} alt={title} className="w-full h-44" />
-      <h3 className="font-acto text-primary text-[1.65vw] mt-4 text-left h-[72px] leading-tight">
+    <div className="flex flex-col border-2 border-primary rounded-md sm:max-w-[260px] p-2">
+      <img src={img} alt={title} className="w-full sm:h-44" />
+      <h3 className="font-acto text-primary sm:text-[1.65vw] text-xl mt-4 text-left sm:h-[72px] leading-tight">
         {title}
       </h3>
-      <p className="font-lato my- text-left h-32">{description}</p>
+      <p className="font-lato my- text-left sm:h-32">{description}</p>
       <Button>{buttonText}</Button>
     </div>
   );

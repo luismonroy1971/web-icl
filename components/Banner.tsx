@@ -28,7 +28,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
     return (
       <>
         <h1
-          className={`sm:text-[4vw] font-light font-acto leading-tight text-white`}
+          className={`sm:text-[4vw] text-4xl font-light font-acto leading-tight text-white`}
         >
           {slide.titleFirst}
           <br />
@@ -36,7 +36,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
         </h1>
 
         <p
-          className={`text-[1.8vw] font-lato mt-[10px] ${'text-white'} leading-tight w-[30vw]`}
+          className={`sm:text-[1.8vw] text-md font-lato mt-[10px] ${'text-white'} leading-tight sm:w-[30vw]`}
         >
           {slides[currentSlide].description}
           <br />
@@ -45,7 +45,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
 
         {slide.buttonText && (
           <a href="#nuestros-programas">
-            <button className="bg-primary px-[12px] py-[7px] rounded-md mt-[12px] text-white hover:bg-pink hover:text-white text-[1.1vw] shadow-md font-lato-bold">
+            <button className="bg-primary px-[12px] py-[7px] rounded-md mt-[12px] text-white hover:bg-pink hover:text-white sm:text-[1.1vw] text-sm shadow-md font-lato-bold">
               {slides[currentSlide].buttonText}
             </button>
           </a>
@@ -99,13 +99,12 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`slide ${getAnimationClass(index)}
-          flex flex-col md:flex-row items-center justify-center w-screen absolute
+            className={`slide ${getAnimationClass(index)} smallScreenMaxWidth
+          flex  flex-row items-center justify-center w-screen absolute sm:bg-contain bg-cover
         `}
             style={{
               backgroundImage: `url(${slides[currentSlide].image})`,
               backgroundPosition: 'left center', // Adjusted this line
-              backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
               height: '100vh',
               width: '100vw',
@@ -121,7 +120,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                 'transform 0.5s ease-in-out, background-image 0.5s ease-in-out', // Adjusted this line
             }}
           >
-            <div className="sm:max-w-[2.5vw]">
+            <div className="sm:max-w-[2.5vw] w-[10vw]">
               <button className="" onClick={prevSlide}>
                 <svg
                   width="17"
@@ -145,14 +144,14 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                 </svg>
               </button>
             </div>
-            <div className="sm:w-[95vw]">
+            <div className="sm:w-[95vw] w-[80vw]">
               <div
-                className={`flex flex-col gap-4 px-20 justify-center w-[50vw] sm:text-left h-full`}
+                className={`flex flex-col gap-4 sm:px-20 justify-center sm:w-[50vw] w-11/12 sm:text-left h-full`}
               >
                 {renderContent(slide)}
               </div>
             </div>
-            <div className="sm:max-w-[2.5vw]">
+            <div className="sm:max-w-[2.5vw] w-[10vw]">
               <button className="rotate-180" onClick={nextSlide}>
                 <svg
                   width="17"
