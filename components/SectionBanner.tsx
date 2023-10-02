@@ -48,8 +48,8 @@ export const SectionBanner: FC<Props> = ({
           )}
         </div>
       </div>
-      <div className="mx-4 py-12">
-        <h3 className="font-acto text-4xl text-primary">Listado de {title}</h3>
+      <div className="mx-8 py-12">
+        <h3 className="font-acto text-4xl text-primary">{title}</h3>
       </div>
     </>
   );

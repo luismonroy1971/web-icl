@@ -77,6 +77,7 @@ interface ITable {
   showAddNewConnection?: any;
   openModal?: any;
   tableType?: string;
+  loading?: boolean;
 }
 
 export const Table = ({
@@ -88,13 +89,22 @@ export const Table = ({
   showAddNewConnection,
   openModal,
   tableType,
+  loading,
 }: ITable) => {
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-full">
+        <p className="text-2xl text-primary font-acto">Cargando...</p>
+      </div>
+    );
+  }
   const tableInstance = useTable(
     {
       columns,
       data,
       rowClick,
       initialState: { pageSize: 5 },
+      loading,
     } as any,
     useGlobalFilter,
     useFilters,
@@ -116,6 +126,7 @@ export const Table = ({
     previousPage,
     allColumns,
     setFilter,
+    setPageSize
   }: any = tableInstance;
   const { globalFilter, pageIndex } = state as any;
   const pages = Array.from(Array(pageCount).keys());
@@ -203,134 +214,158 @@ export const Table = ({
   return (
     <>
       <TableWrapper>
-        <div className="m-4">
-          <input
-            type="text"
-            placeholder="Buscar"
-            className="border border-gray-300 rounded-md px-2 py-2 w-full"
-            value={globalFilter || ''}
-            onChange={(e) => setGlobalFilter(e.target.value)}
-          />
-        </div>
-        <table className='w-full table-fixed border-collapse h-full overflow-hidden'>
-          <thead style={{ borderBottom: `2px solid #F0F0F0` }}>
-            {headerGroups.map((headerGroup: any) => (
-              <tr
-                {...headerGroup.getHeaderGroupProps()}
+        {loading ? (
+          <div className="flex justify-center items-center h-full">
+            <p className="text-2xl text-primary font-acto">Cargando...</p>
+          </div>
+        ) : (
+          <>
+            <div className="m-4">
+              <input
+                type="text"
+                placeholder="Buscar"
+                className="border border-gray-300 rounded-md px-2 py-2 w-full"
+                value={globalFilter || ''}
+                onChange={(e) => setGlobalFilter(e.target.value)}
+              />
+            </div>
+            <table className="w-full table-fixed border-collapse h-full overflow-hidden">
+              <thead style={{ borderBottom: `2px solid #F0F0F0` }}>
+                {headerGroups.map((headerGroup: any) => (
+                  <tr
+                    {...headerGroup.getHeaderGroupProps()}
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      paddingLeft: '1rem',
+                      paddingRight: '1rem',
+                    }}
+                    key={headerGroup.id}
+                  >
+                    {headerGroup.headers.map((column: any, index: any) => {
+                      return (
+                        <TableH
+                          style={{
+                            width: column.width,
+                            cursor: column.canFilter ? 'pointer' : 'default',
+                          }}
+                          className="text-left pb-1"
+                          key={index}
+                        >
+                          <HeaderWrapper>
+                            <p className="text-lg text-primary font-acto">
+                              {column.render('Header')}
+                            </p>
+                            {column.isSorted ? (
+                              column.isSortedDesc ? (
+                                <DownArrow className={'ml-2'} />
+                              ) : (
+                                <UpArrow className={'ml-2'} />
+                              )
+                            ) : (
+                              ''
+                            )}
+                          </HeaderWrapper>
+                        </TableH>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </thead>
+              <tbody
+                {...getTableBodyProps()}
                 style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  paddingLeft: '1rem',
-                  paddingRight: '1rem',
+                  maxHeight: '60vh',
+                  overflow: 'auto',
+                  display: 'block',
+                  // transform: "translate(0,0)",
                 }}
-                key={headerGroup.id}
               >
-                {headerGroup.headers.map((column: any, index: any) => {
+                {page.map((row: any) => {
+                  prepareRow(row);
                   return (
-                    <TableH
+                    <tr
+                      {...row.getRowProps()}
                       style={{
-                        width: column.width,
-                        cursor: column.canFilter ? 'pointer' : 'default',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        borderBottom: `2px solid #F0F0F0`,
+                        paddingLeft: '1rem',
+                        paddingRight: '1rem',
                       }}
-                      className='text-left pb-1'
-                      key={index}
+                      key={row.id}
                     >
-                      <HeaderWrapper>
-                        <p className="text-lg text-primary font-acto">{column.render('Header')}</p>
-                        {column.isSorted ? (
-                          column.isSortedDesc ? (
-                            <DownArrow className={'ml-2'} />
-                          ) : (
-                            <UpArrow className={'ml-2'} />
-                          )
+                      {row.cells.map((cell: any, index: any) => {
+                        const RenderedCell = cell.render('Cell');
+                        return CUSTOM_RENDER_COLUMNS.includes(
+                          cell.column.Header
+                        ) ? (
+                          <TableData
+                            key={index}
+                            style={{
+                              width: cell.column.width,
+                            }}
+                            className="h-20 flex items-center justify-center"
+                          >
+                            {RenderedCell}
+                          </TableData>
                         ) : (
-                          ''
-                        )}
-                      </HeaderWrapper>
-                    </TableH>
+                          <TableData
+                            key={index}
+                            style={{
+                              width: cell.column.width,
+                            }}
+                          >
+                            {RenderedCell}
+                          </TableData>
+                        );
+                      })}
+                    </tr>
                   );
                 })}
-              </tr>
-            ))}
-          </thead>
-          <tbody
-            {...getTableBodyProps()}
-            style={{
-              maxHeight: '60vh',
-              overflow: 'auto',
-              display: 'block',
-              // transform: "translate(0,0)",
-            }}
-          >
-            {page.map((row: any) => {
-              prepareRow(row);
-              return (
-                <tr
-                  {...row.getRowProps()}
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    borderBottom: `2px solid #F0F0F0`,
-                    paddingLeft: '1rem',
-                    paddingRight: '1rem',
-                  }}
-                  key={row.id}
-                >
-                  {row.cells.map((cell: any, index: any) => {
-                    const RenderedCell = cell.render('Cell');
-                    return CUSTOM_RENDER_COLUMNS.includes(
-                      cell.column.Header
-                    ) ? (
-                      <TableData
-                        key={index}
-                        style={{
-                          width: cell.column.width,
-                        }}
-                        className='h-20 flex items-center justify-center'
-                      >
-                        {RenderedCell}
-                      </TableData>
-                    ) : (
-                      <TableData
-                        key={index}
-                        style={{
-                          width: cell.column.width,
-                        }}
-                      >
-                        {RenderedCell}
-                      </TableData>
-                    );
-                  })}
-                </tr>
-              );
-            })}
-            {data.length === 0 && (
-              <tr
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  borderBottom: `2px solid #F0F0F0`,
-                  paddingLeft: '1rem',
-                  paddingRight: '1rem',
-                }}
-              >
-                <td
-                  colSpan={columns.length}
-                  style={{
-                    textAlign: 'center',
-                    paddingTop: '1rem',
-                    paddingBottom: '1rem',
-                  }}
-                >
-                  No data available
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+                {data.length === 0 && (
+                  <tr
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      borderBottom: `2px solid #F0F0F0`,
+                      paddingLeft: '1rem',
+                      paddingRight: '1rem',
+                    }}
+                  >
+                    <td
+                      colSpan={columns.length}
+                      style={{
+                        textAlign: 'center',
+                        paddingTop: '1rem',
+                        paddingBottom: '1rem',
+                      }}
+                    >
+                      No data available
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </>
+        )}
       </TableWrapper>
       {pages.length > 1 ? (
         <PaginationWrapper>
+          <div>
+            <select
+              value={pageSize}
+              onChange={(e) => {
+                setPageSize(Number(e.target.value));
+              }}
+            >
+              {[5, 10, 20, 30, 40, 50].map((pageSize) => (
+                <option key={pageSize} value={pageSize}>
+                  Ver {pageSize}
+                </option>
+              ))}
+            </select>
+          </div>
           <Pagination
             pages={pages}
             pageCount={pageCount}

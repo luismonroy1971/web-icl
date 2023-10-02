@@ -44,6 +44,7 @@ const PaginationWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: end;
 `;
 
 const Number: FC<any> = ({ page, gotoPage, index, arrayIndex }) => {
@@ -53,6 +54,7 @@ const Number: FC<any> = ({ page, gotoPage, index, arrayIndex }) => {
         style={{
           background: index === arrayIndex ? '#16236E' : '',
           borderRadius: index === arrayIndex ? '.5rem' : '',
+          color: index === arrayIndex ? '#fff' : '',
         }}
       >
         {page + 1}

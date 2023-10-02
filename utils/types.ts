@@ -22,3 +22,12 @@ export interface VideoType {
   url_video: string;
   url_imagen_video: string;
 }
+export interface NormasType {
+  id: number;
+  tipo_norma: string;
+  denominacion_norma: string;
+  url_norma: string;
+  autorizado: string;
+  autorizado_por: string;
+  activo: string;
+}

@@ -11,7 +11,6 @@ export const TableWrapper = styled.div`
   border-radius: 0.75rem;
   padding: 1rem;
   padding-bottom: 0;
-  max-height: 72vh;
   box-shadow:   0px 0px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -45,6 +44,10 @@ export const TableButtonsWrapper = styled.div`
 `;
 export const PaginationWrapper = styled.div`
   margin-top: 1.5rem;
+  display: flex;
+  items-align: center;
+  justify-content: space-between;
+  gap: 1rem;
 `;
 export const HeaderWrapper = styled.div`
   display: flex;
