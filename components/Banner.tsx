@@ -120,7 +120,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                 'transform 0.5s ease-in-out, background-image 0.5s ease-in-out', // Adjusted this line
             }}
           >
-            <div className="sm:max-w-[2.5vw] w-[10vw]">
+            <div className="sm:max-w-[5vw] w-[10vw] flex justify-center">
               <button className="" onClick={prevSlide}>
                 <svg
                   width="17"
@@ -151,7 +151,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                 {renderContent(slide)}
               </div>
             </div>
-            <div className="sm:max-w-[2.5vw] w-[10vw]">
+            <div className="sm:max-w-[5vw] w-[10vw] flex justify-center">
               <button className="rotate-180" onClick={nextSlide}>
                 <svg
                   width="17"

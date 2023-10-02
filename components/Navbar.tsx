@@ -10,7 +10,7 @@ interface NavbarProps {
 export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
   return (
     <>
-      <div className={`${openMenu ? 'hidden' : 'block'}`}>
+      <div className={`${openMenu ? 'hidden' : 'sm:block hidden'}`}>
         <div className="flex justify-between items-center h-fit bg-lightBlue text-primary relative shadow-md font-acto sm:px-8 py-2">
           <div className="flex justify-center items-center">
             Inscríbete a nuestros cursos de capacitación{' '}
@@ -57,7 +57,11 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
                   height={30}
                 />
               </a>
-              <a href='https://api.whatsapp.com/send?phone=969670703' target="_blank" className="">
+              <a
+                href="https://api.whatsapp.com/send?phone=969670703"
+                target="_blank"
+                className=""
+              >
                 <Image
                   src="/images/redes-sociales/whatsapp.svg"
                   alt="logo"
@@ -69,11 +73,11 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center sm:h-[98px] bg-white text-black relative shadow-md font-acto">
-        <div className="flex space-x-4 sm:mx-8 mx-4">
+      <div className="flex justify-between items-center sm:h-[98px] h-[60px] bg-white text-black relative shadow-md font-acto">
+        <div className="flex space-x-4 sm:mx-8 mx-2">
           <div className="my-auto">
             <Link href="/">
-              <div className="justify-center items-center  text-gray-700 hover:text-gray-900 my-auto">
+              <div className="justify-center items-center  text-gray-700 hover:text-gray-900 my-auto w-16 sm:w-40">
                 <Image
                   src="/images/institutoCatastral.png"
                   alt="logo"
@@ -85,17 +89,14 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
           </div>
           <div className="w-0.5 h-14 bg-primary justify-center items-center my-auto"></div>
           <div className="my-auto">
-            <a
-              href="#"
-              className=" text-gray-700 hover:text-gray-900 justify-center items-center my-auto"
-            >
+            <div className="justify-center items-center  text-gray-700 hover:text-gray-900 my-auto w-16 sm:w-40">
               <Image
                 src="/images/muniLima.png"
                 alt="logo"
                 width={128}
                 height={43}
               />
-            </a>
+            </div>
           </div>
         </div>
         <div className="flex gap-8 h-full">
@@ -116,7 +117,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
             />
           </div>
           <div
-            className="flex space-x-4 gap-2 cursor-pointer items-center border-l border-x-[#D9D9D9] h-full px-8 transition-transform duration-300 ease-in-out"
+            className="flex space-x-4 gap-2 cursor-pointer items-center border-l border-x-[#D9D9D9] h-full sm:px-9 transition-transform duration-300 ease-in-out justify-center w-[20vw] sm:w-[12vw]"
             onClick={() => setOpenMenu(!openMenu)}
           >
             {!openMenu ? (
@@ -144,12 +145,14 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
                     stroke-width="2"
                   />
                 </svg>
-                <span className="text-lg sm:text-[24px] text-primary font-acto">Menú</span>
+                <span className="text-lg sm:text-[1.5vw] text-primary font-acto hidden sm:block">
+                  Menú
+                </span>
               </>
             ) : (
               <>
                 <svg
-                  className="transition-transform duration-300 ease-in-out transform rotate-90"
+                  className="transition-transform duration-300 ease-in-out transform rotate-90 mx-auto"
                   width="27"
                   height="26"
                   viewBox="0 0 27 26"
@@ -173,7 +176,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
                     stroke-width="2"
                   />
                 </svg>
-                <span className="text-lg sm:text-2xl text-primary">Cerrar</span>
+                <span className="text-lg sm:text-2xl text-primary sm:block hidden">Cerrar</span>
               </>
             )}
           </div>

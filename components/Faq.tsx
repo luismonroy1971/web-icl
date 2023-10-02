@@ -19,7 +19,7 @@ const FAQComponent: React.FC<FAQProps> = ({ items }) => {
         <div key={index} className="mb-4 w-full">
           <div
             onClick={() => setOpenIndex(index === openIndex ? null : index)}
-            className={`flex justify-between items-center cursor-pointer px-10 py-4 border-2 border-primary rounded-t-md font-lato-bold w-full ${
+            className={`flex justify-between items-center cursor-pointer px-4 py-4 border-2 border-primary rounded-t-md font-lato-bold w-full ${
               openIndex === index
                 ? 'bg-primary text-white'
                 : 'bg-white text-primary'

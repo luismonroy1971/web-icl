@@ -181,43 +181,99 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
   ];
   return (
     <div
-      className={` absolute top-24 w-full z-0 h-[calc(100vh-6rem)] bg-lightBlue ${
+      className={`absolute sm:top-24 w-full z-0 sm:h-[calc(100vh-6rem)] h-unset min-h-full bg-lightBlue ${
         openMenu
-          ? 'one-time-fade-in opacity-100 z-20 flex'
+          ? 'one-time-fade-in opacity-100 z-20 sm:flex'
           : 'one-time-fade-out opacity-0 z-0 hidden'
       }`}
       style={{ transitionDelay: openMenu ? '0ms' : '1000ms' }}
     >
       <div
         id="first-column"
-        className="flex flex-col w-1/3 border-r-8 border-white transition-all transform"
+        className="flex flex-col w-1/3 sm:border-r-8 border-white transition-all transform"
       >
-        {categories.map((category) => (
-          <div key={category.id} className="my-10 ml-4">
-            <div
-              className="cursor-pointer"
-              onClick={() => {
-                setFirstChildren(category.children);
-                setSecondChildren([]);
-                setSelectedCategory(category);
-              }}
-            >
-              <span
-                className={`font-acto text-primary text-4xl  ${
-                  selectedCategory?.id === category.id
-                    ? 'underline 0.5s ease-in-out infinite alternate'
-                    : ''
-                }`}
+        {categories.map((category) => {
+          return (
+            <div key={category.id} className="my-10 ml-4">
+              <div
+                className="cursor-pointer"
+                onClick={() => {
+                  JSON.stringify(category.children) == JSON.stringify(firstChildren) ? setFirstChildren([]) : setFirstChildren(category.children);
+                  setSecondChildren([]);
+                  setSelectedCategory(category);
+                }}
               >
-                {category.name}
-              </span>
+                <span
+                  className={`font-acto text-primary text-4xl  ${
+                    selectedCategory?.id === category.id && firstChildren.length > 0
+                      ? 'underline 0.5s ease-in-out infinite alternate'
+                      : ''
+                  }`}
+                >
+                  {category.name}
+                </span>
+              </div>
+              <div className="sm:hidden block">
+                {JSON.stringify(category.children) == JSON.stringify(firstChildren) &&
+                  firstChildren.map((category: any) => (
+                    <div key={category.id} className="my-4">
+                      {category.link ? (
+                        <Link href={category.link}>
+                          <div
+                            className="cursor-pointer flex flex-col gap-2"
+                            onClick={() => {
+                              setOpenMenu(false);
+                            }}
+                          >
+                            <div className="flex gap-4">
+                              <span className="text-primary font-acto text-2xl ">
+                                {category.name}
+                              </span>
+                              <Image
+                                src="/images/arrow.svg"
+                                width={20}
+                                height={20}
+                                alt="flecha"
+                              />
+                            </div>
+                            <div className="text-md font-lato font-light">
+                              {category.description}
+                            </div>
+                          </div>
+                        </Link>
+                      ) : (
+                        <div
+                          className="cursor-pointer flex flex-col gap-2"
+                          onClick={() => {
+                            setSecondChildren(category.children);
+                          }}
+                        >
+                          <div className="flex gap-4">
+                            <span className="text-primary font-acto text-2xl ">
+                              {category.name}
+                            </span>
+                            <Image
+                              src="/images/arrow.svg"
+                              width={20}
+                              height={20}
+                              alt="flecha"
+                            />
+                          </div>
+                          <div className="text-md font-lato font-light">
+                            {category.description}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <div
         id="second-column"
-        className="flex flex-col w-1/3 px-12 overflow-scroll h-full mt-4"
+        className="flex-col w-1/3 px-12 overflow-scroll h-full mt-4 sm:flex hidden"
       >
         {firstChildren.length > 0 &&
           firstChildren.map((category: any) => (
@@ -272,7 +328,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
             </div>
           ))}
       </div>
-      <div id="third-column" className="flex flex-col  w-1/3 px-8">
+      <div id="third-column" className="sm:flex flex-col  w-1/3 px-8 hidden">
         {secondChildren.length > 0 &&
           secondChildren.map((category: any) => (
             <div key={category.id} className="my-10 ml-4">
