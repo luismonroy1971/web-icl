@@ -186,7 +186,7 @@ export default function Home() {
       />
       <div className={`${openMenu ? 'hidden' : 'block'}`}>
         <RevealOnScroll>
-          <div className="text-center py-12 sm:w-10/12 mx-auto w-11/12">
+          <div className="text-center py-12 sm:pt-24 sm:w-10/12 mx-auto w-11/12">
             <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">
               Sobre Nosotros
             </h2>
@@ -386,8 +386,7 @@ export default function Home() {
                             src="/images/play.svg"
                             alt="Play"
                             className="absolute sm:top-[56px] top-[24px]"
-                          />{' '}
-                          {/* replace 'play-icon-url-here' with your play icon's URL */}
+                          />
                         </div>
                       )}
                       <iframe
