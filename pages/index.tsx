@@ -366,7 +366,7 @@ export default function Home() {
               talleres, aquí encontrarás todo lo que necesitas saber para estar
               al tanto de nuestras actividades.
             </p>
-            <div className="flex sm:flex-row flex-col gap-4 justify-center items-center mt-4 sm:mt-0">
+            <div className="flex sm:flex-row flex-col gap-4 justify-center items-center mt-4">
               {videosData4?.map(
                 (video: VideoType, index: Key | null | undefined) => (
                   <div
