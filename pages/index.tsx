@@ -240,7 +240,7 @@ export default function Home() {
           <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">
             Nuestros Recursos
           </h2>
-          <p className="font-lato mt-4">
+          <p className="font-lato mt-4 sm:text-[1.5vw] text-md">
             En el Instituto Catastral de Lima, estamos comprometidos a brindar
             servicios de alta calidad que faciliten una gestión territorial
             efectiva y sostenible. Descubre cómo podemos ayudarte a navegar por
@@ -296,7 +296,7 @@ export default function Home() {
                   className="h-full"
                 />
               </div>
-              <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl leading-tight h-20">
+              <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl 2xl:text-[1.3vw] leading-tight h-20">
                 Manual de Levantamiento Catastral
               </h3>
               <Button>Ir a Manual</Button>
@@ -311,7 +311,7 @@ export default function Home() {
                   className="h-full"
                 />
               </div>
-              <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl leading-tight h-20">
+              <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl 2xl:text-[1.3vw] leading-tight h-20">
                 Plan para vigilancia, prevención y control de Covid-19
               </h3>
               <Button>Ir a Plan</Button>
@@ -326,7 +326,7 @@ export default function Home() {
                   className="h-full"
                 />
               </div>
-              <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl leading-tight h-20">
+              <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl 2xl:text-[1.3vw] leading-tight h-20">
                 Atención de denuncias ciudadanas por el Sistema Nacional de
                 Control
               </h3>
@@ -342,7 +342,7 @@ export default function Home() {
                   className="h-full"
                 />
               </div>
-              <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl leading-tight h-20">
+              <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl 2xl:text-[1.3vw] leading-tight h-20">
                 Libro de Reclamaciones Digital
               </h3>
               <div className="w-full">
