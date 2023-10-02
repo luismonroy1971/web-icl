@@ -78,7 +78,6 @@ export default function Home() {
     setIsClicked(index);
   };
 
-
   const news = [
     {
       title: 'Noticia 1',
@@ -259,7 +258,7 @@ export default function Home() {
           <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">
             Noticias y eventos
           </h2>
-          <p className="font-lato mt-4 sm:text-[1.3vw]">
+          <p className="font-lato mt-4 sm:text-[1.3vw] text-lg">
             Mantente al día con las últimas noticias y eventos del Instituto
             Catastral de Lima.
           </p>
@@ -274,70 +273,76 @@ export default function Home() {
         </div>
       </RevealOnScroll>
       <RevealOnScroll>
-        <div className="py-20 sm:w-10/12 mx-auto flex flex-col justify-center items-center gap-20 text-left">
+        <div className="py-20 sm:w-10/12 mx-auto flex flex-col justify-center items-center gap-20 text-left w-11/12">
           <div className="text-center">
-            <h2 className="font-acto text-primary sm:text-[3vw]">Recursos</h2>
-            <p className="font-lato mt-4 sm:text-[1.3vw]">
+            <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">
+              Recursos
+            </h2>
+            <p className="font-lato mt-4 sm:text-[1.3vw] text-lg">
               Mantente al día con las últimas noticias y eventos del Instituto
               Catastral de Lima. Desde desarrollos recientes hasta seminarios y
               talleres, aquí encontrarás todo lo que necesitas saber para estar
               al tanto de nuestras actividades.
             </p>
           </div>
-          <div className="flex  sm:flex-row flex-col gap-8">
-            <div className="sm:w-1/4 flex flex-col items-center gap-4">
-              <div className="flex items-center justify-center h-28">
+          <div className="flex  sm:flex-row flex-col gap-8 w-full">
+            <div className="sm:w-1/4 flex flex-col items-center gap-4 w-full">
+              <div className="flex items-center justify-center sm:h-28 h-full w-full">
                 <Image
                   src="/images/levantamientoCatastral.svg"
                   width={127}
                   height={120}
                   alt="Mapa"
+                  className="h-full"
                 />
               </div>
-              <h3 className="font-acto text-primary text-[1.5vw] leading-tight h-20">
+              <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl leading-tight h-20">
                 Manual de Levantamiento Catastral
               </h3>
               <Button>Ir a Manual</Button>
             </div>
             <div className="sm:w-1/4 flex flex-col items-center gap-4">
-              <div className="flex items-center justify-center h-28">
+              <div className="flex items-center justify-center sm:h-28 h-full w-full">
                 <Image
                   src="/images/covid-19.svg"
                   width={127}
                   height={120}
                   alt="Mapa"
+                  className="h-full"
                 />
               </div>
-              <h3 className="font-acto text-primary text-[1.5vw] leading-tight h-20">
+              <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl leading-tight h-20">
                 Plan para vigilancia, prevención y control de Covid-19
               </h3>
               <Button>Ir a Plan</Button>
             </div>
             <div className="sm:w-1/4 flex flex-col items-center gap-4">
-              <div className="flex items-center justify-center h-28">
+              <div className="flex items-center justify-center sm:h-28 h-full w-full">
                 <Image
                   src="/images/sistemaNacionalControl.svg"
                   width={127}
                   height={120}
                   alt="Mapa"
+                  className="h-full"
                 />
               </div>
-              <h3 className="font-acto text-primary text-[1.5vw] leading-tight h-20">
+              <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl leading-tight h-20">
                 Atención de denuncias ciudadanas por el Sistema Nacional de
                 Control
               </h3>
               <Button>Ir a Portal Denuncias</Button>
             </div>
             <div className="sm:w-1/4 flex flex-col items-center gap-4">
-              <div className="flex items-center justify-center h-28">
+              <div className="flex items-center justify-center sm:h-28 h-full w-full">
                 <Image
                   src="/images/libroReclamaciones.svg"
                   width={220}
                   height={120}
                   alt="Mapa"
+                  className="h-full"
                 />
               </div>
-              <h3 className="font-acto text-primary text-[1.5vw] leading-tight h-20">
+              <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl leading-tight h-20">
                 Libro de Reclamaciones Digital
               </h3>
               <div className="w-full">
@@ -349,8 +354,8 @@ export default function Home() {
       </RevealOnScroll>
       <RevealOnScroll>
         <div className="text-center py-20 sm:w-10/12 mx-auto">
-          <h2 className="font-acto text-primary sm:text-[3vw]">Videoteca</h2>
-          <p className="font-lato mt-4 sm:text-[1.3vw]">
+          <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">Videoteca</h2>
+          <p className="font-lato mt-4 sm:text-[1.3vw] text-lg">
             Mantente al día con las últimas noticias y eventos del Instituto
             Catastral de Lima. Desde desarrollos recientes hasta seminarios y
             talleres, aquí encontrarás todo lo que necesitas saber para estar al
@@ -399,7 +404,11 @@ export default function Home() {
             )}
           </div>
           <div className="w-60 mx-auto">
-            <Link href="https://www.youtube.com/@InstitutoCatastraldeLimaICL?themeRefresh=1" target='_blank' rel='noopener noreferrer' >
+            <Link
+              href="https://www.youtube.com/@InstitutoCatastraldeLimaICL?themeRefresh=1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button>Ir al canal de videos</Button>
             </Link>
           </div>
