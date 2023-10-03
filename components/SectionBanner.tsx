@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Button } from './Button';
+import Image from 'next/image';
 
 interface Props {
   title: string;
@@ -25,22 +26,22 @@ export const SectionBanner: FC<Props> = ({
   }, []);
 
   return (
-    <>
+    <div>
       <div
-        className={`sm:h-[calc(100vh-20rem)] w-full bg-lightBlue flex z-50 ${
+        className={`sm:h-[calc(100vh-12rem)] w-full bg-gradient-to-r from-primary from-5% via-[#0066AB] via-30% to-transparent flex z-5 relative ${
           loaded ? 'opacity-100' : 'opacity-0'
         } duration-2000 ease-in-out`}
       >
-        <div className="flex flex-col justify-center items-start px-4 gap-4 sm:w-1/2">
+        <div className="flex flex-col justify-center items-start px-10 gap-4 sm:w-1/2">
           <p
-            className={`text-xl text-primary font-acto font-extralight -mb-4 ${
+            className={`text-xl text-white font-acto font-extralight -mb-4 ${
               loaded ? 'opacity-100' : 'opacity-0'
             } duration-2000 ease-in-out`}
           >
             {caption}
           </p>
-          <h1 className="text-6xl text-primary font-bold font-acto">{title}</h1>
-          <p className="text-black text-xl text-left font-lato">
+          <h1 className="text-6xl text-white font-bold font-acto">{title}</h1>
+          <p className="text-white text-xl text-left font-lato">
             {description}
           </p>
           {buttonText && (
@@ -49,10 +50,20 @@ export const SectionBanner: FC<Props> = ({
             </div>
           )}
         </div>
+        {image && (
+          <div className="absolute right-0 bottom-4 h-[480px] max-w-[460px] w-full">
+            <Image src={image} alt={title} layout="fill" />
+          </div>
+        )}
       </div>
-      <div className="mx-8 py-12">
-        <h3 className="font-acto text-4xl text-primary">{titlePage || title}</h3>
-      </div>
-    </>
+
+      {titlePage && (
+        <div className="mx-8 py-12">
+          <h3 className="font-acto text-4xl text-primary">
+            {titlePage || title}
+          </h3>
+        </div>
+      )}
+    </div>
   );
 };

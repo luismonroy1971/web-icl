@@ -4,6 +4,8 @@ import { Banner } from '../../components/Banner';
 import React from 'react';
 import { useGetServicioQuery } from '../../redux/reduxQuery/servicios';
 import { List } from '../../components/List';
+import { SectionBanner } from '../../components/SectionBanner';
+import FAQComponent from '../../components/Faq';
 
 export default function Servicios({ data }: any) {
   const [loaded, setLoaded] = React.useState(false);
@@ -11,9 +13,19 @@ export default function Servicios({ data }: any) {
     data: dataServicio,
     error: errorServicio,
     refetch: refetchServicio,
-  } = useGetServicioQuery((data.id).toUpperCase());
+  } = useGetServicioQuery(data.id.toUpperCase());
 
-  console.log(dataServicio);
+  const faqs = [
+    {
+      question: '¿Cómo puedo solicitar un procedimiento administrativo?',
+      answer:
+        'Puedes solicitar un procedimiento administrativo a través de nuestra plataforma web.',
+    },
+    {
+      question: '¿Dónde puedo encontrar más información sobre las tasas?',
+      answer: 'Puedes encontrar más información sobre las tasas en el TUPA.',
+    },
+  ];
 
   React.useEffect(() => {
     setLoaded(true);
@@ -25,27 +37,11 @@ export default function Servicios({ data }: any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <div
-          className={`sm:h-[calc(100vh-6rem)] w-full bg-lightBlue flex z-50 ${
-            loaded ? 'opacity-100' : 'opacity-0'
-          } duration-2000 ease-in-out`}
-        >
-          <div className="flex flex-col justify-center items-start px-4 gap-4 sm:w-1/2">
-            <p
-              className={`text-xl text-primary font-acto font-extralight -mb-4 ${
-                loaded ? 'opacity-100' : 'opacity-0'
-              } duration-2000 ease-in-out`}
-            >
-              Servicios
-            </p>
-            <h1 className="text-6xl text-primary font-bold font-acto">
-              {data.title}
-            </h1>
-            <p className="text-black text-xl text-left font-lato">
-              {data.description}
-            </p>
-          </div>
-        </div>
+        <SectionBanner
+          caption="Servicios"
+          {...data}
+          image={`/images/servicios/${data.id}.svg`}
+        />
         <div className="mx-8 py-12">
           <h3 className="font-acto text-4xl text-primary">
             Calculadora del servicio {data.id.toUpperCase()}
@@ -53,6 +49,9 @@ export default function Servicios({ data }: any) {
           <div>
             <List items={dataServicio} />
           </div>
+        </div>
+        <div className="mx-8 py-12">
+          <FAQComponent items={faqs} />
         </div>
       </Layout>
     </>

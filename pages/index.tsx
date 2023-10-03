@@ -15,6 +15,7 @@ import { useGetNewsQuery } from '../redux/reduxQuery/news';
 import { NewsType, VideoType } from '../utils/types';
 import { useGetVideosQuery } from '../redux/reduxQuery/videos';
 import Link from 'next/link';
+import Accordion from '../components/Accordion';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -227,7 +228,7 @@ export default function Home() {
                   Molina Arles, Luis Alfonso
                 </p>
                 <div className="w-full mx-auto sm:mt-0 mt-4">
-                  <FAQComponent items={faqItems} />
+                  <Accordion items={faqItems} />
                 </div>
                 {/* <div className="flex flex-col w-72 justify-center mx-auto sm:mt-8">
                 <Button>Conoce más</Button>

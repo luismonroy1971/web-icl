@@ -1,16 +1,16 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-interface FAQItem {
+interface AccordionItem {
   question: string;
   answer: string;
 }
 
-interface FAQProps {
-  items: FAQItem[];
+interface AccordionProps {
+  items: AccordionItem[];
 }
 
-const FAQComponent: React.FC<FAQProps> = ({ items }) => {
+const Accordion: React.FC<AccordionProps> = ({ items }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -19,7 +19,7 @@ const FAQComponent: React.FC<FAQProps> = ({ items }) => {
         <div key={index} className="mb-4 w-full">
           <div
             onClick={() => setOpenIndex(index === openIndex ? null : index)}
-            className={`flex justify-between items-center cursor-pointer px-4 py-4 border-2 border-primary font-lato-bold w-full ${
+            className={`flex justify-between items-center cursor-pointer px-4 py-4 border-2 border-primary rounded-t-md font-lato-bold w-full ${
               openIndex === index
                 ? 'bg-primary text-white'
                 : 'bg-white text-primary'
@@ -59,4 +59,4 @@ const FAQComponent: React.FC<FAQProps> = ({ items }) => {
   );
 };
 
-export default FAQComponent;
+export default Accordion;

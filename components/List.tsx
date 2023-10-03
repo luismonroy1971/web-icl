@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { ItemList } from './ItemList';
+import { Button } from './Button';
 
 interface Item {
   id: string;
@@ -50,9 +51,7 @@ export const List: FC<ListProps> = ({ items }) => {
           </span>
         </div>
         <div className="flex flex-col">
-          <button className="bg-primary text-white px-4 py-2 rounded-md">
-            Solicitar servicio
-          </button>
+          <Button>Solicitar servicio</Button>
         </div>
       </div>
     </div>

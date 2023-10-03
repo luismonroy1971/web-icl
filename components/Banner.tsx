@@ -95,7 +95,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
 
   return (
     <div className="w-full">
-      <div className="overflow-hidden relative h-[calc(100vh-140px)] w-screen bg-gradient-to-r from-primary from-5% via-[#0066AB] via-30% to-transparent ">
+      <div className="overflow-hidden relative h-[calc(100vh-140px)] w-screen  ">
         {slides.map((slide, index) => (
           <div
             key={index}

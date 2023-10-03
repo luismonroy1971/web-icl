@@ -112,6 +112,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           description:
             'Descubra los objetivos estratégicos que guían nuestras acciones y decisiones hacia el cumplimiento de nuestra misión en el Instituto Catastral de Lima.',
           children: [],
+          link: '/sobre-nosotros/objetivos',
         },
         {
           id: 19,
@@ -120,6 +121,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           description:
             'Descubra el equipo de profesionales dedicados que trabajan para servir a la comunidad en nuestra institución.',
           children: [],
+          link: '/sobre-nosotros/funcionarios',
         },
         {
           id: 20,
