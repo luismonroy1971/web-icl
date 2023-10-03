@@ -2,9 +2,18 @@ import Head from 'next/head';
 import { Layout } from '../../components/Layout';
 import { Banner } from '../../components/Banner';
 import React from 'react';
+import { useGetServicioQuery } from '../../redux/reduxQuery/servicios';
+import { List } from '../../components/List';
 
 export default function Servicios({ data }: any) {
   const [loaded, setLoaded] = React.useState(false);
+  const {
+    data: dataServicio,
+    error: errorServicio,
+    refetch: refetchServicio,
+  } = useGetServicioQuery((data.id).toUpperCase());
+
+  console.log(dataServicio);
 
   React.useEffect(() => {
     setLoaded(true);
@@ -41,6 +50,9 @@ export default function Servicios({ data }: any) {
           <h3 className="font-acto text-4xl text-primary">
             Calculadora del servicio {data.id.toUpperCase()}
           </h3>
+          <div>
+            <List items={dataServicio} />
+          </div>
         </div>
       </Layout>
     </>

@@ -6,6 +6,7 @@ module.exports = {
         primary: "#16236E",
         lightBlue: '#E7F2FA',
         gray: '#7D7D7D',
+        blue: '#0066AB'
       },
       transitionDuration: {
         '0': '0ms',
