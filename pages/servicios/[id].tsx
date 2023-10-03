@@ -46,7 +46,7 @@ export default function Servicios({ data }: any) {
             </p>
           </div>
         </div>
-        <div className="mx-4 py-12">
+        <div className="mx-8 py-12">
           <h3 className="font-acto text-4xl text-primary">
             Calculadora del servicio {data.id.toUpperCase()}
           </h3>

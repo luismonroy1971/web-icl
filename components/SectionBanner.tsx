@@ -7,6 +7,7 @@ interface Props {
   image?: string;
   buttonText?: string;
   caption: string;
+  titlePage?: string;
 }
 
 export const SectionBanner: FC<Props> = ({
@@ -15,6 +16,7 @@ export const SectionBanner: FC<Props> = ({
   image,
   buttonText,
   caption,
+  titlePage,
 }) => {
   const [loaded, setLoaded] = useState(false);
 
@@ -49,7 +51,7 @@ export const SectionBanner: FC<Props> = ({
         </div>
       </div>
       <div className="mx-8 py-12">
-        <h3 className="font-acto text-4xl text-primary">{title}</h3>
+        <h3 className="font-acto text-4xl text-primary">{titlePage || title}</h3>
       </div>
     </>
   );

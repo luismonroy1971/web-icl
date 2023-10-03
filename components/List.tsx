@@ -24,7 +24,7 @@ export const List: FC<ListProps> = ({ items }) => {
     setSelectedItems([...selectedItems, itemId]);
   };
   return (
-    <div className="p-4">
+    <div className="py-4">
       <div className="flex flex-col gap-2 max-h-[500px] overflow-scroll">
         {items?.map((item) => (
           <ItemList

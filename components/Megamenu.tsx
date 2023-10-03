@@ -103,6 +103,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           description:
             'Conozca la misión, visión y valores que guían nuestras operaciones en el Instituto Catastral de Lima.',
           children: [],
+          link: '/sobre-nosotros/quienes-somos',
         },
         {
           id: 18,
@@ -176,6 +177,87 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
             '¿Realiza trámites administrativos en línea, enviando documentos y solicitudes de manera eficiente y segura desde cualquier lugar.',
           children: [],
         },
+        {
+          id: 34,
+          name: 'Resolución de Gerencia Municipal Metropolitana',
+          slug: 'resolucion-de-gerencia-municipal-metropolitana',
+          description:
+            'Realiza trámites administrativos en línea, enviando documentos y solicitudes de manera eficiente y segura desde cualquier lugar.',
+          children: [],
+        },
+        {
+          id: 35,
+          name: 'Código de Ética y Reglamento',
+          slug: 'codigo-de-etica-y-reglamento',
+          description:
+            'En el Instituto Catastral de Lima, entendemos la importancia de mantener altos estándares éticos y operativos en todas nuestras actividades.',
+          children: [],
+        },
+        {
+          id: 36,
+          name: 'Normas emitidas por la entidad',
+          slug: 'normas-emitidas-por-la-entidad',
+          description:
+            'Las normas emitidas por el Instituto Catastral de Lima son fundamentales para asegurar un funcionamiento eficaz y transparente de nuestra institución.',
+          children: [],
+        },
+        {
+          id: 37,
+          name: 'Convenios institucionales',
+          slug: 'convenios-institucionales',
+          description:
+            'En el Instituto Catastral de Lima, estamos comprometidos en fortalecer la cooperación y la transparencia en la gestión pública.',
+          children: [],
+        },
+      ],
+    },
+    {
+      id: 27,
+      name: 'Gestión Administrativa',
+      slug: 'gestion-administrativa',
+      children: [
+        {
+          id: 28,
+          name: 'Gestión Financiera y Presupuestal',
+          slug: 'gestion-financiera-y-presupuestal',
+          description:
+            'Conozca cómo administramos y asignamos nuestros recursos financieros para garantizar la eficiencia y transparencia en nuestras operaciones.',
+        },
+        {
+          id: 29,
+          name: 'Gestión de Bienes e Infraestructura del ICL',
+          slug: 'gestion-de-bienes-e-infraestructura-del-icl',
+          description:
+            'Descubra cómo gestionamos y mantenemos nuestras instalaciones, equipos y otros activos para ofrecer servicios de calidad.',
+        },
+        {
+          id: 30,
+          name: 'Gestión Normativa',
+          slug: 'gestion-normativa',
+          description:
+            'Explore las normativas y regulaciones internas que guían nuestras operaciones y aseguran el cumplimiento de los estándares legales y éticos.',
+        },
+        {
+          id: 31,
+          name: 'Rendición de Cuentas de Titulares',
+          slug: 'rendicion-de-cuentas-de-titulares',
+          description:
+            'Acceda a los informes y documentos que presentan un resumen detallado de nuestras actividades, logros y desafíos.',
+        },
+        {
+          id: 32,
+          name: 'Convocatorias',
+          slug: 'convocatorias',
+          description:
+            'Manténgase informado sobre las últimas convocatorias y oportunidades para colaborar o trabajar con nosotros.',
+        },
+        {
+          id: 33,
+          name: 'Memorias Institucionales',
+          slug: 'memorias-institucionales',
+          description:
+            'Revise nuestros informes anuales que destacan los logros, desafíos y planes futuros de la institución.',
+        },
       ],
     },
   ];
@@ -198,14 +280,18 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
               <div
                 className="cursor-pointer"
                 onClick={() => {
-                  JSON.stringify(category.children) == JSON.stringify(firstChildren) ? setFirstChildren([]) : setFirstChildren(category.children);
+                  JSON.stringify(category.children) ==
+                  JSON.stringify(firstChildren)
+                    ? setFirstChildren([])
+                    : setFirstChildren(category.children);
                   setSecondChildren([]);
                   setSelectedCategory(category);
                 }}
               >
                 <span
                   className={`font-acto text-primary text-4xl  ${
-                    selectedCategory?.id === category.id && firstChildren.length > 0
+                    selectedCategory?.id === category.id &&
+                    firstChildren.length > 0
                       ? 'underline 0.5s ease-in-out infinite alternate'
                       : ''
                   }`}
@@ -214,7 +300,8 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
                 </span>
               </div>
               <div className="sm:hidden block">
-                {JSON.stringify(category.children) == JSON.stringify(firstChildren) &&
+                {JSON.stringify(category.children) ==
+                  JSON.stringify(firstChildren) &&
                   firstChildren.map((category: any) => (
                     <div key={category.id} className="my-4">
                       {category.link ? (
