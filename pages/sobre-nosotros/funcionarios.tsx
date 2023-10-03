@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import CardFuncionario from '../../components/CardFuncionario';
 import { SectionBanner } from '../../components/SectionBanner';
 import { Layout } from '../../components/Layout';
+import { funcionariosList } from '../../utils/data';
 
 export interface Funcionario {
   image: string;
@@ -10,25 +11,7 @@ export interface Funcionario {
   link: string;
 }
 
-interface FuncionariosProps {
-  funcionarios: Funcionario[];
-}
-
 const funcionarios = () => {
-  const funcionariosList: Funcionario[] = [
-    {
-      name: 'Molina Arles, Luis Alfonso',
-      position: 'PRESIDENTE EJECUTIVO',
-      image: '/images/funcionarios/funcionario-1.jpg',
-      link: 'https://www.gob.pe/institucion/icl/funcionarios/83447-luis-alfonso-molina-arles',
-    },
-    {
-      name: 'Zegarra Buitron, Paola Giovanna',
-      position: 'SECRETARÍA GENERAL',
-      image: '/images/funcionarios/funcionario-2.jpg',
-      link: 'https://www.gob.pe/institucion/icl/funcionarios/83448-paola-giovanna-zegarra-buitron',
-    },
-  ];
   return (
     <Layout>
       <div>
