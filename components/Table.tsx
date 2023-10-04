@@ -297,7 +297,7 @@ export const Table = ({
           </>
         )}
       </TableWrapper>
-      {pages.length > 1 ? (
+      {pages.length > 0 ? (
         <PaginationWrapper>
           <div>
             <select
