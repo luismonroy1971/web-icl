@@ -130,7 +130,7 @@ export default function Home() {
         <title>Instituto Catastral de Lima</title>
         <meta name="description" content="Instituto Catastral de Lima" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/images/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu} />
       <MegaMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
