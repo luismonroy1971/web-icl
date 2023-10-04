@@ -1,6 +1,7 @@
 import React from 'react';
 import { SectionBanner } from '../../components/SectionBanner';
 import { Layout } from '../../components/Layout';
+import NormasEmitidas from '../../components/NormasEmitidas';
 
 export default function LeyDeMarcoLegal({ slug }: any) {
   console.log(slug);
@@ -348,7 +349,7 @@ export default function LeyDeMarcoLegal({ slug }: any) {
       description:
         'Las normas emitidas por el Instituto Catastral de Lima son fundamentales para asegurar un funcionamiento eficaz y transparente de nuestra institución. Estas normativas guían nuestras operaciones y establecen los estándares de calidad y legalidad que nos comprometemos a cumplir.',
       caption: 'Marco Legal',
-      content: () => renderContent(),
+      content: () => renderContentNormas(),
     },
     {
       id: 'convenios-institucionales',
@@ -367,6 +368,9 @@ export default function LeyDeMarcoLegal({ slug }: any) {
   console.log(item);
   const renderContent = () => {
     return <div className="font-acto-reg">Test</div>;
+  };
+  const renderContentNormas = () => {
+    return <NormasEmitidas />;
   };
   return (
     <Layout>
@@ -429,6 +433,26 @@ export async function getStaticPaths() {
           slug: 'ley-que-crea-el-sncp',
         },
       },
+      {
+        params: {
+          slug: 'resolucion-de-gerencia',
+        },
+      },
+      {
+        params: {
+          slug: 'codigo-de-etica-y-reglamento',
+        },
+      },
+      {
+        params: {
+          slug: 'normas-emitidas-por-la-entidad',
+        },
+      },
+      {
+        params: {
+          slug: 'convenios-institucionales',
+        },
+      }
     ],
     fallback: false,
   };
