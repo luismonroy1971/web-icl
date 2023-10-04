@@ -142,34 +142,38 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
         {
           id: 22,
           name: 'Ley Nº 27972 – Ley Orgánica de Municipalidades',
-          slug: 'ley-organica',
+          slug: 'ley-organica-de-municipalidades',
           description:
             'Explore los instrumentos de gestión y planes que guían nuestras operaciones, junto con las políticas que aseguran la transparencia y la eficiencia en el Instituto Catastral de Lima.',
           children: [],
+          link: '/marco-legal/ley-organica-de-municipalidades',
         },
         {
           id: 23,
           name: 'Ley Tributación Municipal',
-          slug: 'reglamento-de-organizacion-y-funciones',
+          slug: 'ley-tributacion-municipal',
           description:
             'Explore los instrumentos de gestión y planes que guían nuestras operaciones, junto con las políticas que aseguran la transparencia y la eficiencia en el Instituto Catastral de Lima.',
           children: [],
+          link: '/marco-legal/ley-tributacion-municipal',
         },
         {
           id: 24,
           name: 'Ley Nº 27867 – Ley Orgánica de Gobiernos Regionales',
-          slug: 'reglamento-de-organizacion-y-funciones',
+          slug: 'ley-organica-de-gobiernos-regionales',
           description:
             'Explore los instrumentos de gestión y planes que guían nuestras operaciones, junto con las políticas que aseguran la transparencia y la eficiencia en el Instituto Catastral de Lima.',
           children: [],
+          link: '/marco-legal/ley-organica-de-gobiernos-regionales',
         },
         {
           id: 25,
           name: 'Reglamento de Acondicionamiento Territorial',
-          slug: 'reglamento-de-organizacion-y-funciones',
+          slug: 'reglamento-de-acondicionamiento-territorial',
           description:
             'Explore los instrumentos de gestión y planes que guían nuestras operaciones, junto con las políticas que aseguran la transparencia y la eficiencia en el Instituto Catastral de Lima.',
           children: [],
+          link: '/marco-legal/reglamento-de-acondicionamiento-territorial',
         },
         {
           id: 26,
@@ -178,14 +182,16 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           description:
             '¿Realiza trámites administrativos en línea, enviando documentos y solicitudes de manera eficiente y segura desde cualquier lugar.',
           children: [],
+          link: '/marco-legal/ley-que-crea-el-sncp',
         },
         {
           id: 34,
           name: 'Resolución de Gerencia Municipal Metropolitana',
-          slug: 'resolucion-de-gerencia-municipal-metropolitana',
+          slug: 'resolucion-de-gerencia',
           description:
             'Realiza trámites administrativos en línea, enviando documentos y solicitudes de manera eficiente y segura desde cualquier lugar.',
           children: [],
+          link: '/marco-legal/resolucion-de-gerencia',
         },
         {
           id: 35,
@@ -194,6 +200,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           description:
             'En el Instituto Catastral de Lima, entendemos la importancia de mantener altos estándares éticos y operativos en todas nuestras actividades.',
           children: [],
+          link: '/marco-legal/codigo-de-etica-y-reglamento',
         },
         {
           id: 36,
@@ -202,6 +209,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           description:
             'Las normas emitidas por el Instituto Catastral de Lima son fundamentales para asegurar un funcionamiento eficaz y transparente de nuestra institución.',
           children: [],
+          link: '/marco-legal/normas-emitidas-por-la-entidad',
         },
         {
           id: 37,
@@ -210,6 +218,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           description:
             'En el Instituto Catastral de Lima, estamos comprometidos en fortalecer la cooperación y la transparencia en la gestión pública.',
           children: [],
+          link: '/marco-legal/convenios-institucionales',
         },
       ],
     },

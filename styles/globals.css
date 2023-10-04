@@ -10,6 +10,15 @@
 }
 
 @font-face {
+  font-family: 'ActoRegular';
+  src: url('/fonts/Acto-Book.otf') format('opentype');
+}
+
+.font-acto-reg {
+  font-family: 'ActoRegular', sans-serif;
+}
+
+@font-face {
   font-family: 'Acto';
   src: url('/fonts/Acto-SemiBold.otf') format('opentype');
 }

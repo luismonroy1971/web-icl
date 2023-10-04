@@ -36,7 +36,11 @@ const NormasDeLaInstitucion = () => {
     ],
     []
   );
-  const { data: normasData, error: normasError, isLoading: normasIsLoading } = useGetNormasQuery('');
+  const {
+    data: normasData,
+    error: normasError,
+    isLoading: normasIsLoading,
+  } = useGetNormasQuery('');
   return (
     <Layout>
       <SectionBanner
@@ -47,7 +51,9 @@ Estas normas son la base de nuestro compromiso con la excelencia y el servicio a
       />
       <h3></h3>
       <div className="mx-8 pb-12">
-        <Table columns={columns} data={normasData} loading={normasIsLoading} />
+        {normasData?.length > 0 && (
+          <Table columns={columns} data={normasData} />
+        )}
       </div>
     </Layout>
   );
