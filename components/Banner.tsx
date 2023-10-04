@@ -100,7 +100,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
           <div
             key={index}
             className={`slide ${getAnimationClass(index)} smallScreenMaxWidth
-          flex  flex-row items-center justify-center w-screen absolute sm:bg-contain bg-cover
+          flex  flex-row items-center justify-center w-screen absolute bg-cover
         `}
             style={{
               backgroundImage: `url(${slides[currentSlide].image})`,
