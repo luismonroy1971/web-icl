@@ -5,24 +5,21 @@ import { Button } from './Button';
 import { useGetConveniosQuery } from '../redux/reduxQuery/convenios';
 
 const Convenios = () => {
-  const {
-    data: normasEmitidas,
-    isLoading,
-    isError,
-  } = useGetConveniosQuery('');
+  const { data: normasEmitidas, isLoading, isError } = useGetConveniosQuery('');
   return normasEmitidas ? (
     <>
-      <h3 className="text-4xl text-left mb-4 font-acto font-primary text-primary">Listado de normas: </h3>
+      <h3 className="text-4xl text-left mb-4 font-acto font-primary text-primary">
+        Listado de convenios:{' '}
+      </h3>
       <p className="text-lg text-left mb-4 font-lato">
-        A continuación, se presenta un listado detallado de las RESOLUCIONES
-        emitidas por nuestra entidad:
+      A continuación, se presenta un listado detallado de los convenios suscritos:
       </p>
       <Table
         columns={[
           {
             Header: 'Descripción',
             accessor: 'descripcion_convenio',
-            with: 400,
+            width: 600,
           },
           {
             Header: 'Ver documento',
@@ -37,7 +34,6 @@ const Convenios = () => {
                 </Button>
               </div>
             ),
-            width: 200,
           },
         ]}
         data={normasEmitidas}
