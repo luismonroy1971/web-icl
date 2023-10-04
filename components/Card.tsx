@@ -6,6 +6,7 @@ interface CardProps {
   img: string;
   description: string;
   buttonText: string;
+  link: string;
 }
 
 export const Card: FC<CardProps> = ({
@@ -13,6 +14,7 @@ export const Card: FC<CardProps> = ({
   img,
   description,
   buttonText,
+  link,
 }) => {
   return (
     <div className="flex flex-col border-2 border-primary rounded-md sm:max-w-[260px] p-2">
@@ -20,8 +22,10 @@ export const Card: FC<CardProps> = ({
       <h3 className="font-acto text-primary sm:text-[1.65vw] text-xl 2xl:text-[1.2vw] mt-4 text-left sm:h-[72px] leading-tight">
         {title}
       </h3>
-      <p className="font-lato text-left sm:h-32 text-lg sm:text-[1.2vw]">{description}</p>
-      <Button>{buttonText}</Button>
+      <p className="font-lato text-left sm:h-32 text-lg sm:text-[1.2vw]">
+        {description}
+      </p>
+      <Button onClick={() => window.open(link, '_blank')}>{buttonText}</Button>
     </div>
   );
 };

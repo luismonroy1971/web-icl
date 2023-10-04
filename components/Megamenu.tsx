@@ -278,10 +278,16 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
       slug: 'proyectos',
       link: '/proyectos',
     },
+    {
+      id: 39,
+      name: 'ICL Capacitaciones',
+      slug: 'icl-capacitaciones',
+      link: '/icl-capacitaciones',
+    }
   ];
   return (
     <div
-      className={`absolute sm:top-24 w-full z-0 sm:h-[calc(100vh-6rem)] h-unset min-h-full bg-lightBlue ${
+      className={`absolute sm:top-24 w-full z-0 h-unset min-h-full bg-lightBlue ${
         openMenu
           ? 'one-time-fade-in opacity-100 z-20 sm:flex'
           : 'one-time-fade-out opacity-0 z-0 hidden'

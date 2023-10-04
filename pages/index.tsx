@@ -16,6 +16,7 @@ import { NewsType, VideoType } from '../utils/types';
 import { useGetVideosQuery } from '../redux/reduxQuery/videos';
 import Link from 'next/link';
 import Accordion from '../components/Accordion';
+import { useRouter } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,6 +27,7 @@ const resources = [
       'Permite a los usuarios obtener detalles específicos sobre propiedades en Lima, como ubicación y dimensiones.',
     buttonText: 'Realizar Consulta',
     img: '/images/pagina-1/recursos/conoce-lima.svg',
+    link: 'https://sit.icl.gob.pe/conoce_lima/',
   },
   {
     title: 'Consulta Catastral en Línea',
@@ -33,6 +35,7 @@ const resources = [
       'Permite a los usuarios obtener detalles específicos sobre propiedades en Lima, como ubicación y dimensiones.',
     buttonText: 'Realizar Consulta',
     img: '/images/consultaCatastral.svg',
+    link: 'https://sit.icl.gob.pe/appconsulta/',
   },
   {
     title: 'Sistema de información territorial',
@@ -40,6 +43,7 @@ const resources = [
       'Provee información detallada sobre el uso del suelo, zonificación, y otros aspectos territoriales en Lima.',
     buttonText: 'Acceder al Sistema',
     img: '/images/sistemaInformacion.svg',
+    link: 'https://sit.icl.gob.pe/sit/',
   },
   {
     title: 'Portafolio de Aplicaciones GIS',
@@ -47,6 +51,7 @@ const resources = [
       'Herramientas y aplicaciones que facilitan el análisis espacial y la visualización de datos georreferenciados.',
     buttonText: 'Explorar Aplicaciones',
     img: '/images/portafolioAplicaciones.svg',
+    link: 'https://sit.icl.gob.pe/portafolio/',
   },
   {
     title: 'Mesa de Partes Virtual',
@@ -54,12 +59,14 @@ const resources = [
       'Facilita la presentación de documentos y la realización de trámites administrativos de manera virtual.',
     buttonText: 'Iniciar Trámite',
     img: '/images/mesaDePartes.svg',
+    link: 'https://icl.gob.pe/mesa/administrado/login.aspx',
   },
 ];
 
 export default function Home() {
   const [openMenu, setOpenMenu] = useState(false);
   const { data: newsData, error, refetch } = useGetNewsQuery('');
+  const router = useRouter();
   const {
     data: videosData,
     error: errorVideos,
@@ -303,7 +310,13 @@ export default function Home() {
                 <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl 2xl:text-[1.3vw] leading-tight h-20">
                   Manual de Levantamiento Catastral
                 </h3>
-                <Button>Ir a Manual</Button>
+                <Button
+                  onClick={() =>
+                    router.push('/recursos/manual-de-levantamiento-catastral')
+                  }
+                >
+                  Ir a Manual
+                </Button>
               </div>
               <div className="sm:w-1/4 flex flex-col items-center gap-4">
                 <div className="flex items-center justify-center sm:h-28 h-full w-full">
@@ -318,7 +331,16 @@ export default function Home() {
                 <h3 className="font-acto text-primary sm:text-[1.5vw] text-xl 2xl:text-[1.3vw] leading-tight h-20">
                   Plan para vigilancia, prevención y control de Covid-19
                 </h3>
-                <Button>Ir a Plan</Button>
+                <Button
+                  onClick={() =>
+                    window.open(
+                      'https://icl.gob.pe/wp-content/uploads/2022/10/Resolucion-No-035-2022-GG-ICL.pdf',
+                      '_blank'
+                    )
+                  }
+                >
+                  Ir a Plan
+                </Button>
               </div>
               <div className="sm:w-1/4 flex flex-col items-center gap-4">
                 <div className="flex items-center justify-center sm:h-28 h-full w-full">
@@ -334,7 +356,16 @@ export default function Home() {
                   Atención de denuncias ciudadanas por el Sistema Nacional de
                   Control
                 </h3>
-                <Button>Ir a Portal Denuncias</Button>
+                <Button
+                  onClick={() =>
+                    window.open(
+                      'https://icl.gob.pe/wp-content/uploads/2021/12/Directriz_Atencion_Denuncias_Ciudadanas_por_el_Sistema_Nacional_Control_color.pdf',
+                      '_blank'
+                    )
+                  }
+                >
+                  Ir a Portal Denuncias
+                </Button>
               </div>
               <div className="sm:w-1/4 flex flex-col items-center gap-4">
                 <div className="flex items-center justify-center sm:h-28 h-full w-full">

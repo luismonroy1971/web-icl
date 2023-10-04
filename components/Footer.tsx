@@ -28,35 +28,35 @@ export const Footer = () => {
         <div className="flex flex-col gap-4">
           <h2 className="text-white font-acto text-xl">Contacto</h2>
           <div className="flex flex-col gap-2">
-            <span className="text-white">Teléfono: 01 632 1300</span>
+            <span className="text-white">Teléfono: 01 480 1582</span>
             <span className="text-white">
               Correo:
-              <a href="mailto:" className="text-white">
-                Correo
+              <a href="mailto:consultas@icl.gob.pe" className="text-white">
+                consultas@icl.gob.pe
               </a>
             </span>
             <span className="text-white">
-              Dirección: Av. Nicolás de Piérola 308, Cercado de Lima 15001
+              Dirección: Jr. Conde de Superunda 303, Cercado de Lima, Lima, Perú
             </span>
           </div>
         </div>
         <div className="flex flex-col gap-4">
           <h2 className="text-white font-acto text-xl">Redes Sociales</h2>
           <div className="flex gap-2">
-            <Link href="/">
+            <Link href="https://www.facebook.com/instcatastraldelima">
               <img src="/images/facebook.svg" alt="facebook" className="h-8" />
             </Link>
-            <Link href="/">
+            <Link href="https://www.instagram.com/instcatastraldelima/?igshid=YmMyMTA2M2Y%3D">
               <img
                 src="/images/instagram.svg"
                 alt="instagram"
                 className="h-8"
               />
             </Link>
-            <Link href="/">
+            <Link href="https://api.whatsapp.com/send?phone=969670703">
               <img src="/images/whatsApp.svg" alt="whatsapp" className="h-8" />
             </Link>
-            <Link href="/">
+            <Link href="https://www.youtube.com/@InstitutoCatastraldeLimaICL">
               <img src="/images/youtube.svg" alt="youtube" className="h-8" />
             </Link>
           </div>

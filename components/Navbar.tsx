@@ -14,7 +14,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
         <div className="flex justify-between items-center h-fit bg-lightBlue text-primary relative shadow-md font-acto sm:px-8 py-2">
           <div className="flex justify-center items-center">
             Inscríbete a nuestros cursos de capacitación{' '}
-            <Link href="/cursos">
+            <Link href="/icl-capacitaciones">
               <span className="underline ml-1">AQUÍ</span>
             </Link>
           </div>
@@ -117,7 +117,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
             />
           </div>
           <div
-            className="flex space-x-4 gap-2 cursor-pointer items-center border-l border-x-[#D9D9D9] h-full sm:px-9 transition-transform duration-300 ease-in-out justify-center w-[20vw] sm:w-[12vw]"
+            className="flex gap-4 cursor-pointer items-center border-l border-x-[#D9D9D9] h-full transition-transform duration-300 ease-in-out justify-center w-[20vw] sm:w-[12vw]"
             onClick={() => setOpenMenu(!openMenu)}
           >
             {!openMenu ? (
@@ -176,7 +176,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
                     stroke-width="2"
                   />
                 </svg>
-                <span className="text-lg sm:text-2xl text-primary sm:block hidden">Cerrar</span>
+                <span className="text-lg sm:text-2xl text-primary sm:block hidden pr-6">Cerrar</span>
               </>
             )}
           </div>
