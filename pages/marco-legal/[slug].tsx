@@ -2,6 +2,7 @@ import React from 'react';
 import { SectionBanner } from '../../components/SectionBanner';
 import { Layout } from '../../components/Layout';
 import NormasEmitidas from '../../components/NormasEmitidas';
+import Convenios from '../../components/Convenios';
 
 export default function LeyDeMarcoLegal({ slug }: any) {
   console.log(slug);
@@ -357,7 +358,7 @@ export default function LeyDeMarcoLegal({ slug }: any) {
       description:
         'En el Instituto Catastral de Lima, estamos comprometidos en fortalecer la cooperación y la transparencia en la gestión pública. A lo largo de los años, hemos establecido una serie de valiosos convenios y alianzas estratégicas con municipalidades distritales, provinciales y departamentales del país. Estos convenios representan un esfuerzo conjunto para mejorar la planificación territorial, el desarrollo urbano sostenible y la eficiencia en la administración de recursos. A través de esta sección, les invitamos a explorar estos acuerdos, conocer sus objetivos y detalles, y seguir de cerca nuestro compromiso continuo de contribuir al progreso y la ordenación territorial en Lima y sus alrededores.',
       caption: 'Marco Legal',
-      content: () => renderContent(),
+      content: () => renderContentConvenios(),
     },
   ];
   const downloadLaw = (url: string) => {
@@ -366,8 +367,8 @@ export default function LeyDeMarcoLegal({ slug }: any) {
   console.log(slug);
   const item = data.find((item) => item.id == slug);
   console.log(item);
-  const renderContent = () => {
-    return <div className="font-acto-reg">Test</div>;
+  const renderContentConvenios = () => {
+    return <Convenios />;
   };
   const renderContentNormas = () => {
     return <NormasEmitidas />;

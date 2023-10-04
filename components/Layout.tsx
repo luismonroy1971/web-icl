@@ -13,7 +13,9 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
     <div>
       <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu} />
       <MegaMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
-        {children}
+      <div className={
+        `${openMenu ? 'hidden' : 'sm:block hidden'}`
+      }>{children}</div>
       <Footer />
     </div>
   );

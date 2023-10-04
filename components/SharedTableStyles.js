@@ -34,7 +34,8 @@ export const TableH = styled.th`
 export const TableData = styled.td`
   align-items: center;
   display: flex;
-  height: 76px;
+  height: fit-content;
+  padding: 1rem 0;
 `;
 export const TableButtonsWrapper = styled.div`
   display: flex;

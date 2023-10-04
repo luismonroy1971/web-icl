@@ -79,7 +79,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
             <Link href="/">
               <div className="justify-center items-center  text-gray-700 hover:text-gray-900 my-auto w-16 sm:w-40">
                 <Image
-                  src="/images/institutoCatastral.png"
+                  src="/images/institutoCatastral.jpg"
                   alt="logo"
                   width={172}
                   height={80}
@@ -91,7 +91,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
           <div className="my-auto">
             <div className="justify-center items-center  text-gray-700 hover:text-gray-900 my-auto w-16 sm:w-40">
               <Image
-                src="/images/muniLima.png"
+                src="/images/muniLima.jpg"
                 alt="logo"
                 width={128}
                 height={43}

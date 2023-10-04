@@ -238,6 +238,7 @@ export const Table = ({
                         borderBottom: `2px solid #F0F0F0`,
                         paddingLeft: '1rem',
                         paddingRight: '1rem',
+                        height: 'fit-content'
                       }}
                       key={row.id}
                     >

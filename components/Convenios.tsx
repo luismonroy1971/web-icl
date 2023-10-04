@@ -2,18 +2,17 @@ import React from 'react';
 import { useGetResolucionesQuery } from '../redux/reduxQuery/resoluciones';
 import { Table } from './Table';
 import { Button } from './Button';
+import { useGetConveniosQuery } from '../redux/reduxQuery/convenios';
 
-const NormasEmitidas = () => {
+const Convenios = () => {
   const {
     data: normasEmitidas,
     isLoading,
     isError,
-  } = useGetResolucionesQuery('');
+  } = useGetConveniosQuery('');
   return normasEmitidas ? (
     <>
-      <h3 className="text-4xl text-left mb-4 font-acto font-primary text-primary">
-        Listado de normas:{' '}
-      </h3>
+      <h3 className="text-4xl text-left mb-4 font-acto font-primary text-primary">Listado de normas: </h3>
       <p className="text-lg text-left mb-4 font-lato">
         A continuación, se presenta un listado detallado de las RESOLUCIONES
         emitidas por nuestra entidad:
@@ -21,27 +20,9 @@ const NormasEmitidas = () => {
       <Table
         columns={[
           {
-            Header: 'N° de documento',
-            Cell: ({ row }: any) => (
-              <div className="flex items-center">
-                <span className="text-sm font-medium">
-                  {row.numero_documento_formateado}-{row.periodo_documento}-
-                  {row.abreviacion_area}-ICL/MML`
-                </span>
-              </div>
-            ),
-          },
-          {
-            Header: 'Sumilla',
-            accessor: 'sumilla_resolucion',
-            width: 800,
-            Cell: ({ row }: any) => (
-              <div className="flex items-center">
-                <span className="text-sm font-medium">
-                  {row.original.sumilla_resolucion}
-                </span>
-              </div>
-            ),
+            Header: 'Descripción',
+            accessor: 'descripcion_convenio',
+            with: 400,
           },
           {
             Header: 'Ver documento',
@@ -56,6 +37,7 @@ const NormasEmitidas = () => {
                 </Button>
               </div>
             ),
+            width: 200,
           },
         ]}
         data={normasEmitidas}
@@ -75,4 +57,4 @@ const NormasEmitidas = () => {
   );
 };
 
-export default NormasEmitidas;
+export default Convenios;

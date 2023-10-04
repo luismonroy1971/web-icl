@@ -371,7 +371,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
       </div>
       <div
         id="second-column"
-        className="flex-col w-1/3 px-12 overflow-scroll h-full mt-4 sm:flex hidden"
+        className="flex-col w-1/3 px-12 overflow-scroll h-full mt-4 sm:flex hidden pb-8"
       >
         {firstChildren.length > 0 &&
           firstChildren.map((category: any) => (
