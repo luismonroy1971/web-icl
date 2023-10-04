@@ -81,23 +81,28 @@ interface ITable {
 }
 
 export const Table = ({
-  columns,
-  data,
-  rowClick,
-  showFilter,
-  onClick,
-  showAddNewConnection,
-  openModal,
-  tableType,
-  loading,
+  columns = [],
+  data = [],
+  rowClick = null,
+  showFilter = null,
+  onClick = null,
+  showAddNewConnection = null,
+  openModal = null,
+  loading = false,
 }: ITable) => {
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-full">
-        <p className="text-2xl text-primary font-acto">Cargando...</p>
-      </div>
-    );
-  }
+  columns = columns || [];
+  data = data || [];
+  rowClick = rowClick || null;
+  loading = loading || false;
+
+  // useState hooks
+  const [openFilters, setOpenFilters] = useState(false);
+  const [filterInputs, setFilterInputs] = useState<any>([]);
+
+  // useForm hook
+  const form = useForm();
+
+  // useTable hook
   const tableInstance = useTable(
     {
       columns,
@@ -111,6 +116,7 @@ export const Table = ({
     useSortBy,
     usePagination
   );
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -118,42 +124,19 @@ export const Table = ({
     page,
     prepareRow,
     state,
+    state: { globalFilter },
     setGlobalFilter,
     pageCount,
     pageSize,
     gotoPage,
     nextPage,
     previousPage,
-    allColumns,
+    allColumns, // Destructure allColumns here
     setFilter,
-    setPageSize
+    setPageSize,
   }: any = tableInstance;
-  const { globalFilter, pageIndex } = state as any;
-  const pages = Array.from(Array(pageCount).keys());
-  const [openFilters, setOpenFilters] = useState(false);
-  const [filterInputs, setFilterInputs] = useState<any>([]);
-  const form = useForm();
-  const filtersLength = Object.values(form.watch()).reduce((acc, curr) => {
-    if ((typeof curr === 'string' && curr === '') || curr === undefined) {
-      return acc;
-    } else if (curr === null) {
-      return acc;
-    } else if (
-      typeof curr === 'object' &&
-      (Object.values(curr)[0] === undefined ||
-        Object.values(curr)[0] === '' ||
-        Object.values(curr)[0] === null)
-    ) {
-      return acc;
-    } else return acc + 1;
-  }, 0);
 
-  const cancelFilters = () => {
-    form.reset();
-    filter();
-    setOpenFilters(false);
-  };
-
+  // useEffect hook
   useEffect(() => {
     let newData: any[] = [];
     allColumns.map((column: any) => {
@@ -169,47 +152,10 @@ export const Table = ({
       });
       return column;
     });
-
     setFilterInputs(newData);
   }, [allColumns]);
 
-  const filter = form.handleSubmit(() => {
-    const newFilterInputValues = form.getValues();
-    const getValue = (obj: any, key: string) => {
-      const keys = key.split('.');
-      return get(obj, keys);
-    };
-    allColumns.map((column: any) => {
-      if (getValue(newFilterInputValues, column.id) !== null) {
-        if (
-          typeof getValue(newFilterInputValues, column.id) === 'string' &&
-          getValue(newFilterInputValues, column.id) !== ''
-        ) {
-          setFilter(column.id, getValue(newFilterInputValues, column.id));
-        } else if (
-          typeof getValue(newFilterInputValues, column.id) === 'object' &&
-          column.id !== 'state'
-        ) {
-          const { label } = getValue(newFilterInputValues, column.id);
-          setFilter(column.id, label);
-        } else if (column.id === 'state') {
-          const { value } = getValue(newFilterInputValues, column.id);
-          setFilter(column.id, value);
-        } else {
-          setFilter(column.id, undefined);
-        }
-      } else {
-        setFilter(column.id, undefined);
-      }
-      return column;
-    });
-    setOpenFilters(false);
-  });
-
-  const resetFilters = () => {
-    form.reset();
-    filter();
-  };
+  const pages = Array.from(Array(pageCount).keys());
 
   return (
     <>
@@ -372,7 +318,7 @@ export const Table = ({
             pageSize={pageSize}
             nextPage={nextPage}
             prevPage={previousPage}
-            index={pageIndex}
+            index={state.pageIndex}
             gotoPage={gotoPage}
           />
         </PaginationWrapper>

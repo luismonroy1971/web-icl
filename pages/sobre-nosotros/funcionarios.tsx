@@ -22,7 +22,7 @@ const funcionarios = () => {
         />
         <div className="flex flex-col mx-8 py-12">
           {funcionariosList?.map((funcionario, index) => (
-            <CardFuncionario index={index} {...funcionario} />
+            <CardFuncionario key={index} index={index} {...funcionario} />
           ))}
         </div>
       </div>
