@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { FC, SetStateAction, useEffect, useState } from 'react';
 
 interface MegaMenuProps {
@@ -12,7 +13,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
   const [secondChildren, setSecondChildren] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
   const [classNameTransition, setClassNameTransition] = useState<any>('');
-
+  const router = useRouter();
   const categories = [
     {
       id: 1,
@@ -271,6 +272,12 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
         },
       ],
     },
+    {
+      id: 38,
+      name: 'Proyectos',
+      slug: 'proyectos',
+      link: '/proyectos',
+    },
   ];
   return (
     <div
@@ -291,18 +298,23 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
               <div
                 className="cursor-pointer"
                 onClick={() => {
-                  JSON.stringify(category.children) ==
-                  JSON.stringify(firstChildren)
-                    ? setFirstChildren([])
-                    : setFirstChildren(category.children);
-                  setSecondChildren([]);
-                  setSelectedCategory(category);
+                  if (category.link) {
+                    setOpenMenu(false);
+                    router.push(category.link);
+                  } else {
+                    JSON.stringify(category.children) ==
+                    JSON.stringify(firstChildren)
+                      ? setFirstChildren([])
+                      : setFirstChildren(category.children);
+                    setSecondChildren([]);
+                    setSelectedCategory(category);
+                  }
                 }}
               >
                 <span
                   className={`font-acto text-primary text-4xl  ${
                     selectedCategory?.id === category.id &&
-                    firstChildren.length > 0
+                    firstChildren?.length > 0
                       ? 'underline 0.5s ease-in-out infinite alternate'
                       : ''
                   }`}
@@ -313,7 +325,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
               <div className="sm:hidden block">
                 {JSON.stringify(category.children) ==
                   JSON.stringify(firstChildren) &&
-                  firstChildren.map((category: any) => (
+                  firstChildren?.map((category: any) => (
                     <div key={category.id} className="my-4">
                       {category.link ? (
                         <Link href={category.link}>
@@ -373,8 +385,8 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
         id="second-column"
         className="flex-col w-1/3 px-12 overflow-scroll h-full mt-4 sm:flex hidden pb-8"
       >
-        {firstChildren.length > 0 &&
-          firstChildren.map((category: any) => (
+        {firstChildren?.length > 0 &&
+          firstChildren?.map((category: any) => (
             <div key={category.id} className="my-4 ml-4">
               {category.link ? (
                 <Link href={category.link}>
