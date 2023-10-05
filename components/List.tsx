@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { ItemList } from './ItemList';
 import { Button } from './Button';
 
@@ -35,6 +35,11 @@ export const List: FC<ListProps> = ({ items }) => {
       }
     }
   };
+
+  useEffect(() => {
+    setCount(0);
+    setSelectedItems([]);
+  }, []);
 
   return (
     <div className="py-4">
