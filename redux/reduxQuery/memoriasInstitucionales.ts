@@ -1,14 +1,14 @@
 import api, { API_URL } from './api';
 
-const rendicionesApi = api.injectEndpoints({
+const memoriasApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getRendiciones: build.query({
+    getMemorias: build.query({
       query: (params) => ({
-        url: `${API_URL}/rendiciones`,
+        url: `${API_URL}/memorias`,
         params,
       }),
     }),
   }),
 });
 
-export const { useGetRendicionesQuery } = rendicionesApi;
+export const { useGetMemoriasQuery } = memoriasApi;

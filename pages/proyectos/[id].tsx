@@ -20,7 +20,6 @@ export default function Proyecto({ proyecto }: any) {
     content: () => '',
     link: '',
   };
-  console.log(project);
   return (
     <Layout>
       <SectionBanner

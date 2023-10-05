@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { SectionBanner } from '../../components/SectionBanner';
 
 export default function Noticia({ data }: { data: any }) {
-  console.log(data);
   return (
     <Layout>
       <SectionBanner

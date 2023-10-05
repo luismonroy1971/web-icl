@@ -74,12 +74,12 @@ export default function Home() {
   } = useGetVideosQuery('');
   const newsData4 = newsData?.slice(0, 4);
   const videosData4 = videosData?.slice(0, 4);
-  console.log(videosData4);
+
   const getDriveFileId = (url: string) => {
     const match = url?.match(/file\/d\/([^/]+)/);
-    console.log(match);
     return match ? match[0] : '';
   };
+  
   const [isClicked, setIsClicked] = useState(null);
 
   const handleImageClick = (index: any) => {

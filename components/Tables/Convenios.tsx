@@ -1,5 +1,4 @@
 import React from 'react';
-import { useGetResolucionesQuery } from '../../redux/reduxQuery/resoluciones';
 import { Table } from '../Table';
 import { Button } from '../Button';
 import { useGetConveniosQuery } from '../../redux/reduxQuery/convenios';

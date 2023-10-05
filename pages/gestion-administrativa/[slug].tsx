@@ -6,6 +6,7 @@ import Convenios from '../../components/Tables/Convenios';
 import GestionNormativa from '../../components/Tables/GestionNormativa';
 import RendicionDeCuentas from '../../components/Tables/RendicionDeCuentas';
 import Convocatorias from '../../components/Tables/Convocatorias';
+import MemoriasInstitucionales from '../../components/Tables/MemoriasInstitucionales';
 
 type DataItem = {
   id: string;
@@ -17,7 +18,6 @@ type DataItem = {
 };
 
 export default function GestionAdministrativa({ slug }: any) {
-  console.log(slug);
   const data: DataItem[] = [
     {
       id: 'gestion-financiera-y-presupuestal',
@@ -247,11 +247,10 @@ export default function GestionAdministrativa({ slug }: any) {
         'Nuestras Memorias Institucionales son un reflejo de nuestro compromiso con la transparencia y la rendición de cuentas. A través de ellas, compartimos nuestros logros, desafíos y avances a lo largo de nuestro recorrido.',
       caption: 'Gestión Administrativa',
       titleContent: 'Listado de memorias institucionales',
-      content: () => <div></div>,
+      content: () => <div>{renderTableMemoriasInstitucionales()}</div>,
     },
   ];
   const item = data.find((item) => item.id == slug);
-  console.log(item);
   const renderTableGestionNormativa = () => {
     return <GestionNormativa />;
   };
@@ -261,7 +260,9 @@ export default function GestionAdministrativa({ slug }: any) {
   const renderTableConvocatorias = () => {
     return <Convocatorias />;
   };
-  const renderTableMemoriasInstitucionales = () => {};
+  const renderTableMemoriasInstitucionales = () => {
+    return <MemoriasInstitucionales />;
+  };
   return (
     <Layout>
       {item && (

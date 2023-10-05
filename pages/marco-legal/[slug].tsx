@@ -364,9 +364,7 @@ export default function LeyDeMarcoLegal({ slug }: any) {
   const downloadLaw = (url: string) => {
     window.open(url, '_blank');
   };
-  console.log(slug);
   const item = data.find((item) => item.id == slug);
-  console.log(item);
   const renderContentConvenios = () => {
     return <Convenios />;
   };

@@ -19,8 +19,6 @@ export const ItemList: FC<ItemListProps> = ({
   monto_soles,
   incrementCount,
 }) => {
-  console.log(selected);
-  console.log(id);
   return (
     <div
       className={`flex justify-between items-center p-6 cursor-pointer w-full border border-blue px-6 h-16 font-lato text-base  

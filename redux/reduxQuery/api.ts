@@ -22,5 +22,6 @@ export default api.enhanceEndpoints({
     "serviciosApi",
     "rendicionesApi",
     "convocatoriasApi",
+    "memoriasApi",
   ],
 });
