@@ -25,8 +25,8 @@ const NormasEmitidas = () => {
             Cell: ({ row }: any) => (
               <div className="flex items-center">
                 <span className="text-sm font-medium">
-                  {row.numero_documento_formateado}-{row.periodo_documento}-
-                  {row.abreviacion_area}-ICL/MML`
+                  {row.original.numero_resolucion}-{row.original.periodo_resolucion}-
+                  {row.original.id_area}-ICL/MML
                 </span>
               </div>
             ),

@@ -5,7 +5,6 @@ import NormasEmitidas from '../../components/NormasEmitidas';
 import Convenios from '../../components/Convenios';
 
 export default function LeyDeMarcoLegal({ slug }: any) {
-  console.log(slug);
   const data = [
     {
       id: 'ley-organica-de-municipalidades',
@@ -383,7 +382,7 @@ export default function LeyDeMarcoLegal({ slug }: any) {
             title={item.title}
             description={item.description}
           />
-          <div className="mx-8 py-12">
+          <div className="mx-20 py-12">
             <div className="flex justify-between gap-12">
               <h3 className="font-acto text-4xl text-primary">
                 {item.titleContent}
