@@ -418,7 +418,7 @@ export default function Home() {
                     <div className="flex items-center justify-center h-full relative">
                       {index !== isClicked && (
                         <div
-                          className="absolute h-full w-full cursor-pointer bg-cover bg-center flex items-center justify-center rounded-md"
+                          className="absolute h-full w-full cursor-pointer bg-cover bg-center flex items-center justify-center rounded-md relative"
                           style={{
                             backgroundImage: `url(${video.url_imagen_video})`,
                           }}
@@ -427,9 +427,9 @@ export default function Home() {
                           <Image
                             src="/images/play.svg"
                             alt="Play"
-                            width={50}
-                            height={50}
-                            className="z-10 top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]"
+                            width={100}
+                            height={100}
+                            className="z-10 absolute cursor-pointer top-[50px] left-[100px]"
                           />
                         </div>
                       )}

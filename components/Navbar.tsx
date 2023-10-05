@@ -9,7 +9,7 @@ interface NavbarProps {
 
 export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
   return (
-    <div className='sticky z-50 top-0'>
+    <div className="sticky z-50 top-0">
       <div className={`${openMenu ? 'hidden' : 'sm:block hidden'}`}>
         <div className="flex justify-between items-center h-fit bg-lightBlue text-primary relative shadow-md font-acto sm:px-20 py-2">
           <div className="flex justify-center items-center">
@@ -89,7 +89,12 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
           </div>
           <div className="w-0.5 h-14 bg-primary justify-center items-center my-auto"></div>
           <div className="my-auto">
-            <div className="justify-center items-center  text-gray-700 hover:text-gray-900 my-auto w-16 sm:w-40">
+            <div
+              className="justify-center items-center  text-gray-700 hover:text-gray-900 my-auto w-16 sm:w-40 cursor-pointer"
+              onClick={() =>
+                window.open('https://www.munlima.gob.pe/', '_blank')
+              }
+            >
               <Image
                 src="/images/muniLima.jpg"
                 alt="logo"

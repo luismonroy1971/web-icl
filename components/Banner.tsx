@@ -92,10 +92,11 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
         return 'items-center';
     }
   };
+  const imageClass = `bg-image-${currentSlide + 1}`;
 
   return (
     <div className="w-full">
-      <div className="overflow-hidden relative sm:h-[calc(100vh-240px)] h-[45vh] w-screen ">
+      <div className="overflow-hidden relative sm:h-[calc(100vh-240px)] h-[45vh] w-screen">
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -103,10 +104,9 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
           flex  flex-row items-center justify-center w-screen absolute bg-cover
           sm:h-[calc(100vh-240px)] h-[45vh] sm:w-screen
           bg-gradient-to-r from-primary from-[20%] via-blue via-[50%] to-lightBlue to-[100%] sm:bg-cover
-          
+          ${imageClass}
         `}
             style={{
-              backgroundImage: `url(${slides[currentSlide].image})`,
               backgroundPosition: 'left center', // Adjusted this line
               backgroundRepeat: 'no-repeat',
               width: '100vw',
@@ -153,10 +153,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
               </div>
             </div>
             <div className="sm:w-[10vw] w-[5vw] flex justify-start">
-              <button
-                className="rotate-180 sm:w-5 w-3"
-                onClick={nextSlide}
-              >
+              <button className="rotate-180 sm:w-5 w-3" onClick={nextSlide}>
                 <svg
                   viewBox="0 0 17 35"
                   fill="none"
