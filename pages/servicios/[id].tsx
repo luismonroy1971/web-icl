@@ -14,7 +14,7 @@ export default function Servicios({ data }: any) {
     error: errorServicio,
     refetch: refetchServicio,
   } = useGetServicioQuery(data.id.toUpperCase());
-
+  
   const faqs = [
     {
       question: '¿Cómo puedo solicitar un procedimiento administrativo?',
@@ -42,7 +42,7 @@ export default function Servicios({ data }: any) {
           {...data}
           image={`/images/servicios/${data.id}.svg`}
         />
-        <div className="mx-8 py-12">
+        <div className="mx-20 py-12">
           <h3 className="font-acto text-4xl text-primary">
             Calculadora del servicio {data.id.toUpperCase()}
           </h3>

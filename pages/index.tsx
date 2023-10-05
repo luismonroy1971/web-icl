@@ -194,7 +194,7 @@ export default function Home() {
       />
       <div className={`${openMenu ? 'hidden' : 'block'}`}>
         <RevealOnScroll>
-          <div className="text-center py-12 sm:pt-24 sm:w-10/12 mx-auto w-11/12">
+          <div className="text-center py-12 sm:pt-16 sm:w-10/12 mx-auto w-11/12">
             <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">
               Sobre Nosotros
             </h2>
@@ -271,7 +271,7 @@ export default function Home() {
               Mantente al día con las últimas noticias y eventos del Instituto
               Catastral de Lima.
             </p>
-            <div className="flex flex-col gap-6 justify-center mt-8">
+            <div className="flex flex-col gap-6 justify-center mt-8 w-11/12 mx-auto">
               {newsData4?.map(
                 (news: NewsType, index: Key | null | undefined) => (
                   <News key={index} {...news} />
@@ -279,7 +279,9 @@ export default function Home() {
               )}
             </div>
             <div className="mt-8 w-60 mx-auto">
-              <Button>Ver todas las noticias</Button>
+              <Button
+                onClick={() => router.push('/noticias')}
+              >Ver todas las noticias</Button>
             </div>
           </div>
         </RevealOnScroll>
@@ -381,7 +383,11 @@ export default function Home() {
                   Libro de Reclamaciones Digital
                 </h3>
                 <div className="w-full">
-                  <Button>Ir a Libro de Reclamaciones</Button>
+                  <Button
+                    onClick={() =>
+                      window.open('https://reclamos.servicios.gob.pe/?institution_id=390')
+                    }
+                  >Ir a Libro de Reclamaciones</Button>
                 </div>
               </div>
             </div>

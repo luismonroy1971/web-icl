@@ -11,7 +11,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
   return (
     <>
       <div className={`${openMenu ? 'hidden' : 'sm:block hidden'}`}>
-        <div className="flex justify-between items-center h-fit bg-lightBlue text-primary relative shadow-md font-acto sm:px-8 py-2">
+        <div className="flex justify-between items-center h-fit bg-lightBlue text-primary relative shadow-md font-acto sm:px-20 py-2">
           <div className="flex justify-center items-center">
             Inscríbete a nuestros cursos de capacitación{' '}
             <Link href="/icl-capacitaciones">
@@ -74,7 +74,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
         </div>
       </div>
       <div className="flex justify-between items-center sm:h-[98px] h-[60px] bg-white text-black relative shadow-md font-acto">
-        <div className="flex space-x-4 sm:mx-8 mx-2">
+        <div className="flex space-x-4 sm:mx-20 mx-2">
           <div className="my-auto">
             <Link href="/">
               <div className="justify-center items-center  text-gray-700 hover:text-gray-900 my-auto w-16 sm:w-40">
@@ -101,7 +101,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
         </div>
         <div className="flex gap-8 h-full">
           <div
-            className="my-auto cursor-pointer hidden sm:block"
+            className="my-auto cursor-pointer hidden sm:block w-56"
             onClick={() =>
               window.open(
                 'https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=13132',
@@ -117,16 +117,16 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
             />
           </div>
           <div
-            className="flex gap-4 cursor-pointer items-center border-l border-x-[#D9D9D9] h-full transition-transform duration-300 ease-in-out justify-center w-[20vw] sm:w-[12vw]"
+            className="flex gap-4 cursor-pointer items-center border-l border-x-[#D9D9D9] h-full transition-transform duration-300 ease-in-out justify-center w-[20vw] sm:w-[18vw] sm:pr-4"
             onClick={() => setOpenMenu(!openMenu)}
           >
             {!openMenu ? (
               <>
                 <svg
                   className="transition-transform duration-300 ease-in-out transform rotate-0"
-                  width="35"
+                  width="27"
                   height="11"
-                  viewBox="0 0 35 11"
+                  viewBox="0 0 27 11"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -152,7 +152,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
             ) : (
               <>
                 <svg
-                  className="transition-transform duration-300 ease-in-out transform rotate-90 mx-auto"
+                  className="transition-transform duration-300 ease-in-out transform rotate-90"
                   width="27"
                   height="26"
                   viewBox="0 0 27 26"
@@ -176,7 +176,9 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
                     stroke-width="2"
                   />
                 </svg>
-                <span className="text-lg sm:text-2xl text-primary sm:block hidden pr-6">Cerrar</span>
+                <span className="text-lg sm:text-[1.5vw] text-primary font-acto hidden sm:block">
+                  Cerrar
+                </span>
               </>
             )}
           </div>

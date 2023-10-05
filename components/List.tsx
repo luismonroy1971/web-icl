@@ -17,13 +17,25 @@ export const List: FC<ListProps> = ({ items }) => {
   const [selectedItems, setSelectedItems] = React.useState<any>([]);
   const [count, setCount] = React.useState(0);
   const incrementCount = (itemId: number) => {
-    items.map((item) => {
-      if (parseInt(item.id) === itemId) {
-        setCount(count + parseFloat(item.monto_soles));
+    const selectedItem = items.find((item) => parseInt(item.id) === itemId);
+
+    if (selectedItem) {
+      const itemValue = parseFloat(selectedItem.monto_soles);
+
+      if (selectedItems.includes(itemId)) {
+        // If item is already selected, remove it and decrement the count
+        setCount((prevCount) => prevCount - itemValue);
+        setSelectedItems((prevSelected: any) =>
+          prevSelected.filter((item: any) => item !== itemId)
+        );
+      } else {
+        // If item is not selected, add it and increment the count
+        setCount((prevCount) => prevCount + itemValue);
+        setSelectedItems((prevSelected: any) => [...prevSelected, itemId]);
       }
-    });
-    setSelectedItems([...selectedItems, itemId]);
+    }
   };
+
   return (
     <div className="py-4">
       <div className="flex flex-col gap-2 max-h-[500px] overflow-scroll">
@@ -40,7 +52,7 @@ export const List: FC<ListProps> = ({ items }) => {
       </div>
       <div className="flex flex-row gap-4 justify-end items-center py-6 bg-blue rounded-md shadow-sm text-white mt-4 px-6">
         <div className="flex flex-col">
-          <span className="text-xl font-lato">Total</span>
+          <span className="text-xl font-lato">TOTAL</span>
         </div>
         <div className="flex flex-col">
           <span className="text-2xl rounded-md px-4 w-56 items-center text-center font-medium bg-white text-black">

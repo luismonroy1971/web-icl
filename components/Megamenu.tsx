@@ -51,6 +51,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           children: [],
           description:
             'Explora Lima virtualmente, desde el Parque de la Reserva hasta monumentos históricos, a través de un mapa 3D interactivo que destaca su riqueza arquitectónica y cultural.',
+          link: 'https://sit.icl.gob.pe/conoce_lima/',
         },
         {
           id: 11,
@@ -59,6 +60,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           children: [],
           description:
             'Accede rápidamente a información catastral detallada y actualizada, facilitando la gestión y planificación urbana desde la comodidad de tu hogar u oficina.',
+          link: 'https://sit.icl.gob.pe/appconsulta/',
         },
         {
           id: 12,
@@ -67,6 +69,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           children: [],
           description:
             'Accede rápidamente a información catastral detallada y actualizada, facilitando la gestión y planificación urbana desde la comodidad de tu hogar u oficina.',
+          link: 'https://sit.icl.gob.pe/portafolio/',
         },
         {
           id: 14,
@@ -75,6 +78,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           children: [],
           description:
             'Acceso integral a datos territoriales de Lima, proporcionando información valiosa para proyectos de desarrollo urbano y planificación estratégica.',
+          link: 'https://sit.icl.gob.pe/sit/',
         },
         {
           id: 15,
@@ -83,12 +87,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           children: [],
           description:
             'Realiza trámites administrativos en línea, enviando documentos y solicitudes de manera eficiente y segura desde cualquier lugar.',
-        },
-        {
-          id: 16,
-          name: 'Otros recursos y herramientas',
-          slug: 'otros-recursos-y-herramientas',
-          children: [],
+          link: 'https://icl.gob.pe/mesa/administrado/login.aspx',
         },
       ],
     },
@@ -234,6 +233,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           slug: 'gestion-financiera-y-presupuestal',
           description:
             'Conozca cómo administramos y asignamos nuestros recursos financieros para garantizar la eficiencia y transparencia en nuestras operaciones.',
+          link: '/gestion-administrativa/gestion-financiera-y-presupuestal',
         },
         {
           id: 29,
@@ -241,6 +241,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           slug: 'gestion-de-bienes-e-infraestructura-del-icl',
           description:
             'Descubra cómo gestionamos y mantenemos nuestras instalaciones, equipos y otros activos para ofrecer servicios de calidad.',
+          link: '/gestion-administrativa/gestion-de-bienes-e-infraestructura-del-icl',
         },
         {
           id: 30,
@@ -248,6 +249,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           slug: 'gestion-normativa',
           description:
             'Explore las normativas y regulaciones internas que guían nuestras operaciones y aseguran el cumplimiento de los estándares legales y éticos.',
+          link: '/gestion-administrativa/gestion-normativa',
         },
         {
           id: 31,
@@ -255,6 +257,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           slug: 'rendicion-de-cuentas-de-titulares',
           description:
             'Acceda a los informes y documentos que presentan un resumen detallado de nuestras actividades, logros y desafíos.',
+          link: '/gestion-administrativa/rendicion-de-cuentas-de-titulares',
         },
         {
           id: 32,
@@ -262,6 +265,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           slug: 'convocatorias',
           description:
             'Manténgase informado sobre las últimas convocatorias y oportunidades para colaborar o trabajar con nosotros.',
+          link: '/gestion-administrativa/convocatorias',
         },
         {
           id: 33,
@@ -269,6 +273,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
           slug: 'memorias-institucionales',
           description:
             'Revise nuestros informes anuales que destacan los logros, desafíos y planes futuros de la institución.',
+          link: '/gestion-administrativa/memorias-institucionales',
         },
       ],
     },
@@ -283,7 +288,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
       name: 'ICL Capacitaciones',
       slug: 'icl-capacitaciones',
       link: '/icl-capacitaciones',
-    }
+    },
   ];
   return (
     <div
@@ -296,7 +301,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
     >
       <div
         id="first-column"
-        className="flex flex-col w-1/3 sm:border-r-8 border-white transition-all transform"
+        className="flex flex-col w-1/3 sm:border-r-2 border-white transition-all transform"
       >
         {categories.map((category) => {
           return (
@@ -389,7 +394,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
       </div>
       <div
         id="second-column"
-        className="flex-col w-1/3 px-12 overflow-scroll h-full mt-4 sm:flex hidden pb-8"
+        className="flex-col w-1/3 px-12 overflow-scroll h-full mt-4 sm:flex hidden pb-4"
       >
         {firstChildren?.length > 0 &&
           firstChildren?.map((category: any) => (

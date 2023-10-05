@@ -95,7 +95,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
 
   return (
     <div className="w-full">
-      <div className="overflow-hidden relative h-[calc(100vh-140px)] w-screen  ">
+      <div className="overflow-hidden relative h-[calc(100vh-240px)] w-screen  ">
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -107,9 +107,9 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
               backgroundPosition: 'left center', // Adjusted this line
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
-              height: '100vh',
+              height: 'calc(100vh - 240px)',
               width: '100vw',
-              maxHeight: 'calc(100vh - 120px)',
+              maxHeight: 'calc(100vh - 240px)',
               transform: `translateX(${
                 index === currentSlide
                   ? '0'
@@ -121,8 +121,8 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                 'transform 0.5s ease-in-out, background-image 0.5s ease-in-out', // Adjusted this line
             }}
           >
-            <div className="sm:max-w-[5vw] w-[10vw] flex justify-center">
-              <button className="" onClick={prevSlide}>
+            <div className="w-[10vw] flex justify-end">
+              <button className=" w-10 h-10" onClick={prevSlide}>
                 <svg
                   width="17"
                   height="35"
@@ -145,15 +145,15 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                 </svg>
               </button>
             </div>
-            <div className="sm:w-[95vw] w-[80vw]">
+            <div className="sm:w-[90vw] w-[80vw]">
               <div
-                className={`flex flex-col gap-4 sm:px-20 justify-center sm:w-[50vw] w-11/12 sm:text-left h-full`}
+                className={`flex flex-col gap-4 sm:pl-8 justify-center sm:w-[50vw] w-11/12 sm:text-left h-full`}
               >
                 {renderContent(slide)}
               </div>
             </div>
-            <div className="sm:max-w-[5vw] w-[10vw] flex justify-center">
-              <button className="rotate-180" onClick={nextSlide}>
+            <div className="w-[10vw] flex justify-start">
+              <button className="rotate-180 w-10 h-10" onClick={nextSlide}>
                 <svg
                   width="17"
                   height="35"

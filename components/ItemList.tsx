@@ -37,12 +37,12 @@ export const ItemList: FC<ItemListProps> = ({
       <div className="flex flex-col w-7/12">
         <span className="text-sm font-medium">{denominacion_servicio}</span>
       </div>
-      <div className="flex justify-center gap-2 items-center w-2/12">
+      {/* <div className="flex justify-center gap-2 items-center w-2/12">
         <span className="text-sm font-medium">{monto_uit}</span>
         <span className="text-xs font-normal">UIT</span>
-      </div>
+      </div> */}
       <div className="flex justify-end w-3/12">
-        <span className="text-sm font-medium">{monto_soles}</span>
+        <span className="text-sm font-medium">S/ {monto_soles}</span>
       </div>
     </div>
   );
