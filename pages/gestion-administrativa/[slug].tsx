@@ -1,8 +1,8 @@
 import React from 'react';
 import { SectionBanner } from '../../components/SectionBanner';
 import { Layout } from '../../components/Layout';
-import NormasEmitidas from '../../components/NormasEmitidas';
-import Convenios from '../../components/Convenios';
+import NormasEmitidas from '../../components/Tables/NormasEmitidas';
+import Convenios from '../../components/Tables/Convenios';
 
 type DataItem = {
   id: string;

@@ -1,7 +1,7 @@
 import React from 'react';
-import { useGetResolucionesQuery } from '../redux/reduxQuery/resoluciones';
-import { Table } from './Table';
-import { Button } from './Button';
+import { useGetResolucionesQuery } from '../../redux/reduxQuery/resoluciones';
+import { Table } from '../Table';
+import { Button } from '../Button';
 
 const NormasEmitidas = () => {
   const {
@@ -49,7 +49,7 @@ const NormasEmitidas = () => {
               <div className="flex items-center">
                 <Button
                   onClick={() =>
-                    window.open(row.original.url_resolucion, '_blank')
+                    window.open(row.original.url_documento_resolucion, '_blank')
                   }
                 >
                   Ver documento
