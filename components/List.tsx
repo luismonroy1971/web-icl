@@ -39,7 +39,7 @@ export const List: FC<ListProps> = ({ items }) => {
   useEffect(() => {
     setCount(0);
     setSelectedItems([]);
-  }, []);
+  }, [items]);
 
   return (
     <div className="py-4">

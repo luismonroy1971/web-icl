@@ -159,6 +159,18 @@ export const Table = ({
 
   return (
     <>
+      <div className="filtersContainer">
+        {allColumns.map(
+          (column: any) =>
+            column.canFilter && (
+              <div key={column.id}>
+                <label>{column.render('Header')}</label>
+                {column.canFilter ? column.render('Filter') : null}
+              </div>
+            )
+        )}
+      </div>
+
       <TableWrapper>
         {loading ? (
           <div className="flex justify-center items-center h-full">
@@ -238,7 +250,7 @@ export const Table = ({
                         borderBottom: `2px solid #F0F0F0`,
                         paddingLeft: '1rem',
                         paddingRight: '1rem',
-                        height: 'fit-content'
+                        height: 'fit-content',
                       }}
                       key={row.id}
                     >

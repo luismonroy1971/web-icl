@@ -174,3 +174,24 @@
     background-image: url('/images/pagina-1/banner-5-mobile.jpg');
   }
 }
+
+/* Estilos para Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra vertical */
+  height: 8px; /* Altura de la barra horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #F0F0F0; /* Color de fondo de la pista */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #B0B0B0; /* Color de la barra de desplazamiento */
+  border-radius: 4px; /* Redondeo de esquinas */
+}
+
+/* Para Firefox (Desde Firefox 64) */
+body {
+  scrollbar-width: thin; /* Define el ancho de la barra de desplazamiento */
+  scrollbar-color: #B0B0B0 #F0F0F0; /* Define el color del pulgar y la pista */
+}
