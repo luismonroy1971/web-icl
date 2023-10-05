@@ -3,6 +3,9 @@ import { SectionBanner } from '../../components/SectionBanner';
 import { Layout } from '../../components/Layout';
 import NormasEmitidas from '../../components/Tables/NormasEmitidas';
 import Convenios from '../../components/Tables/Convenios';
+import GestionNormativa from '../../components/Tables/GestionNormativa';
+import RendicionDeCuentas from '../../components/Tables/RendicionDeCuentas';
+import Convocatorias from '../../components/Tables/Convocatorias';
 
 type DataItem = {
   id: string;
@@ -215,6 +218,7 @@ export default function GestionAdministrativa({ slug }: any) {
               otros.
             </p>
           </div>
+          <div className="mt-8">{renderTableGestionNormativa()}</div>
         </div>
       ),
     },
@@ -225,44 +229,7 @@ export default function GestionAdministrativa({ slug }: any) {
         'La rendición de cuentas es un pilar fundamental en nuestra gestión. Los titulares en el Instituto Catastral de Lima están comprometidos con la transparencia y la responsabilidad en todas nuestras acciones',
       caption: 'Gestión Administrativa',
       titleContent: 'Listado de rendiciones de cuentas:',
-      content: () => (
-        <div>
-          <article>
-            <h2>
-              Ley Nº 28294 – Ley que crea el Sistema Nacional Integrado de
-              Catastro y su vinculación con el registro de predios
-            </h2>
-
-            <h3>Artículo 7°.- Integrantes del Consejo Nacional.</h3>
-
-            <p>El Consejo Nacional de Catastro está integrado por:</p>
-
-            <ol>
-              <li>
-                El Superintendente Nacional de los Registros Públicos – SUNARP,
-                quien lo preside.
-              </li>
-              <li>Un representante de los Gobiernos Regionales.</li>
-              <li>
-                El presidente de la Asociación de Municipalidades o su
-                representante.
-              </li>
-              <li>
-                El jefe Institucional del Instituto Nacional de Concesiones y
-                Catastro Minero- INACC o su representante.
-              </li>
-              <li>
-                El jefe del Instituto Geográfico Nacional – IGN o su
-                representante.
-              </li>
-              <li>
-                El Director Ejecutivo del Instituto Catastral de Lima – ICL o su
-                representante.
-              </li>
-            </ol>
-          </article>
-        </div>
-      ),
+      content: () => <div>{renderTableRendicionCuentas()}</div>,
     },
     {
       id: 'convocatorias',
@@ -271,7 +238,7 @@ export default function GestionAdministrativa({ slug }: any) {
         'Las convocatorias son una parte esencial de nuestra interacción con la comunidad y profesionales interesados. En el Instituto Catastral de Lima, estamos comprometidos en mantener un proceso de convocatoria abierto y transparente, donde se promueve la participación de talento diverso.',
       caption: 'Gestión Administrativa',
       titleContent: 'Listado de convocatorias',
-      content: () => <div></div>,
+      content: () => <div>{renderTableConvocatorias()}</div>,
     },
     {
       id: 'memorias-institucionales',
@@ -285,9 +252,15 @@ export default function GestionAdministrativa({ slug }: any) {
   ];
   const item = data.find((item) => item.id == slug);
   console.log(item);
-  const renderTableGestionNormativa = () => {};
-  const renderTableRendicionCuentas = () => {};
-  const renderTableConvocatorias = () => {};
+  const renderTableGestionNormativa = () => {
+    return <GestionNormativa />;
+  };
+  const renderTableRendicionCuentas = () => {
+    return <RendicionDeCuentas />
+  };
+  const renderTableConvocatorias = () => {
+    return <Convocatorias />;
+  };
   const renderTableMemoriasInstitucionales = () => {};
   return (
     <Layout>

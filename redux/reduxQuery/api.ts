@@ -15,5 +15,12 @@ export default api.enhanceEndpoints({
   addTagTypes: [
     "newsApi",
     "videosApi",
+    "directivasApi",
+    "noticiasApi",
+    "normasApi",
+    "resolucionesApi",
+    "serviciosApi",
+    "rendicionesApi",
+    "convocatoriasApi",
   ],
 });
