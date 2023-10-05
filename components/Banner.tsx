@@ -95,13 +95,13 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
 
   return (
     <div className="w-full">
-      <div className="overflow-hidden relative sm:h-[calc(100vh-240px)] h-[30vh] w-screen ">
+      <div className="overflow-hidden relative sm:h-[calc(100vh-240px)] h-[35vh] w-screen ">
         {slides.map((slide, index) => (
           <div
             key={index}
             className={`slide ${getAnimationClass(index)} smallScreenMaxWidth
           flex  flex-row items-center justify-center w-screen absolute bg-cover
-          sm:h-[calc(100vh-240px)] h-[30vh] sm:w-screen
+          sm:h-[calc(100vh-240px)] h-[35vh] sm:w-screen
           bg-gradient-to-r from-primary from-[20%] via-blue via-[50%] to-lightBlue to-[100%] sm:bg-cover
           
         `}
