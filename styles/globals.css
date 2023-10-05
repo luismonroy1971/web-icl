@@ -111,9 +111,9 @@
 /* Banner.module.css */
 @media screen and (max-width: 768px) {
   .smallScreenMaxWidth {
-    max-width: 200vw;
-    background-size: 200vw 100vh;
-    background-position-x: -50vw !important;
+    max-width: 100vw;
+    background-size: 140vw 50vh;
+    background-position-x: -20vw !important;
   }
 }
 

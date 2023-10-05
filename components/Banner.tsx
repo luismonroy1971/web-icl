@@ -28,7 +28,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
     return (
       <>
         <h1
-          className={`sm:text-[4vw] text-4xl font-light font-acto leading-tight text-white`}
+          className={`sm:text-[4vw] text-2xl font-light font-acto leading-tight text-white`}
         >
           {slide.titleFirst}
           <br />
@@ -36,7 +36,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
         </h1>
 
         <p
-          className={`sm:text-[1.8vw] text-md font-lato mt-[10px] ${'text-white'} leading-tight sm:w-[30vw]`}
+          className={`sm:text-[1.8vw] text-md font-lato sm:mt-[10px] ${'text-white'} leading-tight sm:w-[30vw]`}
         >
           {slides[currentSlide].description}
           <br />
@@ -95,21 +95,21 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
 
   return (
     <div className="w-full">
-      <div className="overflow-hidden relative h-[calc(100vh-240px)] w-screen  ">
+      <div className="overflow-hidden relative sm:h-[calc(100vh-240px)] h-[30vh] w-screen ">
         {slides.map((slide, index) => (
           <div
             key={index}
             className={`slide ${getAnimationClass(index)} smallScreenMaxWidth
           flex  flex-row items-center justify-center w-screen absolute bg-cover
+          sm:h-[calc(100vh-240px)] h-[30vh] sm:w-screen
+          bg-gradient-to-r from-primary from-[20%] via-blue via-[50%] to-lightBlue to-[100%] sm:bg-cover
+          
         `}
             style={{
               backgroundImage: `url(${slides[currentSlide].image})`,
               backgroundPosition: 'left center', // Adjusted this line
               backgroundRepeat: 'no-repeat',
-              backgroundSize: 'cover',
-              height: 'calc(100vh - 240px)',
               width: '100vw',
-              maxHeight: 'calc(100vh - 240px)',
               transform: `translateX(${
                 index === currentSlide
                   ? '0'
@@ -121,14 +121,14 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                 'transform 0.5s ease-in-out, background-image 0.5s ease-in-out', // Adjusted this line
             }}
           >
-            <div className="w-[10vw] flex justify-end">
-              <button className=" w-10 h-10" onClick={prevSlide}>
+            <div className="sm:w-[10vw] w-[5vw] flex justify-end">
+              <button className="sm:w-5 w-3" onClick={prevSlide}>
                 <svg
-                  width="17"
-                  height="35"
                   viewBox="0 0 17 35"
                   fill="none"
+                  preserveAspectRatio="xMidYMid meet"
                   xmlns="http://www.w3.org/2000/svg"
+                  className="max-w-full h-auto"
                 >
                   <path
                     d="M2 18.0107L15 32.5107"
@@ -145,21 +145,24 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                 </svg>
               </button>
             </div>
-            <div className="sm:w-[90vw] w-[80vw]">
+            <div className="sm:w-[90vw] w-[80vw] mx-4 sm:mx-0">
               <div
-                className={`flex flex-col gap-4 sm:pl-8 justify-center sm:w-[50vw] w-11/12 sm:text-left h-full`}
+                className={`flex flex-col sm:gap-4 gap-2 sm:pl-8 justify-center sm:w-[50vw] w-11/12 sm:text-left h-full`}
               >
                 {renderContent(slide)}
               </div>
             </div>
-            <div className="w-[10vw] flex justify-start">
-              <button className="rotate-180 w-10 h-10" onClick={nextSlide}>
+            <div className="sm:w-[10vw] w-[5vw] flex justify-start">
+              <button
+                className="rotate-180 sm:w-5 w-3"
+                onClick={nextSlide}
+              >
                 <svg
-                  width="17"
-                  height="35"
                   viewBox="0 0 17 35"
                   fill="none"
+                  preserveAspectRatio="xMidYMid meet"
                   xmlns="http://www.w3.org/2000/svg"
+                  className="max-w-full h-auto"
                 >
                   <path
                     d="M2 18.0107L15 32.5107"
@@ -178,7 +181,7 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
             </div>
           </div>
         ))}
-        <div className="flex gap-2 justify-center items-end w-full absolute bottom-8">
+        <div className="flex gap-2 justify-center items-end w-full absolute sm:bottom-8 bottom-2">
           <div
             className={`w-4 h-4 rounded-full cursor-pointer border border-white ${
               currentSlide === 0 && 'bg-white'
