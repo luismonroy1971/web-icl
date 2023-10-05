@@ -292,7 +292,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
   ];
   return (
     <div
-      className={`absolute sm:top-24 w-full z-0 h-unset min-h-full bg-lightBlue ${
+      className={`absolute sm:top-24 w-full z-0 h-unset bg-lightBlue ${
         openMenu
           ? 'one-time-fade-in opacity-100 z-20 sm:flex'
           : 'one-time-fade-out opacity-0 z-0 hidden'
