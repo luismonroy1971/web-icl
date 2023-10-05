@@ -3,6 +3,7 @@ import { SectionBanner } from '../../components/SectionBanner';
 import { Layout } from '../../components/Layout';
 import NormasEmitidas from '../../components/Tables/NormasEmitidas';
 import Convenios from '../../components/Tables/Convenios';
+import Image from 'next/image';
 
 export default function LeyDeMarcoLegal({ slug }: any) {
   const data = [
@@ -392,7 +393,13 @@ export default function LeyDeMarcoLegal({ slug }: any) {
                   className=" bg-primary text-white rounded-sm font-acto flex gap-4 items-center justify-center font-acto h-[75px] w-[378px] text-lg cursor-pointer"
                   onClick={() => downloadLaw(item.download)}
                 >
-                  <img src="/images/download.svg" alt="download" />
+                  {/* <img src="/images/download.svg" alt="download" /> */}
+                  <Image
+                    src="/images/download.svg"
+                    alt="download"
+                    width={30}
+                    height={30}
+                  />
                   <span>{item.buttonText}</span>
                 </div>
               )}
@@ -452,7 +459,7 @@ export async function getStaticPaths() {
         params: {
           slug: 'convenios-institucionales',
         },
-      }
+      },
     ],
     fallback: false,
   };

@@ -28,7 +28,7 @@ export default function Noticia({ data }: { data: any }) {
         <p className="font-lato text-md my-8">{data.descripcion_noticia}</p>
         <div className="flex justify-center sm:justify-end gap-4">
           {data.images.map((image: any) => (
-            <div className="h-96 relative w-1/3">
+            <div className="h-96 relative w-1/3" key={image.id}>
               <Image
                 src={image.url_imagen}
                 alt="news"

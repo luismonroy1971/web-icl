@@ -3,6 +3,7 @@ import { projects } from '.';
 import { Button } from '../../components/Button';
 import { Layout } from '../../components/Layout';
 import { SectionBanner } from '../../components/SectionBanner';
+import Image from 'next/image';
 
 interface ProyectoProps {
   id: number;
@@ -31,11 +32,12 @@ export default function Proyecto({ proyecto }: any) {
         <h3 className="my-4 text-4xl font-semibold text-left font-acto text-primary">
           {project.title}
         </h3>
-        <img
+        {/* <img
           src={project.image}
           alt={project.title}
           className="sm:w-5/12 h-full"
-        />
+        /> */}
+        <Image src={project.image} alt={project.title} width={500} height={500} />
 
         <div className="my-4 text-xl  text-left font-lato ">
           {project.content()}

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Button } from '../../components/Button';
 import { Layout } from '../../components/Layout';
 import { SectionBanner } from '../../components/SectionBanner';
@@ -84,7 +85,7 @@ export default function ICLCapacitaciones() {
             key={capacitacion.id}
             className="border border-primary rounded-md p-4 flex"
           >
-            <img src={capacitacion.image} alt={capacitacion.title} />
+            <Image src={capacitacion.image} alt={capacitacion.title} width={200} height={200} />
             <div className="flex flex-col justify-center gap-2">
               <h2 className="font-acto text-2xl text-primary">
                 {capacitacion.title}

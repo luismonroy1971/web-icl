@@ -279,9 +279,9 @@ export default function Home() {
               )}
             </div>
             <div className="mt-8 w-60 mx-auto">
-              <Button
-                onClick={() => router.push('/noticias')}
-              >Ver todas las noticias</Button>
+              <Button onClick={() => router.push('/noticias')}>
+                Ver todas las noticias
+              </Button>
             </div>
           </div>
         </RevealOnScroll>
@@ -385,9 +385,13 @@ export default function Home() {
                 <div className="w-full">
                   <Button
                     onClick={() =>
-                      window.open('https://reclamos.servicios.gob.pe/?institution_id=390')
+                      window.open(
+                        'https://reclamos.servicios.gob.pe/?institution_id=390'
+                      )
                     }
-                  >Ir a Libro de Reclamaciones</Button>
+                  >
+                    Ir a Libro de Reclamaciones
+                  </Button>
                 </div>
               </div>
             </div>
@@ -420,10 +424,12 @@ export default function Home() {
                           }}
                           onClick={() => handleImageClick(index)}
                         >
-                          <img
+                          <Image
                             src="/images/play.svg"
                             alt="Play"
-                            className="absolute sm:top-[56px] top-[24px]"
+                            width={50}
+                            height={50}
+                            className="z-10 top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]"
                           />
                         </div>
                       )}
