@@ -9,7 +9,7 @@ interface NavbarProps {
 
 export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
   return (
-    <div className="sticky z-50 top-0 h-[134px] w-screen">
+    <div className="sticky z-50 top-0 h-[134px] w-s">
       <div className={`${openMenu ? 'hidden' : 'sm:block hidden'}`}>
         <div className="flex justify-between items-center h-[48px] bg-lightBlue text-primary relative shadow-md font-acto sm:px-20 py-2">
           <div className="flex justify-center items-center">

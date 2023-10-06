@@ -28,7 +28,7 @@ export const SectionBanner: FC<Props> = ({
   return (
     <div>
       <div
-        className={`sm:h-fit py-12 w-full bg-gradient-to-r from-primary from-5% via-[#0066AB] via-30% to-transparent flex z-5 relative ${
+        className={`sm:h-fit py-12 w-full bg-gradient-to-r from-primary from-5% via-[#0066AB] via-30% to-transparent flex z-5 relative overflow-hidden ${
           loaded ? 'opacity-100' : 'opacity-0'
         } duration-2000 ease-in-out`}
       >
@@ -51,7 +51,7 @@ export const SectionBanner: FC<Props> = ({
           )}
         </div>
         {image && (
-          <div className="absolute -right-12 bottom-8 h-[320px] max-w-[460px] w-full">
+          <div className="absolute -right-[5vw] bottom-8 h-[320px] max-w-[460px] w-full overflow-hidden">
             <Image src={image} alt={title} layout="fill" />
           </div>
         )}
