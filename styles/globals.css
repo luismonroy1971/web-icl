@@ -6,7 +6,6 @@
 #second-column,
 #third-column {
   flex-direction: column;
-  width: 100%;
 }
 
 @font-face {
@@ -181,17 +180,17 @@
   height: 8px; /* Altura de la barra horizontal */
 }
 
-::-webkit-scrollbar-track {
-  background-color: #F0F0F0; /* Color de fondo de la pista */
-}
-
 ::-webkit-scrollbar-thumb {
-  background-color: #B0B0B0; /* Color de la barra de desplazamiento */
+  background-color: #0066AB; /* Color de la barra de desplazamiento */
   border-radius: 4px; /* Redondeo de esquinas */
 }
 
 /* Para Firefox (Desde Firefox 64) */
 body {
   scrollbar-width: thin; /* Define el ancho de la barra de desplazamiento */
-  scrollbar-color: #B0B0B0 #F0F0F0; /* Define el color del pulgar y la pista */
+  scrollbar-color: #0066AB #F0F0F0; /* Define el color del pulgar y la pista */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #00508A; /* Color más oscuro para el efecto hover */
 }

@@ -9,9 +9,9 @@ interface NavbarProps {
 
 export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
   return (
-    <div className="sticky z-50 top-0">
+    <div className="sticky z-50 top-0 h-[134px] w-screen">
       <div className={`${openMenu ? 'hidden' : 'sm:block hidden'}`}>
-        <div className="flex justify-between items-center h-fit bg-lightBlue text-primary relative shadow-md font-acto sm:px-20 py-2">
+        <div className="flex justify-between items-center h-[48px] bg-lightBlue text-primary relative shadow-md font-acto sm:px-20 py-2">
           <div className="flex justify-center items-center">
             Inscríbete a nuestros cursos de capacitación{' '}
             <Link href="/icl-capacitaciones">
@@ -73,7 +73,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center sm:h-[98px] h-[60px] bg-white text-black relative shadow-md font-acto">
+      <div className="flex justify-between items-center sm:h-[96px] h-[60px] bg-white text-black relative shadow-md font-acto">
         <div className="flex space-x-4 sm:mx-20 mx-2">
           <div className="my-auto">
             <Link href="/">

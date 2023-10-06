@@ -293,58 +293,82 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
 
   return (
     <div
-      className={`absolute sm:top-24 w-full z-0 h-unset bg-lightBlue ${
+      className={`absolute sm:top-24 w-screen z-0 h-unset bg-lightBlue flex-col ${
         openMenu
           ? 'one-time-fade-in opacity-100 z-20 sm:flex'
           : 'one-time-fade-out opacity-0 z-0 hidden'
       }`}
       style={{ transitionDelay: openMenu ? '0ms' : '1000ms' }}
     >
-      <div
-        id="first-column"
-        className="flex flex-col w-1/3 sm:border-r-2 border-white transition-all transform"
-      >
-        {categories.map((category) => {
-          return (
-            <div key={category.id} className="my-6 ml-4">
-              <div
-                className="cursor-pointer"
-                onClick={() => {
-                  if (category.link) {
-                    setOpenMenu(false);
-                    router.push(category.link);
-                  } else {
-                    JSON.stringify(category.children) ==
-                    JSON.stringify(firstChildren)
-                      ? setFirstChildren([])
-                      : setFirstChildren(category.children);
-                    setSecondChildren([]);
-                    setSelectedCategory(category);
-                  }
-                }}
-              >
-                <span
-                  className={`font-acto text-primary text-4xl  ${
-                    selectedCategory?.id === category.id &&
-                    firstChildren?.length > 0
-                      ? 'underline 0.5s ease-in-out infinite alternate'
-                      : ''
-                  }`}
+      <div className="flex sm:px-16 sm:h-[calc(100vh-176px)]">
+        <div
+          id="first-column"
+          className="flex flex-col w-1/3 transition-all transform overflow-y-scroll"
+        >
+          {categories.map((category) => {
+            return (
+              <div key={category.id} className="my-6 ml-4">
+                <div
+                  className="cursor-pointer"
+                  onClick={() => {
+                    if (category.link) {
+                      setOpenMenu(false);
+                      router.push(category.link);
+                    } else {
+                      JSON.stringify(category.children) ==
+                      JSON.stringify(firstChildren)
+                        ? setFirstChildren([])
+                        : setFirstChildren(category.children);
+                      setSecondChildren([]);
+                      setSelectedCategory(category);
+                    }
+                  }}
                 >
-                  {category.name}
-                </span>
-              </div>
-              <div className="sm:hidden block">
-                {JSON.stringify(category.children) ==
-                  JSON.stringify(firstChildren) &&
-                  firstChildren?.map((category: any) => (
-                    <div key={category.id} className="my-4">
-                      {category.link ? (
-                        <Link href={category.link}>
+                  <span
+                    className={`font-acto text-primary text-4xl  ${
+                      selectedCategory?.id === category.id &&
+                      firstChildren?.length > 0
+                        ? 'underline 0.5s ease-in-out infinite alternate'
+                        : ''
+                    }`}
+                  >
+                    {category.name}
+                  </span>
+                </div>
+                <div className="sm:hidden block">
+                  {JSON.stringify(category.children) ==
+                    JSON.stringify(firstChildren) &&
+                    firstChildren?.map((category: any) => (
+                      <div key={category.id} className="my-4">
+                        {category.link ? (
+                          <Link href={category.link}>
+                            <div
+                              className="cursor-pointer flex flex-col gap-2"
+                              onClick={() => {
+                                setOpenMenu(false);
+                              }}
+                            >
+                              <div className="flex gap-4">
+                                <span className="text-primary font-acto text-2xl ">
+                                  {category.name}
+                                </span>
+                                <Image
+                                  src="/images/arrow.svg"
+                                  width={20}
+                                  height={20}
+                                  alt="flecha"
+                                />
+                              </div>
+                              <div className="text-md font-lato font-light">
+                                {category.description}
+                              </div>
+                            </div>
+                          </Link>
+                        ) : (
                           <div
                             className="cursor-pointer flex flex-col gap-2"
                             onClick={() => {
-                              setOpenMenu(false);
+                              setSecondChildren(category.children);
                             }}
                           >
                             <div className="flex gap-4">
@@ -362,50 +386,50 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
                               {category.description}
                             </div>
                           </div>
-                        </Link>
-                      ) : (
-                        <div
-                          className="cursor-pointer flex flex-col gap-2"
-                          onClick={() => {
-                            setSecondChildren(category.children);
-                          }}
-                        >
-                          <div className="flex gap-4">
-                            <span className="text-primary font-acto text-2xl ">
-                              {category.name}
-                            </span>
-                            <Image
-                              src="/images/arrow.svg"
-                              width={20}
-                              height={20}
-                              alt="flecha"
-                            />
-                          </div>
-                          <div className="text-md font-lato font-light">
-                            {category.description}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                        )}
+                      </div>
+                    ))}
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
-      <div
-        id="second-column"
-        className="flex-col w-1/3 px-12 overflow-scroll h-full mt-4 sm:flex hidden pb-4"
-      >
-        {firstChildren?.length > 0 &&
-          firstChildren?.map((category: any) => (
-            <div key={category.id} className="my-4 ml-4">
-              {category.link ? (
-                <Link href={category.link}>
+            );
+          })}
+        </div>
+        <div
+          id="second-column"
+          className="flex-col w-2/3 px-12 overflow-scroll h-full mt-4 sm:flex hidden pb-4"
+        >
+          {firstChildren?.length > 0 &&
+            firstChildren?.map((category: any) => (
+              <div key={category.id} className="my-4 ml-4">
+                {category.link ? (
+                  <Link href={category.link}>
+                    <div
+                      className="cursor-pointer flex flex-col gap-2"
+                      onClick={() => {
+                        setOpenMenu(false);
+                      }}
+                    >
+                      <div className="flex gap-4">
+                        <span className="text-primary font-acto text-2xl ">
+                          {category.name}
+                        </span>
+                        <Image
+                          src="/images/arrow.svg"
+                          width={20}
+                          height={20}
+                          alt="flecha"
+                        />
+                      </div>
+                      <div className="text-md font-lato font-light">
+                        {category.description}
+                      </div>
+                    </div>
+                  </Link>
+                ) : (
                   <div
                     className="cursor-pointer flex flex-col gap-2"
                     onClick={() => {
-                      setOpenMenu(false);
+                      setSecondChildren(category.children);
                     }}
                   >
                     <div className="flex gap-4">
@@ -423,44 +447,20 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
                       {category.description}
                     </div>
                   </div>
-                </Link>
-              ) : (
-                <div
-                  className="cursor-pointer flex flex-col gap-2"
-                  onClick={() => {
-                    setSecondChildren(category.children);
-                  }}
-                >
-                  <div className="flex gap-4">
-                    <span className="text-primary font-acto text-2xl ">
-                      {category.name}
-                    </span>
-                    <Image
-                      src="/images/arrow.svg"
-                      width={20}
-                      height={20}
-                      alt="flecha"
-                    />
-                  </div>
-                  <div className="text-md font-lato font-light">
-                    {category.description}
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
-      </div>
-      <div id="third-column" className="sm:flex flex-col  w-1/3 px-8 hidden">
-        {secondChildren.length > 0 &&
-          secondChildren.map((category: any) => (
-            <div key={category.id} className="my-10 ml-4">
-              <div className="cursor-pointer">
-                <span className="text-gray-700 text-4xl font-semibold hover:text-gray-900">
-                  {category.name}
-                </span>
+                )}
               </div>
-            </div>
-          ))}
+            ))}
+        </div>
+      </div>
+      <div className="flex justify-start mt-4 w-full h-16 items-center px-20 border-t-2 border-white">
+        <p className="font-acto text-lg text-primary mr-12">Links de interés</p>
+        <div className="flex flex-col gap-8 ml-4">
+          <Link href="/contacto">
+            <span className="text-primary text-2xl font-semibold hover:text-gray-900 cursor-pointer">
+              Contáctanos
+            </span>
+          </Link>
+        </div>
       </div>
     </div>
   );
