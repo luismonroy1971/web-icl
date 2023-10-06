@@ -165,7 +165,7 @@ export const Table = ({
             column.canFilter && (
               <div key={column.id}>
                 <label>{column.render('Header')}</label>
-                {column.canFilter ? column.render('Filter') : null}
+                {column.Filter && column.render('Filter')}
               </div>
             )
         )}

@@ -13,15 +13,12 @@ const NormasDeLaInstitucion = () => {
         Header: 'Nombre de documento',
         accessor: 'denominacion_norma', // <-- This is the string accessor
         width: 400,
-        Filter: MiComponenteDeFiltro,
-        canFilter: true,
       },
       {
         Header: 'Tipo de documento',
         accessor: 'tipo_norma',
         canFilter: true,
         width: 200,
-        Filter: MiComponenteDeFiltro,
       },
       {
         Header: 'Ver documento',

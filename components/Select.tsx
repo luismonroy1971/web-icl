@@ -2,13 +2,6 @@ import React, { useEffect } from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
 import Async from 'react-select/async';
-import { Button } from './Button';
-
-interface SelectWrapperProps {
-  isFocused: boolean;
-  width: string;
-  selectProps: { error: {} };
-}
 
 const customStyles = {
   container: (provided: any) => {
@@ -20,12 +13,13 @@ const customStyles = {
   placeholder: (provided: any) => {
     return {
       ...provided,
-      fontFamily: 'Poppins',
+      fontFamily: 'Lato',
       fontWeight: 400,
       fontSize: '.875rem',
       textAlign: 'left',
       lineHeight: '1.25rem',
       color: '#ADB5BD',
+      padding: '0.25rem 0.5rem',
     };
   },
   indicatorSeparator: () => ({}),
@@ -38,10 +32,11 @@ const customStyles = {
   singleValue: (provided: any) => {
     return {
       ...provided,
-      fontFamily: 'Poppins',
+      fontFamily: 'Lato',
       fontWeight: 400,
       fontSize: '.875rem',
       textAlign: 'left',
+      padding: '0.25rem 0.5rem',
     };
   },
   valueContainer: (provided: any) => {
@@ -55,6 +50,7 @@ const customStyles = {
       ...provided,
       margin: 0,
       padding: 0,
+      cursor: 'pointer',
     };
   },
   menu: (provided: any) => {
@@ -68,6 +64,17 @@ const customStyles = {
       marginTop: '.25rem',
     };
   },
+  option: (provided: any, state: any) => {
+    return {
+      ...provided,
+      color: state.isSelected ? '#fff' : '#16236E',
+      backgroundColor: state.isSelected ? '#16236E' : '#fff',
+      ':hover': {
+        backgroundColor: state.isSelected ? '#16236E' : '#E9ECEF',
+      },
+      cursor: 'pointer',
+    };
+  }
 };
 
 const Label = styled.label`
@@ -77,67 +84,11 @@ const Label = styled.label`
   width: 100%;
 `;
 
-const SelectWrapper = styled.div<SelectWrapperProps>`
-  display: flex;
-  padding: 0.75rem;
-  border-radius: 0.75rem;
-  border: ${(props: any) => {
-    return props.selectProps.error ? `1px solid red` : `1px solid #adb5bd`;
-  }};
-  box-sizing: border-box;
-  background-color: #f1f3f5;
-  font-family: Poppins;
-  font-size: 14px;
-  line-height: 20px;
-  ${({ isFocused }) => {
-    if (isFocused) {
-      return `
-      border: 1px solid #AE3EC9;
-      box-shadow: 0rem 0rem 0rem 0.25rem rgba(243, 218, 250, 1);
-      outline: none;
-      box-sizing: border-box;
-      svg {
-        transform: scaleY(-1)
-      }
-      `;
-    }
-  }}
-`;
-const customSelectContainer = (props: any) => {
-  return <SelectWrapper {...props} />;
-};
-
-const customOption = (props: any) => {
-  return (
-    <Button onClick={() => props.innerProps.onClick()}>{props.children}</Button>
-  );
-};
-
-const customOptionWithBadge = (props: any) => {
-  return (
-    <Button onClick={() => props.innerProps.onClick()}>{props.children}</Button>
-  );
-};
-
 export const CustomSelect = (props: any) => {
   const SelectComponent = props.asyncConfig ? Async : Select;
 
-  useEffect(() => {
-    if (typeof props.value === 'string') {
-      const foundOption = (props.options || []).find(
-        (opt: any) => opt.value === props.value
-      );
-      if (foundOption) props.setValue(foundOption);
-      else {
-        const newOption = [{ label: props.value, value: props.value }];
-        props.setValue(newOption);
-      }
-    } else if (props.value === undefined) {
-      props.setValue(null);
-    }
-  }, [props.value, props]);
   return (
-    <Label className="flex w-full">
+    <Label className="flex w-full font-lato">
       <p className="text-sm text-gray-500">{props.label}</p>
       <SelectComponent
         {...props}
@@ -146,14 +97,8 @@ export const CustomSelect = (props: any) => {
         name={props.name}
         options={props.options}
         styles={customStyles}
-        placeholder={props.placeholderText}
-        components={{
-          Control: customSelectContainer,
-          Option: props.withBadge ? customOptionWithBadge : customOption,
-          ...(props.components || {}),
-        }}
+        placeholder={props.placeholder}
         onChange={props.setValue}
-        value={props.value}
         openMenuOnFocus={true}
         isDisabled={props.disabled}
         {...(props.asyncConfig || {})}
