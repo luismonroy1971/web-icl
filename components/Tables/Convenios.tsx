@@ -220,7 +220,7 @@ const Convenios = () => {
               <div className="flex items-center">
                 <Button
                   onClick={() =>
-                    window.open(row.original.url_resolucion, '_blank')
+                    window.open(row.original.url_documento_convenio, '_blank')
                   }
                 >
                   Ver documento
