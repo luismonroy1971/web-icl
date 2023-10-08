@@ -9,15 +9,13 @@ const departamentosApi = api.injectEndpoints({
       }),
     }),
     getProvicias: build.query({
-      query: (params) => ({
-        url: `${API_URL}/provinciasconvenio?id_departamento=${params.id_departamento}`,
-        params,
+      query: ({ id_departamento }) => ({
+        url: `${API_URL}/provinciasconvenio?id_departamento=${id_departamento}`,
       }),
     }),
     getDistritos: build.query({
-      query: (params) => ({
-        url: `${API_URL}/distritosconvenio?id_departamento=${params.id_departamento}&id_provincia=${params.id_provincia}`,
-        params,
+      query: ({ id_departamento, id_provincia }) => ({
+        url: `${API_URL}/distritosconvenio?id_departamento=${id_departamento}&id_provincia=${id_provincia}`,
       }),
     }),
   }),

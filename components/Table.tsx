@@ -164,7 +164,6 @@ export const Table = ({
           (column: any) =>
             column.canFilter && (
               <div key={column.id}>
-                <label>{column.render('Header')}</label>
                 {column.Filter && column.render('Filter')}
               </div>
             )
@@ -300,7 +299,7 @@ export const Table = ({
                         paddingBottom: '1rem',
                       }}
                     >
-                      No data available
+                      No se encontraron resultados
                     </td>
                   </tr>
                 )}

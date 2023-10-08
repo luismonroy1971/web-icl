@@ -2,17 +2,25 @@ import React, { useEffect } from 'react';
 import { Table } from '../Table';
 import { Button } from '../Button';
 import { useGetConveniosQuery } from '../../redux/reduxQuery/convenios';
+import { Controller, useForm } from 'react-hook-form';
+import { CustomSelect } from '../Select';
 import {
   useGetDepartamentosQuery,
   useGetDistritosQuery,
   useGetProviciasQuery,
 } from '../../redux/reduxQuery/departamentos';
-import { Controller, useForm } from 'react-hook-form';
-import { CustomSelect } from '../Select';
+import { forEach } from 'lodash';
 
 const Convenios = () => {
   const form = useForm();
-  const { data: normasEmitidas, isLoading, isError } = useGetConveniosQuery('');
+  const [params, setParams] = React.useState('');
+  const {
+    data: normasEmitidas,
+    isLoading,
+    isError,
+    refetch: refetchConvenios,
+  } = useGetConveniosQuery(params);
+
   const {
     data: departamentos,
     isLoading: isLoadingDepartamentos,
@@ -24,26 +32,52 @@ const Convenios = () => {
     isError: isErrorProvincias,
     refetch: refetchProvincias,
   } = useGetProviciasQuery({
-    id_departamento: form.watch('departamento') || '',
+    id_departamento: form.watch('departamento')?.value || '',
   });
   const {
     data: distritos,
     isLoading: isLoadingDistritos,
     isError: isErrorDistritos,
     refetch: refetchDistritos,
-  } = useGetDistritosQuery('');
+  } = useGetDistritosQuery({
+    id_departamento: form.watch('departamento')?.value || '',
+    id_provincia: form.watch('provincia')?.value || '',
+  });
 
   useEffect(() => {
-    console.log('departamentos', departamentos);
+    refetchProvincias();
     form.setValue('provincia', '');
     form.setValue('distrito', '');
-    refetchProvincias();
   }, [form.watch('departamento')]);
 
   useEffect(() => {
-    form.setValue('distrito', '');
     refetchDistritos();
+    form.setValue('distrito', '');
   }, [form.watch('provincia')]);
+
+  const handleSubmit = form.handleSubmit((data) => {
+    data.id_departamento = data.departamento?.value;
+    delete data.departamento;
+    data.id_provincia = data.provincia?.value;
+    delete data.provincia;
+    data.id_distrito = data.distrito?.value;
+    delete data.distrito;
+    data.periodo_convenio = data.año ?? null;
+    delete data.año;
+    data.periodo_mes = data.mes ?? null;
+    delete data.mes;
+
+    forEach(data, (value, key) => {
+      if (value === '' || value === null || value === undefined ) {
+        delete data[key];
+      }
+    });
+
+    const params = new URLSearchParams(data).toString();
+    setParams(params);
+
+    refetchConvenios();
+  });
 
   return normasEmitidas ? (
     <>
@@ -60,6 +94,8 @@ const Convenios = () => {
           control={form.control}
           render={({ field }) => (
             <CustomSelect
+              {...field}
+              id="departamento"
               options={departamentos?.map((departamento: any) => ({
                 value: departamento.id,
                 label: departamento.departamento,
@@ -67,7 +103,6 @@ const Convenios = () => {
               label="Departamento"
               placeholder="Filtrar por departamento"
               className="w-full mb-4"
-              {...field}
             />
           )}
         />
@@ -76,6 +111,8 @@ const Convenios = () => {
           control={form.control}
           render={({ field }) => (
             <CustomSelect
+              {...field}
+              id="provincia"
               options={provincias?.map((provincia: any) => ({
                 value: provincia.id,
                 label: provincia.provincia,
@@ -83,7 +120,6 @@ const Convenios = () => {
               label="Provincia"
               placeholder="Filtrar por provincia"
               className="w-full mb-4"
-              {...field}
             />
           )}
         />
@@ -92,6 +128,8 @@ const Convenios = () => {
           control={form.control}
           render={({ field }) => (
             <CustomSelect
+              {...field}
+              id="distrito"
               options={distritos?.map((distrito: any) => ({
                 value: distrito.id,
                 label: distrito.distrito,
@@ -99,7 +137,6 @@ const Convenios = () => {
               label="Distrito"
               placeholder="Filtrar por distrito"
               className="w-full mb-4"
-              {...field}
             />
           )}
         />
@@ -110,7 +147,10 @@ const Convenios = () => {
           control={form.control}
           render={({ field }) => (
             <CustomSelect
+              {...field}
               options={[
+                { value: 2023, label: 2023 },
+                { value: 2022, label: 2022 },
                 { value: 2021, label: 2021 },
                 { value: 2020, label: 2020 },
                 { value: 2019, label: 2019 },
@@ -118,8 +158,6 @@ const Convenios = () => {
               label="Año"
               placeholder="Filtrar por año"
               className="w-full mb-4"
-              onChange={(option: any) => field.onChange(option.value)}
-              value={field.value}
             />
           )}
         />
@@ -128,6 +166,7 @@ const Convenios = () => {
           control={form.control}
           render={({ field }) => (
             <CustomSelect
+              {...field}
               options={[
                 { value: 1, label: 'Enero' },
                 { value: 2, label: 'Febrero' },
@@ -145,13 +184,25 @@ const Convenios = () => {
               label="Mes"
               placeholder="Filtrar por mes"
               className="w-full mb-4"
-              onChange={(option: any) => field.onChange(option.value)}
-              value={field.value}
             />
           )}
         />
-        <div className="flex items-center w-96">
-          <Button>Buscar</Button>
+        <div className="flex items-center w-fit gap-2">
+          <Button onClick={handleSubmit}>Buscar</Button>
+          <Button
+            color="bg-white border border-primary text-primary"
+            onClick={() => {
+              form.setValue('departamento', '');
+              form.setValue('provincia', '');
+              form.setValue('distrito', '');
+              form.setValue('año', '');
+              form.setValue('mes', '');
+              setParams('');
+              refetchConvenios();
+            }}
+          >
+            Limpiar
+          </Button>
         </div>
       </div>
       <Table

@@ -49,7 +49,7 @@ const customStyles = {
     return {
       ...provided,
       margin: 0,
-      padding: 0,
+      padding: '0.25rem 0.5rem',
       cursor: 'pointer',
     };
   },
@@ -74,7 +74,7 @@ const customStyles = {
       },
       cursor: 'pointer',
     };
-  }
+  },
 };
 
 const Label = styled.label`
@@ -85,23 +85,17 @@ const Label = styled.label`
 `;
 
 export const CustomSelect = (props: any) => {
-  const SelectComponent = props.asyncConfig ? Async : Select;
-
   return (
     <Label className="flex w-full font-lato">
       <p className="text-sm text-gray-500">{props.label}</p>
-      <SelectComponent
-        {...props}
-        width="100%"
-        error={props.error}
+      <Select
+        id={props.id}
         name={props.name}
-        options={props.options}
         styles={customStyles}
-        placeholder={props.placeholder}
-        onChange={props.setValue}
-        openMenuOnFocus={true}
-        isDisabled={props.disabled}
-        {...(props.asyncConfig || {})}
+        noOptionsMessage={() => 'No hay opciones'}
+        isSearchable={false}
+        options={props.options}
+        {...props}
       />
       {props.error && (
         <p className="text-sm text-red-500">{props.error.message}</p>
