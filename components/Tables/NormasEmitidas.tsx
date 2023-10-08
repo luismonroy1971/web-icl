@@ -1,14 +1,42 @@
 import React from 'react';
-import { useGetResolucionesQuery } from '../../redux/reduxQuery/resoluciones';
+import {
+  useGetResolucionesPeriodoQuery,
+  useGetResolucionesQuery,
+} from '../../redux/reduxQuery/resoluciones';
 import { Table } from '../Table';
 import { Button } from '../Button';
+import { CustomSelect } from '../Select';
+import { Controller, useForm } from 'react-hook-form';
+import {
+  useGetAreasQuery,
+  useGetTiposDocumentoQuery,
+} from '../../redux/reduxQuery/utils';
 
 const NormasEmitidas = () => {
+  const form = useForm();
   const {
     data: normasEmitidas,
     isLoading,
     isError,
   } = useGetResolucionesQuery('');
+  const {
+    data: dataPeriodosResoluciones,
+    isLoading: isLoadingPeriodosResoluciones,
+    isError: isErrorPeriodosResoluciones,
+  } = useGetResolucionesPeriodoQuery('');
+
+  const {
+    data: dataTiposDocumento,
+    isLoading: isLoadingTiposDocumento,
+    isError: isErrorTiposDocumento,
+  } = useGetTiposDocumentoQuery('');
+
+  const {
+    data: dataAreas,
+    isLoading: isLoadingAreas,
+    isError: isErrorAreas,
+  } = useGetAreasQuery('');
+
   return normasEmitidas ? (
     <>
       <h3 className="text-4xl text-left mb-4 font-acto font-primary text-primary">
@@ -18,6 +46,59 @@ const NormasEmitidas = () => {
         A continuación, se presenta un listado detallado de las RESOLUCIONES
         emitidas por nuestra entidad:
       </p>
+      <div className="flex gap-4">
+        <Controller
+          name="id_tipo_documento"
+          control={form.control}
+          render={({ field }) => (
+            <CustomSelect
+              {...field}
+              id="id_tipo_documento"
+              options={dataTiposDocumento?.map((tipoDocumento: any) => ({
+                value: tipoDocumento.id,
+                label: tipoDocumento.descripcion_tipo_documento,
+              }))}
+              label="Tipo de documento"
+              placeholder="Tipo de documento"
+              className="w-full mb-4"
+            />
+          )}
+        />
+        <Controller
+          name="periodo_resolucion"
+          control={form.control}
+          render={({ field }) => (
+            <CustomSelect
+              {...field}
+              id="periodo_resolucion"
+              options={dataPeriodosResoluciones?.map((periodo: any) => ({
+                value: periodo,
+                label: periodo,
+              }))}
+              label="Año"
+              placeholder="Seleccione un año"
+              className="w-full mb-4"
+            />
+          )}
+        />
+        <Controller
+          name="id_area"
+          control={form.control}
+          render={({ field }) => (
+            <CustomSelect
+              {...field}
+              id="id_area"
+              options={dataAreas?.map((area: any) => ({
+                value: area.id,
+                label: area.descripcion_area,
+              }))}
+              label="Area"
+              placeholder="Seleccione un area"
+              className="w-full mb-4"
+            />
+          )}
+        />
+      </div>
       <Table
         columns={[
           {
@@ -25,8 +106,9 @@ const NormasEmitidas = () => {
             Cell: ({ row }: any) => (
               <div className="flex items-center">
                 <span className="text-sm font-medium">
-                  {row.original.numero_resolucion}-{row.original.periodo_resolucion}-
-                  {row.original.id_area}-ICL/MML
+                  {row.original.numero_resolucion}-
+                  {row.original.periodo_resolucion}-{row.original.id_area}
+                  -ICL/MML
                 </span>
               </div>
             ),

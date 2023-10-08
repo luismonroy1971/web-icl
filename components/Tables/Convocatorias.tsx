@@ -1,19 +1,88 @@
 import React from 'react';
 import { Table } from '../Table';
 import { Button } from '../Button';
-import { useGetConvocatoriasQuery } from '../../redux/reduxQuery/convocatorias';
+import {
+  useGetConvocatoriasPeriodoQuery,
+  useGetConvocatoriasQuery,
+} from '../../redux/reduxQuery/convocatorias';
+import { Controller, useForm } from 'react-hook-form';
+import { CustomSelect } from '../Select';
+import { useGetTiposDocumentoQuery } from '../../redux/reduxQuery/utils';
 
 const Convocatorias = () => {
+  const form = useForm();
   const {
     data: normasEmitidas,
     isLoading,
     isError,
   } = useGetConvocatoriasQuery('');
+  const {
+    data: dataTiposDocumento,
+    isLoading: isLoadingTiposDocumento,
+    isError: isErrorTiposDocumento,
+  } = useGetTiposDocumentoQuery('');
+  const {
+    data: dataPeriodosConvocatorias,
+    isLoading: isLoadingPeriodosConvocatorias,
+    isError: isErrorPeriodosConvocatorias,
+  } = useGetConvocatoriasPeriodoQuery('');
+
+  const handleSubmit = form.handleSubmit((data) => {
+    console.log(data);
+  });
   return normasEmitidas ? (
     <>
       <p className="text-lg text-left mb-4 font-lato">
         A continuación, se presenta un listado detallado de las convocatorias:
       </p>
+      <div className="flex gap-4">
+        <Controller
+          name="Tipo de documento"
+          control={form.control}
+          render={({ field }) => (
+            <CustomSelect
+              {...field}
+              id="tipo_documento"
+              options={dataTiposDocumento?.map((tipoDocumento: any) => ({
+                value: tipoDocumento.id,
+                label: tipoDocumento.descripcion_tipo_documento,
+              }))}
+              label="Tipo de documento"
+              placeholder="Filtrar por tipo de documento"
+              className="w-full mb-4"
+            />
+          )}
+        />
+
+        <Controller
+          name="Año"
+          control={form.control}
+          render={({ field }) => (
+            <CustomSelect
+              {...field}
+              id="periodo"
+              options={dataPeriodosConvocatorias?.map((periodo: any) => ({
+                value: periodo,
+                label: periodo,
+              }))}
+              label="Año"
+              placeholder="Filtrar por periodo"
+              className="w-full mb-4"
+            />
+          )}
+        />
+        <div className="flex w-fit gap-4 h-fit justify-end items-end my-auto">
+          <Button onClick={handleSubmit}>Buscar</Button>
+          <Button
+            color="border border-primary text-primary"
+            onClick={() => {
+              form.reset();
+            }}
+          >
+            Limpiar
+          </Button>
+        </div>
+      </div>
       <Table
         columns={[
           {
@@ -38,9 +107,7 @@ const Convocatorias = () => {
             Cell: ({ row }: any) => (
               <div className="flex items-center">
                 <Button
-                  onClick={() =>
-                    window.open(row.original.url_aviso, '_blank')
-                  }
+                  onClick={() => window.open(row.original.url_aviso, '_blank')}
                 >
                   Ver aviso
                 </Button>
@@ -53,7 +120,10 @@ const Convocatorias = () => {
               <div className="flex items-center">
                 <Button
                   onClick={() =>
-                    window.open(row.original.url_resultado_evaluacion_curricular, '_blank')
+                    window.open(
+                      row.original.url_resultado_evaluacion_curricular,
+                      '_blank'
+                    )
                   }
                 >
                   Ver resultado
@@ -67,7 +137,10 @@ const Convocatorias = () => {
               <div className="flex items-center">
                 <Button
                   onClick={() =>
-                    window.open(row.original.url_resultado_examen_virtual, '_blank')
+                    window.open(
+                      row.original.url_resultado_examen_virtual,
+                      '_blank'
+                    )
                   }
                 >
                   Ver resultado
@@ -81,7 +154,10 @@ const Convocatorias = () => {
               <div className="flex items-center">
                 <Button
                   onClick={() =>
-                    window.open(row.original.url_resultado_entrevista_virtual, '_blank')
+                    window.open(
+                      row.original.url_resultado_entrevista_virtual,
+                      '_blank'
+                    )
                   }
                 >
                   Ver resultado
@@ -112,7 +188,7 @@ const Convocatorias = () => {
                 </span>
               </div>
             ),
-          }
+          },
         ]}
         data={normasEmitidas}
         loading={isLoading}

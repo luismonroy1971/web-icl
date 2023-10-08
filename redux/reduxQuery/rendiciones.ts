@@ -8,7 +8,12 @@ const rendicionesApi = api.injectEndpoints({
         params,
       }),
     }),
+    getRendicionesPeriodo: build.query({
+      query: () => ({
+        url: `${API_URL}/rendicionesperiodo`,
+      }),
+    }),
   }),
 });
 
-export const { useGetRendicionesQuery } = rendicionesApi;
+export const { useGetRendicionesQuery, useGetRendicionesPeriodoQuery } = rendicionesApi;

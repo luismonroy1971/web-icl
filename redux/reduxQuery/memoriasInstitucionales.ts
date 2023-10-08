@@ -8,7 +8,13 @@ const memoriasApi = api.injectEndpoints({
         params,
       }),
     }),
+    getMemoriasPeriodo: build.query({
+      query: (params) => ({
+        url: `${API_URL}/memoriasperiodo`,
+        params,
+      }),
+    }),
   }),
 });
 
-export const { useGetMemoriasQuery } = memoriasApi;
+export const { useGetMemoriasQuery, useGetMemoriasPeriodoQuery } = memoriasApi;

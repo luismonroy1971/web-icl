@@ -2,14 +2,28 @@ import React from 'react';
 import { useGetResolucionesQuery } from '../../redux/reduxQuery/resoluciones';
 import { Table } from '../Table';
 import { Button } from '../Button';
-import { useGetDirectivasQuery } from '../../redux/reduxQuery/directivas';
+import { useGetDirectivasPeriodoQuery, useGetDirectivasQuery } from '../../redux/reduxQuery/directivas';
+import { Controller, useForm } from 'react-hook-form';
+import { useGetTiposDocumentoQuery } from '../../redux/reduxQuery/utils';
+import { CustomSelect } from '../Select';
 
 const GestionNormativa = () => {
+  const form = useForm();
   const {
     data: gestionNormativaData,
     isLoading,
     isError,
   } = useGetDirectivasQuery('');
+  const {
+    data: dataTiposDocumento,
+    isLoading: isLoadingTiposDocumento,
+    isError: isErrorTiposDocumento,
+  } = useGetTiposDocumentoQuery('');
+  const {
+    data: dataPeriodosDirectivas,
+    isLoading: isLoadingPeriodosDirectivas,
+    isError: isErrorPeriodosDirectivas,
+  } = useGetDirectivasPeriodoQuery('');
   return gestionNormativaData ? (
     <>
       <h3 className="text-4xl text-left mb-4 font-acto font-primary text-primary">
@@ -19,6 +33,59 @@ const GestionNormativa = () => {
         A continuación, se presenta un listado detallado de las directivas
         emitidas por nuestra entidad:
       </p>
+      <div className="flex gap-4">
+        <Controller
+          name="id_tipo_documento"
+          control={form.control}
+          render={({ field }) => (
+            <CustomSelect
+              {...field}
+              id="id_tipo_documento"
+              options={dataTiposDocumento?.map((tipoDocumento: any) => ({
+                value: tipoDocumento.id,
+                label: tipoDocumento.descripcion_tipo_documento,
+              }))}
+              label="Tipo de documento"
+              placeholder="Filtrar por tipo de documento"
+              className="w-full mb-4"
+            />
+          )}
+        />
+        <Controller
+          name="periodo"
+          control={form.control}
+          render={({ field }) => (
+            <CustomSelect
+              {...field}
+              id="periodo"
+              options={dataPeriodosDirectivas?.map((periodo: any) => ({
+                value: periodo,
+                label: periodo,
+              }))}
+              label="Periodo"
+              placeholder="Filtrar por periodo"
+              className="w-full mb-4"
+            />
+          )}
+        />
+        <Controller
+          name="id_area"
+          control={form.control}
+          render={({ field }) => (
+            <CustomSelect
+              {...field}
+              id="id_area"
+              options={gestionNormativaData?.map((area: any) => ({
+                value: area.id_area,
+                label: area.area,
+              }))}
+              label="Área"
+              placeholder="Filtrar por área"
+              className="w-full mb-4"
+            />
+          )}
+        />
+      </div>
       <Table
         columns={[
           {

@@ -28,7 +28,9 @@ const CardFuncionario: FC<CardFuncionarioProps> = ({
         </h3>
         <p className="font-lato text-2xl">{funcionario.name}</p>
         <div className="w-40 mt-2">
-          <Button>Ver más</Button>
+          <Button onClick={() => window.open(funcionario.link, '_blank')}>
+            Ver perfil
+          </Button>
         </div>
       </div>
     </div>

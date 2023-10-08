@@ -8,7 +8,13 @@ const directivasApi = api.injectEndpoints({
         params,
       }),
     }),
+    getDirectivasPeriodo: build.query({
+      query: () => ({
+        url: `${API_URL}/directivasperiodo`,
+      }),
+    }),
   }),
 });
 
-export const { useGetDirectivasQuery } = directivasApi;
+export const { useGetDirectivasQuery, useGetDirectivasPeriodoQuery } =
+  directivasApi;

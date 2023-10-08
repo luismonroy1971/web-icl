@@ -8,7 +8,14 @@ const convocatoriasApi = api.injectEndpoints({
         params,
       }),
     }),
+    getConvocatoriasPeriodo: build.query({
+      query: (params) => ({
+        url: `${API_URL}/convocatoriasperiodo`,
+        params,
+      }),
+    }),
   }),
 });
 
-export const { useGetConvocatoriasQuery } = convocatoriasApi;
+export const { useGetConvocatoriasQuery, useGetConvocatoriasPeriodoQuery } =
+  convocatoriasApi;

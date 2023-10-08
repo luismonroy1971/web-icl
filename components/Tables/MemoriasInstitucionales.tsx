@@ -1,20 +1,46 @@
 import React from 'react';
 import { Table } from '../Table';
 import { Button } from '../Button';
-import { useGetMemoriasQuery } from '../../redux/reduxQuery/memoriasInstitucionales';
+import {
+  useGetMemoriasPeriodoQuery,
+  useGetMemoriasQuery,
+} from '../../redux/reduxQuery/memoriasInstitucionales';
+import { Controller, useForm } from 'react-hook-form';
+import { CustomSelect } from '../Select';
 
 const MemoriasInstitucionales = () => {
+  const form = useForm();
+  const { data: normasEmitidas, isLoading, isError } = useGetMemoriasQuery('');
   const {
-    data: normasEmitidas,
-    isLoading,
-    isError,
-  } = useGetMemoriasQuery('')
+    data: dataPeriodosMemorias,
+    isLoading: isLoadingPeriodosMemorias,
+    isError: isErrorPeriodosMemorias,
+  } = useGetMemoriasPeriodoQuery('');
   return normasEmitidas ? (
     <>
       <p className="text-lg text-left mb-4 font-lato">
         A continuación, se presenta un listado detallado de las rendiciones de
         cuentas:
       </p>
+      <div className="flex gap-4">
+        <Controller
+          name="Año"
+          control={form.control}
+          render={({ field }) => (
+            <CustomSelect
+              {...field}
+              id="periodo"
+              options={dataPeriodosMemorias?.map((periodo: any) => ({
+                value: periodo,
+                label: periodo,
+              }))}
+              label="Año"
+              placeholder="Filtrar por año"
+              className="w-full mb-4"
+            />
+          )}
+        />
+      </div>
       <Table
         columns={[
           {
