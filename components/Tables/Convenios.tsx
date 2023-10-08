@@ -73,9 +73,9 @@ const Convenios = () => {
     delete data.provincia;
     data.id_distrito = data.distrito?.value;
     delete data.distrito;
-    data.periodo_convenio = data.año ?? null;
+    data.periodo_convenio = data.año?.value ?? null;
     delete data.año;
-    data.periodo_mes = data.mes ?? null;
+    data.periodo_mes = data.mes?.value ?? null;
     delete data.mes;
 
     forEach(data, (value, key) => {
