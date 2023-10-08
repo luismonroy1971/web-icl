@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { Table } from '../Table';
 import { Button } from '../Button';
-import { useGetConveniosQuery } from '../../redux/reduxQuery/convenios';
+import {
+  useGetConveniosQuery,
+  useGetPeriodosConveniosQuery,
+} from '../../redux/reduxQuery/convenios';
 import { Controller, useForm } from 'react-hook-form';
 import { CustomSelect } from '../Select';
 import {
@@ -26,6 +29,7 @@ const Convenios = () => {
     isLoading: isLoadingDepartamentos,
     isError: isErrorDepartamentos,
   } = useGetDepartamentosQuery('');
+
   const {
     data: provincias,
     isLoading: isLoadingProvincias,
@@ -34,6 +38,7 @@ const Convenios = () => {
   } = useGetProviciasQuery({
     id_departamento: form.watch('departamento')?.value || '',
   });
+
   const {
     data: distritos,
     isLoading: isLoadingDistritos,
@@ -43,6 +48,12 @@ const Convenios = () => {
     id_departamento: form.watch('departamento')?.value || '',
     id_provincia: form.watch('provincia')?.value || '',
   });
+
+  const {
+    data: dataPeriodosConvenios,
+    isLoading: isLoadingPeriodosConvenios,
+    isError: isErrorPeriodosConvenios,
+  } = useGetPeriodosConveniosQuery('');
 
   useEffect(() => {
     refetchProvincias();
@@ -68,7 +79,7 @@ const Convenios = () => {
     delete data.mes;
 
     forEach(data, (value, key) => {
-      if (value === '' || value === null || value === undefined ) {
+      if (value === '' || value === null || value === undefined) {
         delete data[key];
       }
     });
@@ -148,13 +159,10 @@ const Convenios = () => {
           render={({ field }) => (
             <CustomSelect
               {...field}
-              options={[
-                { value: 2023, label: 2023 },
-                { value: 2022, label: 2022 },
-                { value: 2021, label: 2021 },
-                { value: 2020, label: 2020 },
-                { value: 2019, label: 2019 },
-              ]}
+              options={dataPeriodosConvenios?.map((periodo: any) => ({
+                value: periodo,
+                label: periodo,
+              }))}
               label="Año"
               placeholder="Filtrar por año"
               className="w-full mb-4"

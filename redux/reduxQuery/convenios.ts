@@ -8,9 +8,15 @@ const conveniosApi = api.injectEndpoints({
         params,
       }),
     }),
+    getPeriodosConvenios: build.query({
+      query: () => ({
+        url: `${API_URL}/conveniosperiodo`,
+      }),
+    }),
   }),
 });
 
 export const { 
     useGetConveniosQuery,
+    useGetPeriodosConveniosQuery,
  } =conveniosApi;
