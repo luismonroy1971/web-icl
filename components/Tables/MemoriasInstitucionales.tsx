@@ -10,12 +10,24 @@ import { CustomSelect } from '../Select';
 
 const MemoriasInstitucionales = () => {
   const form = useForm();
-  const { data: normasEmitidas, isLoading, isError } = useGetMemoriasQuery('');
+  const [params, setParams] = React.useState('');
+  const {
+    data: normasEmitidas,
+    isLoading,
+    isError,
+    refetch: refetchMemoriasInstitucionales,
+  } = useGetMemoriasQuery(params);
   const {
     data: dataPeriodosMemorias,
     isLoading: isLoadingPeriodosMemorias,
     isError: isErrorPeriodosMemorias,
   } = useGetMemoriasPeriodoQuery('');
+  const handleSubmit = form.handleSubmit((data) => {
+    data.periodo_memoria = data.periodo_memoria?.value || '';
+    const params = new URLSearchParams(data).toString();
+    setParams(params);
+    refetchMemoriasInstitucionales();
+  });
   return normasEmitidas ? (
     <>
       <p className="text-lg text-left mb-4 font-lato">
@@ -24,12 +36,12 @@ const MemoriasInstitucionales = () => {
       </p>
       <div className="flex gap-4">
         <Controller
-          name="Año"
+          name="periodo_memoria"
           control={form.control}
           render={({ field }) => (
             <CustomSelect
               {...field}
-              id="periodo"
+              id="periodo_memoria"
               options={dataPeriodosMemorias?.map((periodo: any) => ({
                 value: periodo,
                 label: periodo,
@@ -40,6 +52,19 @@ const MemoriasInstitucionales = () => {
             />
           )}
         />
+        <div className="flex w-fit gap-4 h-fit justify-end items-end my-auto">
+          <Button onClick={handleSubmit}>Buscar</Button>
+          <Button
+            color="border border-primary text-primary"
+            onClick={() => {
+              form.setValue('periodo_memoria', '');
+              setParams('');
+              refetchMemoriasInstitucionales();
+            }}
+          >
+            Limpiar
+          </Button>
+        </div>
       </div>
       <Table
         columns={[
