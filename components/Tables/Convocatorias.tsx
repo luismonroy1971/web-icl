@@ -8,14 +8,17 @@ import {
 import { Controller, useForm } from 'react-hook-form';
 import { CustomSelect } from '../Select';
 import { useGetTiposDocumentoQuery } from '../../redux/reduxQuery/utils';
+import { forEach } from 'lodash';
 
 const Convocatorias = () => {
   const form = useForm();
+  const [params, setParams] = React.useState('');
   const {
     data: normasEmitidas,
     isLoading,
     isError,
-  } = useGetConvocatoriasQuery('');
+    refetch: refetchConvocatorias,
+  } = useGetConvocatoriasQuery(params);
   const {
     data: dataTiposDocumento,
     isLoading: isLoadingTiposDocumento,
@@ -28,7 +31,17 @@ const Convocatorias = () => {
   } = useGetConvocatoriasPeriodoQuery('');
 
   const handleSubmit = form.handleSubmit((data) => {
-    console.log(data);
+    data.id_tipo_documento = data.id_tipo_documento?.value || '';
+    data.periodo_convocatoria = data.periodo_convocatoria?.value || '';
+    forEach(data, (value, key) => {
+      if (value === '' || value === null || value === undefined) {
+        delete data[key];
+      }
+    });
+    const params = new URLSearchParams(data).toString();
+
+    setParams(params);
+    refetchConvocatorias();
   });
   return normasEmitidas ? (
     <>
@@ -37,12 +50,12 @@ const Convocatorias = () => {
       </p>
       <div className="flex gap-4">
         <Controller
-          name="Tipo de documento"
+          name="id_tipo_documento"
           control={form.control}
           render={({ field }) => (
             <CustomSelect
               {...field}
-              id="tipo_documento"
+              id="id_tipo_documento"
               options={dataTiposDocumento?.map((tipoDocumento: any) => ({
                 value: tipoDocumento.id,
                 label: tipoDocumento.descripcion_tipo_documento,
@@ -55,12 +68,12 @@ const Convocatorias = () => {
         />
 
         <Controller
-          name="Año"
+          name="periodo_convocatoria"
           control={form.control}
           render={({ field }) => (
             <CustomSelect
               {...field}
-              id="periodo"
+              id="periodo_convocatoria"
               options={dataPeriodosConvocatorias?.map((periodo: any) => ({
                 value: periodo,
                 label: periodo,
@@ -76,7 +89,10 @@ const Convocatorias = () => {
           <Button
             color="border border-primary text-primary"
             onClick={() => {
-              form.reset();
+              form.setValue('id_tipo_documento', '');
+              form.setValue('periodo_convocatoria', '');
+              setParams('');
+              refetchConvocatorias();
             }}
           >
             Limpiar

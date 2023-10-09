@@ -42,11 +42,9 @@ const NormasEmitidas = () => {
   } = useGetAreasQuery('');
 
   const handleSubmit = form.handleSubmit((data) => {
-    console.log(data.id_tipo_documento, data.periodo_resolucion, data.id_area);
     data.id_tipo_documento = data.id_tipo_documento?.value || '';
     data.periodo_resolucion = data.periodo_resolucion?.value || '';
     data.id_area = data.id_area?.value || '';
-    console.log(data, 'data');
     forEach(data, (value, key) => {
       if (value === '' || value === null || value === undefined) {
         delete data[key];
