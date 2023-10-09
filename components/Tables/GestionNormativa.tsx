@@ -7,7 +7,10 @@ import {
   useGetDirectivasQuery,
 } from '../../redux/reduxQuery/directivas';
 import { Controller, useForm } from 'react-hook-form';
-import { useGetAreasQuery, useGetTiposDocumentoQuery } from '../../redux/reduxQuery/utils';
+import {
+  useGetAreasQuery,
+  useGetTiposDocumentoQuery,
+} from '../../redux/reduxQuery/utils';
 import { CustomSelect } from '../Select';
 import { forEach } from 'lodash';
 
@@ -158,13 +161,22 @@ const GestionNormativa = () => {
             Header: 'Ver documento',
             Cell: ({ row }: any) => (
               <div className="flex items-center">
-                <Button
-                  onClick={() =>
-                    window.open(row.original.url_documento_resolucion, '_blank')
-                  }
-                >
-                  Ver documento
-                </Button>
+                {row.original.url_documento_resolucion === '' ? (
+                  <span className="text-sm font-medium ">
+                    No hay documento
+                  </span>
+                ) : (
+                  <Button
+                    onClick={() =>
+                      window.open(
+                        row.original.url_documento_resolucion,
+                        '_blank'
+                      )
+                    }
+                  >
+                    Ver documento
+                  </Button>
+                )}
               </div>
             ),
           },

@@ -5,6 +5,7 @@ import { SectionBanner } from '../../components/SectionBanner';
 import { Table } from '../../components/Table';
 import { useGetNormasQuery } from '../../redux/reduxQuery/normas';
 import MiComponenteDeFiltro from '../../components/Filter';
+import { Button } from '../../components/Button';
 
 const NormasDeLaInstitucion = () => {
   const columns = React.useMemo(
@@ -24,17 +25,16 @@ const NormasDeLaInstitucion = () => {
         Header: 'Ver documento',
         width: 200,
         canFilter: false,
-        Cell: ({ row }: any) => (
-          <a
-            href="#"
-            className="text-white bg-primary rounded-md px-2 py-2 w-full text-center font-lato"
-            onClick={() => {
-              window.open(row.original.url_norma, '_blank');
-            }}
-          >
-            Ver documento
-          </a>
-        ),
+        Cell: ({ row }: any) =>
+          row.original.url_norma === '' ? (
+            <span className="text-sm font-medium ">No hay documento</span>
+          ) : (
+            <Button
+              onClick={() => window.open(row.original.url_norma, '_blank')}
+            >
+              Ver documento
+            </Button>
+          ),
       },
     ],
     []

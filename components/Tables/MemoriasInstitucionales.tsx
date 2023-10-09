@@ -88,13 +88,17 @@ const MemoriasInstitucionales = () => {
             Header: 'Ver documento',
             Cell: ({ row }: any) => (
               <div className="flex items-center">
-                <Button
-                  onClick={() =>
-                    window.open(row.original.url_memoria, '_blank')
-                  }
-                >
-                  Ver documento
-                </Button>
+                {row.original.url_memoria === '' ? (
+                  <span className="text-sm font-medium ">No hay documento</span>
+                ) : (
+                  <Button
+                    onClick={() =>
+                      window.open(row.original.url_memoria, '_blank')
+                    }
+                  >
+                    Ver documento
+                  </Button>
+                )}
               </div>
             ),
           },
