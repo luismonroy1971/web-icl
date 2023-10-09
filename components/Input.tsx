@@ -88,7 +88,7 @@ const InputInnerActionSection = styled.div`
   height: 20px;
 `;
 
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+export const Input = React.forwardRef<any, InputProps>(
   (
     {
       required,
@@ -96,16 +96,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       noLabel,
       icon,
       width = 0,
-      img = '',
       labelText = 'label text',
       placeholderText = 'Field Text',
       errorText = 'Error Text',
-      filter,
       setFilter,
       setFormValue,
       type = 'text',
-      isInnerTooltip,
-      tooltipText = '',
       disabled,
     },
     ref
@@ -150,3 +146,5 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
+
+Input.displayName = 'Input';

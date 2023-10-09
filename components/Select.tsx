@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-import Select from 'react-select';
+import React, { ForwardRefRenderFunction, forwardRef } from 'react';
+import Select, { Props as SelectProps } from 'react-select';
 import styled from 'styled-components';
-import Async from 'react-select/async';
 
 const customStyles = {
   container: (provided: any) => {
@@ -84,11 +83,23 @@ const Label = styled.label`
   width: 100%;
 `;
 
-export const CustomSelect = (props: any) => {
+interface CustomSelectProps extends SelectProps<any, false> {
+  label: string;
+  error?: {
+    message: string;
+  };
+  // ... add any other props you expect
+}
+
+const CustomSelectComponent = (
+  props: CustomSelectProps,
+  ref: React.Ref<any>
+) => {
   return (
     <Label className="flex w-full font-lato">
       <p className="text-sm text-gray-500">{props.label}</p>
       <Select
+        ref={ref}
         id={props.id}
         name={props.name}
         styles={customStyles}
@@ -103,3 +114,5 @@ export const CustomSelect = (props: any) => {
     </Label>
   );
 };
+
+export const CustomSelect = forwardRef(CustomSelectComponent);

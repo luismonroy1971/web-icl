@@ -133,13 +133,13 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                   <path
                     d="M2 18.0107L15 32.5107"
                     stroke="white"
-                    stroke-width="4"
+                    strokeWidth="4"
                     stroke-linecap="round"
                   />
                   <path
                     d="M15 3L2 17.5"
                     stroke="white"
-                    stroke-width="4"
+                    strokeWidth="4"
                     stroke-linecap="round"
                   />
                 </svg>
@@ -164,13 +164,13 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                   <path
                     d="M2 18.0107L15 32.5107"
                     stroke="white"
-                    stroke-width="4"
+                    strokeWidth="4"
                     stroke-linecap="round"
                   />
                   <path
                     d="M15 3L2 17.5"
                     stroke="white"
-                    stroke-width="4"
+                    strokeWidth="4"
                     stroke-linecap="round"
                   />
                 </svg>

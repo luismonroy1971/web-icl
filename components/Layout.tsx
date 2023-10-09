@@ -9,12 +9,13 @@ interface LayoutProps {
 
 export const Layout: FC<LayoutProps> = ({ children }) => {
   const [openMenu, setOpenMenu] = React.useState(false);
+  console.log(openMenu);
   return (
     <div>
       <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu} />
       <MegaMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
       <div className={
-        `${openMenu ? 'hidden' : 'sm:block hidden'}`
+        `${openMenu ? 'hidden' : 'block'}`
       }>{children}</div>
       <Footer />
     </div>

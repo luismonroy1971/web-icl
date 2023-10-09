@@ -273,7 +273,7 @@ export default function GestionAdministrativa({ slug }: any) {
             title={item.title}
             description={item.description}
           />
-          <div className="px-20 py-12">
+          <div className="sm:px-20 py-12 px-8">
             <div className="flex justify-between gap-12">
               <h3 className="font-acto text-4xl text-primary">
                 {item.titleContent}

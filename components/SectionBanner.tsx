@@ -32,16 +32,16 @@ export const SectionBanner: FC<Props> = ({
           loaded ? 'opacity-100' : 'opacity-0'
         } duration-2000 ease-in-out`}
       >
-        <div className="flex flex-col justify-center items-start px-20 gap-4 sm:w-2/3">
+        <div className="flex flex-col justify-center items-start sm:px-20 px-8 w-full gap-4 sm:w-2/3">
           <p
-            className={`text-xl text-white font-acto font-extralight -mb-4 ${
+            className={`sm:text-xl text-md text-white font-acto font-extralight -mb-4 ${
               loaded ? 'opacity-100' : 'opacity-0'
             } duration-2000 ease-in-out`}
           >
             {caption}
           </p>
-          <h1 className="text-6xl text-white font-bold font-acto">{title}</h1>
-          <p className="text-white text-xl text-left font-lato">
+          <h1 className="sm:text-6xl text-4xl text-white font-bold font-acto">{title}</h1>
+          <p className="text-white sm:text-xl text-md text-left font-lato">
             {description}
           </p>
           {buttonText && (

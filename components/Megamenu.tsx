@@ -303,7 +303,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
       <div className="flex sm:px-16 sm:h-[calc(100vh-176px)]">
         <div
           id="first-column"
-          className="flex flex-col w-1/3 transition-all transform overflow-y-scroll"
+          className="flex flex-col sm:w-1/3 transition-all transform overflow-y-scroll"
         >
           {categories.map((category) => {
             return (

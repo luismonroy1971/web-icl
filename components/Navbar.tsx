@@ -9,7 +9,7 @@ interface NavbarProps {
 
 export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
   return (
-    <div className="sticky z-50 top-0 h-[134px] w-s">
+    <div className="sticky z-50 top-0 sm:h-[134px] w-screen">
       <div className={`${openMenu ? 'hidden' : 'sm:block hidden'}`}>
         <div className="flex justify-between items-center h-[48px] bg-lightBlue text-primary relative shadow-md font-acto sm:px-20 py-2">
           <div className="flex justify-center items-center">
@@ -140,14 +140,14 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
                     x2="35"
                     y2="1"
                     stroke="#16236E"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <line
                     y1="10"
                     x2="35"
                     y2="10"
                     stroke="#16236E"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                 </svg>
                 <span className="text-lg sm:text-[1.5vw] text-primary font-acto hidden sm:block">
@@ -170,7 +170,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
                     x2="25.7071"
                     y2="25.2929"
                     stroke="#16236E"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <line
                     x1="1.29289"
@@ -178,7 +178,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
                     x2="25.2929"
                     y2="1.29289"
                     stroke="#16236E"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                 </svg>
                 <span className="text-lg sm:text-[1.5vw] text-primary font-acto hidden sm:block">

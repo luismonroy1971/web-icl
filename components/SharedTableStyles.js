@@ -15,14 +15,12 @@ export const TableWrapper = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  overflow-x: auto;
 `;
 export const TableStyle = styled.table`
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
-  height: 100%;
-  overflow: hidden;
-  transform: translate(0, 0);
   th:nth-last-child(1) {
     width: 6.25rem;
   }
@@ -45,10 +43,6 @@ export const TableButtonsWrapper = styled.div`
 `;
 export const PaginationWrapper = styled.div`
   margin-top: 1.5rem;
-  display: flex;
-  items-align: center;
-  justify-content: space-between;
-  gap: 1rem;
 `;
 export const HeaderWrapper = styled.div`
   display: flex;

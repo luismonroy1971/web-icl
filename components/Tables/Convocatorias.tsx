@@ -48,7 +48,7 @@ const Convocatorias = () => {
       <p className="text-lg text-left mb-4 font-lato">
         A continuación, se presenta un listado detallado de las convocatorias:
       </p>
-      <div className="flex gap-4">
+      <div className="flex sm:flex-row flex-col gap-4">
         <Controller
           name="id_tipo_documento"
           control={form.control}
@@ -112,11 +112,12 @@ const Convocatorias = () => {
                 </span>
               </div>
             ),
+            width: 120,
           },
           {
             Header: 'Descripción de convocatoria',
             accessor: 'descripcion_convocatoria',
-            width: 400,
+            width: 320,
           },
           {
             Header: 'Aviso',
@@ -135,6 +136,7 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
+            width: 100,
           },
           {
             Header: 'Resultado de Evaluación Curricular',
@@ -156,6 +158,7 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
+            width: 140,
           },
           {
             Header: 'Resultado de Examen Virtual',
@@ -177,6 +180,7 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
+            width: 140,
           },
           {
             Header: 'Resultado de Entrevista Virtual',
@@ -198,6 +202,7 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
+            width: 140,
           },
           {
             Header: 'Resultado final',
@@ -216,16 +221,18 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
+            width: 140,
           },
           {
             Header: 'Estado de convocatoria',
             Cell: ({ row }: any) => (
-              <div className="flex items-center">
-                <span className="text-sm font-lato-bold">
+              <div className="flex items-center justify-center text-center w-full my-auto h-full">
+                <span className="text-sm font-lato-bold my-auto h-full">
                   {row.original.estado_convocatoria}
                 </span>
               </div>
             ),
+            width: 100,
           },
         ]}
         data={normasEmitidas}

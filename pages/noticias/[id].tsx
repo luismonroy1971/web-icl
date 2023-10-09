@@ -11,7 +11,7 @@ export default function Noticia({ data }: { data: any }) {
         title="Noticias"
         description="Desde desarrollos recientes hasta seminarios y talleres, aquí encontrarás todo lo que necesitas saber para estar al tanto de nuestras actividades."
       />
-      <div className="px-20 py-12">
+      <div className="sm:px-20 py-12 px-8">
         <p className="font-lato text-md">{data.fecha_publicacion}</p>
         <h3 className="font-acto text-4xl text-primary sm:w-2/3 mb-8">
           {data.titulo_noticia}
