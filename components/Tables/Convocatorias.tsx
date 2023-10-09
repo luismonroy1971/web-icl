@@ -122,11 +122,17 @@ const Convocatorias = () => {
             Header: 'Aviso',
             Cell: ({ row }: any) => (
               <div className="flex items-center">
-                <Button
-                  onClick={() => window.open(row.original.url_aviso, '_blank')}
-                >
-                  Ver aviso
-                </Button>
+                {row.original.url_aviso === '' ? (
+                  <span className="text-sm font-medium ">No hay documento</span>
+                ) : (
+                  <Button
+                    onClick={() =>
+                      window.open(row.original.url_aviso, '_blank')
+                    }
+                  >
+                    Ver aviso
+                  </Button>
+                )}
               </div>
             ),
           },
@@ -134,16 +140,20 @@ const Convocatorias = () => {
             Header: 'Resultado de Evaluación Curricular',
             Cell: ({ row }: any) => (
               <div className="flex items-center">
-                <Button
-                  onClick={() =>
-                    window.open(
-                      row.original.url_resultado_evaluacion_curricular,
-                      '_blank'
-                    )
-                  }
-                >
-                  Ver resultado
-                </Button>
+                {row.original.url_resultado_evaluacion_curricular === '' ? (
+                  <span className="text-sm font-medium ">No hay documento</span>
+                ) : (
+                  <Button
+                    onClick={() =>
+                      window.open(
+                        row.original.url_resultado_evaluacion_curricular,
+                        '_blank'
+                      )
+                    }
+                  >
+                    Ver resultado
+                  </Button>
+                )}
               </div>
             ),
           },
@@ -151,16 +161,20 @@ const Convocatorias = () => {
             Header: 'Resultado de Examen Virtual',
             Cell: ({ row }: any) => (
               <div className="flex items-center">
-                <Button
-                  onClick={() =>
-                    window.open(
-                      row.original.url_resultado_examen_virtual,
-                      '_blank'
-                    )
-                  }
-                >
-                  Ver resultado
-                </Button>
+                {row.original.url_resultado_examen_virtual === '' ? (
+                  <span className="text-sm font-medium ">No hay documento</span>
+                ) : (
+                  <Button
+                    onClick={() =>
+                      window.open(
+                        row.original.url_resultado_examen_virtual,
+                        '_blank'
+                      )
+                    }
+                  >
+                    Ver resultado
+                  </Button>
+                )}
               </div>
             ),
           },
@@ -168,16 +182,20 @@ const Convocatorias = () => {
             Header: 'Resultado de Entrevista Virtual',
             Cell: ({ row }: any) => (
               <div className="flex items-center">
-                <Button
-                  onClick={() =>
-                    window.open(
-                      row.original.url_resultado_entrevista_virtual,
-                      '_blank'
-                    )
-                  }
-                >
-                  Ver resultado
-                </Button>
+                {row.original.url_resultado_entrevista_virtual === '' ? (
+                  <span className="text-sm font-medium ">No hay documento</span>
+                ) : (
+                  <Button
+                    onClick={() =>
+                      window.open(
+                        row.original.url_resultado_entrevista_virtual,
+                        '_blank'
+                      )
+                    }
+                  >
+                    Ver resultado
+                  </Button>
+                )}
               </div>
             ),
           },
@@ -185,13 +203,17 @@ const Convocatorias = () => {
             Header: 'Resultado final',
             Cell: ({ row }: any) => (
               <div className="flex items-center">
-                <Button
-                  onClick={() =>
-                    window.open(row.original.url_puntaje_final, '_blank')
-                  }
-                >
-                  Ver resultado
-                </Button>
+                {row.original.url_puntaje_final === '' ? (
+                  <span className="text-sm font-medium ">No hay documento</span>
+                ) : (
+                  <Button
+                    onClick={() =>
+                      window.open(row.original.url_puntaje_final, '_blank')
+                    }
+                  >
+                    Ver resultado
+                  </Button>
+                )}
               </div>
             ),
           },
