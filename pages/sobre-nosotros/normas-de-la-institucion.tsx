@@ -53,7 +53,7 @@ Estas normas son la base de nuestro compromiso con la excelencia y el servicio a
         caption="Sobre nosotros"
       />
       <h3></h3>
-      <div className="mx-8 pb-12">
+      <div className="mx-8 pb-12 mt-12">
         {normasData?.length > 0 && (
           <Table columns={columns} data={normasData} />
         )}

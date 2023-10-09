@@ -11,14 +11,18 @@ import {
   useGetAreasQuery,
   useGetTiposDocumentoQuery,
 } from '../../redux/reduxQuery/utils';
+import { forEach } from 'lodash';
 
 const NormasEmitidas = () => {
   const form = useForm();
+  const [params, setParams] = React.useState('');
+
   const {
     data: normasEmitidas,
     isLoading,
     isError,
-  } = useGetResolucionesQuery('');
+    refetch: refetchNormasEmitidas,
+  } = useGetResolucionesQuery(params);
   const {
     data: dataPeriodosResoluciones,
     isLoading: isLoadingPeriodosResoluciones,
@@ -37,6 +41,22 @@ const NormasEmitidas = () => {
     isError: isErrorAreas,
   } = useGetAreasQuery('');
 
+  const handleSubmit = form.handleSubmit((data) => {
+    console.log(data.id_tipo_documento, data.periodo_resolucion, data.id_area);
+    data.id_tipo_documento = data.id_tipo_documento?.value || '';
+    data.periodo_resolucion = data.periodo_resolucion?.value || '';
+    data.id_area = data.id_area?.value || '';
+    console.log(data, 'data');
+    forEach(data, (value, key) => {
+      if (value === '' || value === null || value === undefined) {
+        delete data[key];
+      }
+    });
+    const params = new URLSearchParams(data).toString();
+    setParams(params);
+    refetchNormasEmitidas();
+  });
+
   return normasEmitidas ? (
     <>
       <h3 className="text-4xl text-left mb-4 font-acto font-primary text-primary">
@@ -46,7 +66,7 @@ const NormasEmitidas = () => {
         A continuación, se presenta un listado detallado de las RESOLUCIONES
         emitidas por nuestra entidad:
       </p>
-      <div className="flex gap-4">
+      <div className="flex gap-4 items-center">
         <Controller
           name="id_tipo_documento"
           control={form.control}
@@ -92,12 +112,27 @@ const NormasEmitidas = () => {
                 value: area.id,
                 label: area.descripcion_area,
               }))}
-              label="Area"
-              placeholder="Seleccione un area"
+              label="Área"
+              placeholder="Seleccione un área"
               className="w-full mb-4"
             />
           )}
         />
+        <div className="h-fit flex gap-2 items-center">
+          <Button onClick={handleSubmit}>Buscar</Button>
+          <Button
+            color="border border-primary"
+            onClick={() => {
+              form.setValue('id_tipo_documento', '');
+              form.setValue('periodo_resolucion', '');
+              form.setValue('id_area', '');
+              setParams('');
+              refetchNormasEmitidas();
+            }}
+          >
+            Limpiar
+          </Button>
+        </div>
       </div>
       <Table
         columns={[

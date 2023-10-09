@@ -8,12 +8,6 @@ const resolucionesApi = api.injectEndpoints({
         params,
       }),
     }),
-    getResolucionesByParams: build.query({
-      query: (params) => ({
-        url: `${API_URL}/resoluciones`,
-        params,
-      }),
-    }),
     getResolucionesPeriodo: build.query({
       query: () => ({
         url: `${API_URL}/resolucionesperiodo`,
@@ -24,6 +18,5 @@ const resolucionesApi = api.injectEndpoints({
 
 export const {
   useGetResolucionesQuery,
-  useGetResolucionesByParamsQuery,
   useGetResolucionesPeriodoQuery,
 } = resolucionesApi;

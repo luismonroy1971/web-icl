@@ -32,7 +32,7 @@ export const SectionBanner: FC<Props> = ({
           loaded ? 'opacity-100' : 'opacity-0'
         } duration-2000 ease-in-out`}
       >
-        <div className="flex flex-col justify-center items-start px-20 gap-4 sm:w-1/2">
+        <div className="flex flex-col justify-center items-start px-20 gap-4 sm:w-2/3">
           <p
             className={`text-xl text-white font-acto font-extralight -mb-4 ${
               loaded ? 'opacity-100' : 'opacity-0'
