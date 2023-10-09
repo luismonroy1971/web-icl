@@ -2,18 +2,24 @@ import React from 'react';
 import { useGetResolucionesQuery } from '../../redux/reduxQuery/resoluciones';
 import { Table } from '../Table';
 import { Button } from '../Button';
-import { useGetDirectivasPeriodoQuery, useGetDirectivasQuery } from '../../redux/reduxQuery/directivas';
+import {
+  useGetDirectivasPeriodoQuery,
+  useGetDirectivasQuery,
+} from '../../redux/reduxQuery/directivas';
 import { Controller, useForm } from 'react-hook-form';
-import { useGetTiposDocumentoQuery } from '../../redux/reduxQuery/utils';
+import { useGetAreasQuery, useGetTiposDocumentoQuery } from '../../redux/reduxQuery/utils';
 import { CustomSelect } from '../Select';
+import { forEach } from 'lodash';
 
 const GestionNormativa = () => {
   const form = useForm();
+  const [params, setParams] = React.useState('');
   const {
     data: gestionNormativaData,
     isLoading,
     isError,
-  } = useGetDirectivasQuery('');
+    refetch: refetchGestionNormativa,
+  } = useGetDirectivasQuery(params);
   const {
     data: dataTiposDocumento,
     isLoading: isLoadingTiposDocumento,
@@ -24,6 +30,27 @@ const GestionNormativa = () => {
     isLoading: isLoadingPeriodosDirectivas,
     isError: isErrorPeriodosDirectivas,
   } = useGetDirectivasPeriodoQuery('');
+
+  const {
+    data: dataAreas,
+    isLoading: isLoadingAreas,
+    isError: isErrorAreas,
+  } = useGetAreasQuery('');
+
+  const handleSubmit = form.handleSubmit((data) => {
+    data.id_tipo_documento = data.id_tipo_documento?.value || '';
+    data.periodo_resolucion = data.periodo_resolucion?.value || '';
+    data.id_area = data.id_area?.value || '';
+    forEach(data, (value, key) => {
+      if (value === '' || value === null || value === undefined) {
+        delete data[key];
+      }
+    });
+    const params = new URLSearchParams(data).toString();
+    setParams(params);
+    refetchGestionNormativa();
+  });
+
   return gestionNormativaData ? (
     <>
       <h3 className="text-4xl text-left mb-4 font-acto font-primary text-primary">
@@ -33,7 +60,7 @@ const GestionNormativa = () => {
         A continuación, se presenta un listado detallado de las directivas
         emitidas por nuestra entidad:
       </p>
-      <div className="flex gap-4">
+      <div className="flex gap-4 items-center">
         <Controller
           name="id_tipo_documento"
           control={form.control}
@@ -52,7 +79,7 @@ const GestionNormativa = () => {
           )}
         />
         <Controller
-          name="periodo"
+          name="periodo_resolucion"
           control={form.control}
           render={({ field }) => (
             <CustomSelect
@@ -75,9 +102,9 @@ const GestionNormativa = () => {
             <CustomSelect
               {...field}
               id="id_area"
-              options={gestionNormativaData?.map((area: any) => ({
-                value: area.id_area,
-                label: area.area,
+              options={dataAreas?.map((area: any) => ({
+                value: area.id,
+                label: area.descripcion_area,
               }))}
               label="Área"
               placeholder="Filtrar por área"
@@ -85,6 +112,21 @@ const GestionNormativa = () => {
             />
           )}
         />
+        <div className="h-fit flex gap-2 items-center">
+          <Button onClick={handleSubmit}>Buscar</Button>
+          <Button
+            color="border border-primary"
+            onClick={() => {
+              form.setValue('id_tipo_documento', '');
+              form.setValue('periodo_resolucion', '');
+              form.setValue('id_area', '');
+              setParams('');
+              refetchGestionNormativa();
+            }}
+          >
+            Limpiar
+          </Button>
+        </div>
       </div>
       <Table
         columns={[

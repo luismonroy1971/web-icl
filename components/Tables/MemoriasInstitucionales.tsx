@@ -7,6 +7,7 @@ import {
 } from '../../redux/reduxQuery/memoriasInstitucionales';
 import { Controller, useForm } from 'react-hook-form';
 import { CustomSelect } from '../Select';
+import { forEach } from 'lodash';
 
 const MemoriasInstitucionales = () => {
   const form = useForm();
@@ -24,7 +25,13 @@ const MemoriasInstitucionales = () => {
   } = useGetMemoriasPeriodoQuery('');
   const handleSubmit = form.handleSubmit((data) => {
     data.periodo_memoria = data.periodo_memoria?.value || '';
+    forEach(data, (value, key) => {
+      if (value === '' || value === null || value === undefined) {
+        delete data[key];
+      }
+    });
     const params = new URLSearchParams(data).toString();
+
     setParams(params);
     refetchMemoriasInstitucionales();
   });

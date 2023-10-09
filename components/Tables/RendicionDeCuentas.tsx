@@ -8,19 +8,34 @@ import {
 } from '../../redux/reduxQuery/rendiciones';
 import { Controller, useForm } from 'react-hook-form';
 import { CustomSelect } from '../Select';
+import { forEach } from 'lodash';
 
 const RendicionDeCuentas = () => {
   const form = useForm();
+  const [params, setParams] = React.useState('');
   const {
     data: normasEmitidas,
     isLoading,
     isError,
-  } = useGetRendicionesQuery('');
+    refetch: refetchRendiciones,
+  } = useGetRendicionesQuery(params);
   const {
     data: dataPeriodosRendiciones,
     isLoading: isLoadingPeriodosRendiciones,
     isError: isErrorPeriodosRendiciones,
   } = useGetRendicionesPeriodoQuery('');
+
+  const handleSubmit = form.handleSubmit((data) => {
+    data.periodo_rendicion = data.periodo_rendicion?.value || '';
+    forEach(data, (value, key) => {
+      if (value === '' || value === null || value === undefined) {
+        delete data[key];
+      }
+    });
+    const params = new URLSearchParams(data).toString();
+    setParams(params);
+    refetchRendiciones();
+  });
   return normasEmitidas ? (
     <>
       <p className="text-lg text-left mb-4 font-lato">
@@ -29,12 +44,12 @@ const RendicionDeCuentas = () => {
       </p>
       <div className="flex gap-4">
         <Controller
-          name="Año"
+          name="periodo_rendicion"
           control={form.control}
           render={({ field }) => (
             <CustomSelect
               {...field}
-              id="periodo"
+              id="periodo_rendicion"
               options={dataPeriodosRendiciones?.map((periodo: any) => ({
                 value: periodo,
                 label: periodo,
@@ -45,6 +60,19 @@ const RendicionDeCuentas = () => {
             />
           )}
         />
+        <div className="flex w-fit gap-4 h-fit justify-end items-end my-auto">
+          <Button onClick={handleSubmit}>Buscar</Button>
+          <Button
+            color="border border-primary text-primary"
+            onClick={() => {
+              form.setValue('periodo_rendicion', '');
+              setParams('');
+              refetchRendiciones();
+            }}
+          >
+            Limpiar
+          </Button>
+        </div>
       </div>
       <Table
         columns={[
