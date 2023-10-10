@@ -27,6 +27,7 @@ const customStyles = {
     padding: 0,
     lineHeight: 0,
     color: '#ADB5BD',
+    paddingRight: '0.5rem',
   }),
   singleValue: (provided: any) => {
     return {

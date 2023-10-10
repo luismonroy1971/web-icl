@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useAsyncDebounce } from 'react-table';
 
 interface InputProps {
   required?: boolean;
@@ -69,23 +68,6 @@ export const Label = styled.label<LabelProps>`
   position: relative;
   flex-direction: column;
   width: ${({ width }) => width || '18.75rem'};
-`;
-const PasswordIcon = styled.div<IconProps>`
-  background-image: ${({ setIcon }) => `url(${setIcon})`};
-  background-repeat: no-repeat;
-  height: 20px;
-  width: 20px;
-  position: absolute;
-  right: 2%;
-  top: 60%;
-`;
-const InputInnerActionSection = styled.div`
-  position: absolute;
-  z-index: 2;
-  right: 1%;
-  top: 20%;
-  width: 20px
-  height: 20px;
 `;
 
 export const Input = React.forwardRef<any, InputProps>(

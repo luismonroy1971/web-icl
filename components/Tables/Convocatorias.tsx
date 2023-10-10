@@ -112,12 +112,12 @@ const Convocatorias = () => {
                 </span>
               </div>
             ),
-            width: 120,
+            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
           },
           {
             Header: 'Descripción de convocatoria',
             accessor: 'descripcion_convocatoria',
-            width: 320,
+            width: window.innerWidth > 768 ? window.innerWidth * 0.2 : 360,
           },
           {
             Header: 'Aviso',
@@ -136,7 +136,7 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
-            width: 100,
+            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
           },
           {
             Header: 'Resultado de Evaluación Curricular',
@@ -158,7 +158,7 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
-            width: 140,
+            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
           },
           {
             Header: 'Resultado de Examen Virtual',
@@ -180,7 +180,7 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
-            width: 140,
+            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
           },
           {
             Header: 'Resultado de Entrevista Virtual',
@@ -202,7 +202,7 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
-            width: 140,
+            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
           },
           {
             Header: 'Resultado final',
@@ -221,18 +221,18 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
-            width: 140,
+            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
           },
           {
             Header: 'Estado de convocatoria',
             Cell: ({ row }: any) => (
-              <div className="flex items-center justify-center text-center w-full my-auto h-full">
+              <div className="flex items-center w-full my-auto h-full">
                 <span className="text-sm font-lato-bold my-auto h-full">
                   {row.original.estado_convocatoria}
                 </span>
               </div>
             ),
-            width: 100,
+            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
           },
         ]}
         data={normasEmitidas}

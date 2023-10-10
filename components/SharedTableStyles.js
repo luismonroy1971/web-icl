@@ -27,13 +27,14 @@ export const TableStyle = styled.table`
 `;
 export const TableH = styled.th`
   text-align: left;
-  padding-bottom: 1rem;
+  padding: 1rem;
+  padding-top: 0;
 `;
 export const TableData = styled.td`
   align-items: center;
   display: flex;
   height: fit-content;
-  padding: 1rem 0;
+  padding: 1rem;
 `;
 export const TableButtonsWrapper = styled.div`
   display: flex;

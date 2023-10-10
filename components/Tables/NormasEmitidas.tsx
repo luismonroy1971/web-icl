@@ -137,7 +137,7 @@ const NormasEmitidas = () => {
           {
             Header: 'N° de documento',
             Cell: ({ row }: any) => (
-              <div className="flex items-center">
+              <div className="flex items-center font-lato">
                 <span className="text-sm font-medium">
                   {row.original.numero_resolucion}-
                   {row.original.periodo_resolucion}-{row.original.id_area}
@@ -145,13 +145,14 @@ const NormasEmitidas = () => {
                 </span>
               </div>
             ),
+            width: window.outerWidth * 0.15,
           },
           {
             Header: 'Sumilla',
             accessor: 'sumilla_resolucion',
-            width: 800,
+            width: window.outerWidth * 0.53,
             Cell: ({ row }: any) => (
-              <div className="flex items-center">
+              <div className="flex items-center font-lato">
                 <span className="text-sm font-medium">
                   {row.original.sumilla_resolucion}
                 </span>
@@ -178,6 +179,7 @@ const NormasEmitidas = () => {
                 )}
               </div>
             ),
+            width: window.outerWidth * 0.15
           },
         ]}
         data={normasEmitidas}

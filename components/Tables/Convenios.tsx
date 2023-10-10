@@ -99,7 +99,7 @@ const Convenios = () => {
         A continuación, se presenta un listado detallado de los convenios
         suscritos:
       </p>
-      <div className="flex gap-4">
+      <div className="flex sm:flex-row flex-col gap-4">
         <Controller
           name="departamento"
           control={form.control}
@@ -152,7 +152,7 @@ const Convenios = () => {
           )}
         />
       </div>
-      <div className="flex gap-4">
+      <div className="flex sm:flex-row flex-col gap-4 mb-4">
         <Controller
           name="año"
           control={form.control}
@@ -218,27 +218,33 @@ const Convenios = () => {
           {
             Header: 'Descripción',
             accessor: 'descripcion_convenio',
-            width: 600,
             canFilter: false,
+            width: window.outerWidth * 0.63,
           },
           {
             Header: 'Ver documento',
             canFilter: false,
             Cell: ({ row }: any) => (
-              <div className="flex items-center">
+              <div className="flex items-center w-full">
                 {row.original.url_documento_convenio === '' ? (
                   <span className="text-sm font-medium ">No hay documento</span>
                 ) : (
-                  <Button
-                    onClick={() =>
-                      window.open(row.original.url_documento_convenio, '_blank')
-                    }
-                  >
-                    Ver documento
-                  </Button>
+                  <div className="flex items-center">
+                    <Button
+                      onClick={() =>
+                        window.open(
+                          row.original.url_documento_convenio,
+                          '_blank'
+                        )
+                      }
+                    >
+                      Ver documento
+                    </Button>
+                  </div>
                 )}
               </div>
             ),
+            width: window.innerWidth * 0.2,
           },
         ]}
         data={normasEmitidas}

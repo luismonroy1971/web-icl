@@ -381,7 +381,7 @@ export default function LeyDeMarcoLegal({ slug }: any) {
             title={item.title}
             description={item.description}
           />
-          <div className="mx-20 py-12">
+          <div className="sm:px-20 px-8 py-12">
             <div className="flex justify-between gap-12">
               <h3 className="font-acto text-4xl text-primary">
                 {item.titleContent}

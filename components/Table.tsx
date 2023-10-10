@@ -102,9 +102,9 @@ export const Table = ({
                     <tr
                       {...headerGroup.getHeaderGroupProps()}
                       style={{
+                        width: 'max-content',
                         display: 'flex',
-                        justifyContent: 'space-between',
-                        paddingLeft: '1rem',
+                        justifyContent: 'space-between',                        paddingLeft: '1rem',
                         paddingRight: '1rem',
                       }}
                       key={index}
@@ -113,7 +113,7 @@ export const Table = ({
                         return (
                           <TableH
                             style={{
-                              width: column.width || 'auto',
+                              width: column.width || '100%',
                               cursor: column.canFilter ? 'pointer' : 'default',
                             }}
                             className="text-left pb-1 pr-2"
@@ -159,6 +159,7 @@ export const Table = ({
                           paddingLeft: '1rem',
                           paddingRight: '1rem',
                           height: 'fit-content',
+                          width: 'max-content',
                         }}
                         key={row.id}
                       >
@@ -171,7 +172,8 @@ export const Table = ({
                               key={index}
                               data-label={cell.column.Header}
                               style={{
-                                width: cell.column.width || 'auto', // Provide a fallback if width is not set
+                                width: cell.column.width || '100%', // Provide a fallback if width is not set
+                                paddingRight: '1rem',
                               }}
                               className="h-20 flex items-center justify-center"
                             >
@@ -182,7 +184,7 @@ export const Table = ({
                               key={index}
                               data-label={cell.column.Header}
                               style={{
-                                width: cell.column.width,
+                                width: cell.column.width || '100%', // Provide a fallback if width is not set
                               }}
                             >
                               {RenderedCell}
@@ -199,7 +201,7 @@ export const Table = ({
                         justifyContent: 'space-between',
                         borderBottom: `2px solid #F0F0F0`,
                         paddingLeft: '1rem',
-                        paddingRight: '1rem',
+                        paddingRight: '1rem'
                       }}
                     >
                       <td
