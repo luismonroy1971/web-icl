@@ -9,7 +9,6 @@ interface LayoutProps {
 
 export const Layout: FC<LayoutProps> = ({ children }) => {
   const [openMenu, setOpenMenu] = React.useState(false);
-  console.log(openMenu);
   return (
     <div>
       <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu} />

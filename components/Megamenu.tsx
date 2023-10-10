@@ -307,7 +307,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
         >
           {categories.map((category) => {
             return (
-              <div key={category.id} className="my-6 ml-4">
+              <div key={category.id} className="my-6 ml-4" id={category.slug}>
                 <div
                   className="cursor-pointer"
                   onClick={() => {

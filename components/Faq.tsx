@@ -40,13 +40,13 @@ const FAQComponent: React.FC<FAQProps> = ({ items }) => {
                 d="M2 17.8906L9 10.0829"
                 stroke={`${openIndex === index ? '#fff' : '#16236E'}`}
                 strokeWidth="3"
-                stroke-linecap="round"
+                strokeLinecap="round"
               />
               <path
                 d="M9 9.80786L2 2.00017"
                 stroke={`${openIndex === index ? '#fff' : '#16236E'}`}
                 strokeWidth="3"
-                stroke-linecap="round"
+                strokeLinecap="round"
               />
             </svg>
           </div>

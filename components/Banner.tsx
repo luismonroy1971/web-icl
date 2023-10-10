@@ -12,13 +12,15 @@ interface SlideProps {
   align: string;
   buttonText?: string;
   imageCaption?: string;
+  link?: string;
 }
 
 interface BannerProps {
   slides: SlideProps[];
+  setOpenMenu: (value: boolean) => void;
 }
 
-export const Banner: FC<BannerProps> = ({ slides }) => {
+export const Banner: FC<BannerProps> = ({ slides, setOpenMenu }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState<string | null>(null);
 
@@ -44,11 +46,16 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
         </p>
 
         {slide.buttonText && (
-          <a href="#nuestros-programas">
-            <button className="bg-primary px-[12px] py-[7px] rounded-md mt-[12px] text-white hover:bg-pink hover:text-white sm:text-[1.1vw] text-sm shadow-md font-lato-bold">
+          <Link href={slide.link || '/'}>
+            <div
+              className="bg-primary px-[12px] py-[7px] rounded-md mt-[12px] text-white hover:bg-pink hover:text-white sm:text-[1.1vw] text-sm shadow-md font-lato-bold w-fit"
+              onClick={() => {
+                slide.link?.includes('#') ? setOpenMenu(true) : null;
+              }}
+            >
               {slides[currentSlide].buttonText}
-            </button>
-          </a>
+            </div>
+          </Link>
         )}
       </>
     );
@@ -71,27 +78,6 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
     return direction === 'next' ? 'slide-leave-next' : 'slide-leave-prev';
   };
 
-  const getTextColor = (color: string) => {
-    switch (color) {
-      case 'white':
-        return 'text-white';
-      case 'black':
-        return 'text-black';
-      default:
-        return 'text-white';
-    }
-  };
-
-  const getAlign = (align: string) => {
-    switch (align) {
-      case 'left':
-        return 'items-start text-left';
-      case 'right':
-        return 'absolute left-1/2 top-0 text-left';
-      default:
-        return 'items-center';
-    }
-  };
   const imageClass = `bg-image-${currentSlide + 1}`;
 
   return (
@@ -122,7 +108,10 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
             }}
           >
             <div className="sm:w-[10vw] w-[5vw] flex justify-end">
-              <button className="sm:w-5 w-3" onClick={prevSlide}>
+              <button
+                className="sm:w-10 sm:p-1 sm:px-3 w-3"
+                onClick={prevSlide}
+              >
                 <svg
                   viewBox="0 0 17 35"
                   fill="none"
@@ -134,13 +123,13 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                     d="M2 18.0107L15 32.5107"
                     stroke="white"
                     strokeWidth="4"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                   />
                   <path
                     d="M15 3L2 17.5"
                     stroke="white"
                     strokeWidth="4"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                   />
                 </svg>
               </button>
@@ -153,7 +142,10 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
               </div>
             </div>
             <div className="sm:w-[10vw] w-[5vw] flex justify-start">
-              <button className="rotate-180 sm:w-5 w-3" onClick={nextSlide}>
+              <button
+                className="sm:w-10 sm:p-1 sm:px-3 w-3 rotate-180"
+                onClick={nextSlide}
+              >
                 <svg
                   viewBox="0 0 17 35"
                   fill="none"
@@ -165,13 +157,13 @@ export const Banner: FC<BannerProps> = ({ slides }) => {
                     d="M2 18.0107L15 32.5107"
                     stroke="white"
                     strokeWidth="4"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                   />
                   <path
                     d="M15 3L2 17.5"
                     stroke="white"
                     strokeWidth="4"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                   />
                 </svg>
               </button>

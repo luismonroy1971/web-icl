@@ -134,7 +134,7 @@ export default function Home() {
       </Head>
       <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu} />
       <MegaMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
-      <Banner
+      <Banner setOpenMenu={setOpenMenu}
         slides={[
           {
             id: 0,
@@ -144,6 +144,7 @@ export default function Home() {
               'Tu aliado en la gestión catastral y territorial, facilitando un desarrollo urbano sostenible y planificado.',
             image: '/images/pagina-1/banner-1.jpg',
             buttonText: 'Accede a nuestros servicios',
+            link: '/#servicios',
             background: 'bg-primary',
             align: 'text-left',
           },
@@ -157,6 +158,7 @@ export default function Home() {
             buttonText: 'Conoce a nuestro equipo',
             background: 'bg-primary',
             align: 'text-left',
+            link: '/sobre-nosotros/funcionarios'
           },
           {
             id: 2,
@@ -167,6 +169,7 @@ export default function Home() {
             buttonText: 'Ver Convenios',
             background: 'bg-primary',
             align: 'text-left',
+            link: '/marco-legal/convenios-institucionales'
           },
           {
             id: 3,
