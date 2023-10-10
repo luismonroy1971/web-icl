@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import CardFuncionario from '../../components/CardFuncionario';
 import { SectionBanner } from '../../components/SectionBanner';
 import { Layout } from '../../components/Layout';
