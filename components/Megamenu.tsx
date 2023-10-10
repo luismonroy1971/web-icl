@@ -402,7 +402,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
             firstChildren?.map((category: any) => (
               <div key={category.id} className="my-4 ml-4">
                 {category.link ? (
-                  <Link href={category.link}>
+                  <Link href={category.link} target={category.link.includes('http') ? '_blank' : ''}>
                     <div
                       className="cursor-pointer flex flex-col gap-2"
                       onClick={() => {

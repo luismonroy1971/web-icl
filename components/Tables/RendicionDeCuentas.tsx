@@ -78,17 +78,22 @@ const RendicionDeCuentas = () => {
         columns={[
           {
             Header: 'Nombre de la rendición',
-            Cell: ({ row }: any) => (
-              <div className="flex items-center">
-                <span className="text-sm font-medium">
-                  {row.original.descripcion_rendicion}
-                </span>
-              </div>
-            ),
-            width: 800,
+            accessor: 'descripcion_rendicion',
+            width:
+              window.innerWidth > 768 && window.innerWidth < 1800
+                ? window.innerWidth * 0.6
+                : window.innerWidth > 1800
+                ? window.innerWidth * 0.68
+                : window.innerWidth * 0.4,
           },
           {
             Header: 'Ver documento',
+            width:
+              window.innerWidth > 768 && window.innerWidth < 1800
+                ? window.innerWidth * 0.23
+                : window.innerWidth > 1800
+                ? window.innerWidth * 0.2
+                : window.innerWidth * 0.6,
             Cell: ({ row }: any) => (
               <div className="flex items-center">
                 {row.original.url_rendicion === '' ? (
@@ -114,10 +119,10 @@ const RendicionDeCuentas = () => {
     <div className="flex justify-center items-center h-64">
       {isError ? (
         <span className="text-red-500">
-          Ocurrió un error al cargar las normas emitidas
+          Ocurrió un error al cargar las rendiciones de cuentas
         </span>
       ) : (
-        <span className="text-blue-500">Cargando normas emitidas...</span>
+        <span className="text-blue-500">Cargando rendiciones de cuentas...</span>
       )}
     </div>
   );

@@ -51,7 +51,7 @@ const Accordion: React.FC<AccordionProps> = ({ items }) => {
             </svg>
           </div>
           {openIndex === index && (
-            <div className="py-2 font-lato px-8 text-left border border-[#D9D9D9]">{item.answer}</div>
+            <div className="py-2 font-lato px-8 text-justify border border-[#D9D9D9]">{item.answer}</div>
           )}
         </div>
       ))}

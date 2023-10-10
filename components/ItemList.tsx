@@ -36,7 +36,7 @@ export const ItemList: FC<ItemListProps> = ({
         <span className="text-xs font-normal">UIT</span>
       </div> */}
       <div className="flex justify-end w-3/12">
-        {parseInt(monto_soles) > 0 && (
+        {parseFloat(monto_soles) > 0 && (
           <span className="text-md font-medium font-lato-bold">S/ {monto_soles}</span>
         )}
       </div>

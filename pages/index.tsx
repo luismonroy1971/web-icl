@@ -181,6 +181,7 @@ export default function Home() {
             buttonText: 'Ver Capacitaciones',
             background: 'bg-primary',
             align: 'text-left',
+            link: '/icl-capacitaciones'
           },
           {
             id: 4,
@@ -192,6 +193,7 @@ export default function Home() {
             buttonText: 'Ver Recursos',
             background: 'bg-primary',
             align: 'text-left',
+            link: '/#recursos'
           },
         ]}
       />

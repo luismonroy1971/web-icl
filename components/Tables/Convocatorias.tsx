@@ -243,10 +243,10 @@ const Convocatorias = () => {
     <div className="flex justify-center items-center h-64">
       {isError ? (
         <span className="text-red-500">
-          Ocurrió un error al cargar las normas emitidas
+          Ocurrió un error al cargar las convocatorias
         </span>
       ) : (
-        <span className="text-blue-500">Cargando normas emitidas...</span>
+        <span className="text-blue-500">Cargando convocatorias...</span>
       )}
     </div>
   );

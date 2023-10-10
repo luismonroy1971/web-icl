@@ -77,7 +77,10 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
         <div className="flex space-x-4 sm:mx-20 mx-2">
           <div className="my-auto">
             <Link href="/">
-              <div className="justify-center items-center  text-gray-700 hover:text-gray-900 my-auto w-16 sm:w-40">
+              <div
+                className="justify-center items-center  text-gray-700 hover:text-gray-900 my-auto w-16 sm:w-40"
+                onClick={() => setOpenMenu(false)}
+              >
                 <Image
                   src="/images/institutoCatastral.jpg"
                   alt="logo"

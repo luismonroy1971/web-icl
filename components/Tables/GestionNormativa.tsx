@@ -139,7 +139,8 @@ const GestionNormativa = () => {
               <div className="flex items-center">
                 <span className="text-sm font-medium">
                   {row.original.numero_resolucion}-
-                  {row.original.periodo_resolucion}-{row.original.id_area}
+                  {row.original.periodo_resolucion}-
+                  {row.original.abreviacion_area}
                   -ICL/MML
                 </span>
               </div>
@@ -162,9 +163,7 @@ const GestionNormativa = () => {
             Cell: ({ row }: any) => (
               <div className="flex items-center">
                 {row.original.url_documento_resolucion === '' ? (
-                  <span className="text-sm font-medium ">
-                    No hay documento
-                  </span>
+                  <span className="text-sm font-medium ">No hay documento</span>
                 ) : (
                   <Button
                     onClick={() =>
@@ -189,10 +188,10 @@ const GestionNormativa = () => {
     <div className="flex justify-center items-center h-64">
       {isError ? (
         <span className="text-red-500">
-          Ocurrió un error al cargar las normas emitidas
+          Ocurrió un error al cargar las directivas
         </span>
       ) : (
-        <span className="text-blue-500">Cargando normas emitidas...</span>
+        <span className="text-blue-500">Cargando directivas...</span>
       )}
     </div>
   );

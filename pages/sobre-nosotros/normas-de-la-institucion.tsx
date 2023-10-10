@@ -13,18 +13,18 @@ const NormasDeLaInstitucion = () => {
       {
         Header: 'Nombre de documento',
         accessor: 'denominacion_norma', // <-- This is the string accessor
-        width: 400,
+        width: window.innerWidth > 768 ? window.innerWidth * 0.53 : 200,
       },
       {
         Header: 'Tipo de documento',
         accessor: 'tipo_norma',
         canFilter: true,
-        width: 200,
+        width: window.innerWidth > 768 ? window.innerWidth * 0.2 : window.innerWidth > 1800 ? window.innerWidth * 0.4 : 200,
       },
       {
         Header: 'Ver documento',
-        width: 200,
         canFilter: false,
+        width: window.innerWidth > 768 ? window.innerWidth * 0.2 : window.innerWidth > 1800 ? window.innerWidth * 0.4 : 200,
         Cell: ({ row }: any) =>
           row.original.url_norma === '' ? (
             <span className="text-sm font-medium ">No hay documento</span>

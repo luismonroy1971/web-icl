@@ -14,7 +14,9 @@ export default function Servicios({ data }: any) {
     error: errorServicio,
     refetch: refetchServicio,
   } = useGetServicioQuery(data.id.toUpperCase());
-  
+  const dataServicioFiltered = dataServicio?.filter(
+    (item: any) => item.flag_seleccion === '1'
+  );
   const faqs = [
     {
       question: '¿Cómo puedo solicitar un procedimiento administrativo?',
@@ -47,7 +49,7 @@ export default function Servicios({ data }: any) {
             Calculadora del servicio {data.id.toUpperCase()}
           </h3>
           <div>
-            <List items={dataServicio} />
+            <List items={dataServicioFiltered} />
           </div>
         </div>
         <div className="mx-8 py-12">
