@@ -16,7 +16,7 @@ export const News: FC<NewsType> = ({
     .slice(0, 45)
     .join(' ');
   return (
-    <div className="sm:flex gap-4 border-2 border-primary rounded-md h-64">
+    <div className="sm:flex gap-4 border-2 border-primary rounded-md sm:h-64">
       <div className="h-full w-full">
         <img
           src={url_imagen_portada}
