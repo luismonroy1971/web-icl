@@ -27,16 +27,16 @@ export default function Proyecto({ proyecto }: any) {
         description="Desde desarrollos recientes hasta seminarios y talleres, aquí encontrarás todo lo que necesitas saber para estar al tanto de nuestras actividades."
         caption="Proyectos"
       />
-      <div className="flex flex-col items-start justify-center h-full p-4 ">
-        <h3 className="my-4 text-4xl font-semibold text-left font-acto text-primary">
+      <div className="flex flex-col items-start justify-center h-full sm:px-20 py-12 px-8">
+        <h3 className="text-4xl font-semibold text-left font-acto text-primary mb-4">
           {project.title}
         </h3>
-        {/* <img
+        <Image
           src={project.image}
           alt={project.title}
-          className="sm:w-5/12 h-full"
-        /> */}
-        <Image src={project.image} alt={project.title} width={500} height={500} />
+          width={500}
+          height={500}
+        />
 
         <div className="my-4 text-xl  text-left font-lato ">
           {project.content()}

@@ -112,12 +112,22 @@ const Convocatorias = () => {
                 </span>
               </div>
             ),
-            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
+            width:
+              window.innerWidth > 768 && window.innerWidth < 1800
+                ? window.innerWidth * 0.09
+                : window.innerWidth > 1800
+                ? window.innerWidth * 0.08
+                : 120,
           },
           {
             Header: 'Descripción de convocatoria',
             accessor: 'descripcion_convocatoria',
-            width: window.innerWidth > 768 ? window.innerWidth * 0.2 : 360,
+            width:
+              window.innerWidth > 768 && window.innerWidth < 1800
+                ? window.innerWidth * 0.16
+                : window.innerWidth > 1800
+                ? window.innerWidth * 0.34
+                : 120,
           },
           {
             Header: 'Aviso',
@@ -136,7 +146,12 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
-            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
+            width:
+              window.innerWidth > 768 && window.innerWidth < 1800
+                ? window.innerWidth * 0.08
+                : window.innerWidth > 1800
+                ? window.innerWidth * 0.06
+                : 120,
           },
           {
             Header: 'Resultado de Evaluación Curricular',
@@ -158,7 +173,12 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
-            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
+            width:
+              window.innerWidth > 768 && window.innerWidth < 1800
+                ? window.innerWidth * 0.1
+                : window.innerWidth > 1800
+                ? window.innerWidth * 0.08
+                : 120,
           },
           {
             Header: 'Resultado de Examen Virtual',
@@ -180,7 +200,12 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
-            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
+            width:
+              window.innerWidth > 768 && window.innerWidth < 1800
+                ? window.innerWidth * 0.1
+                : window.innerWidth > 1800
+                ? window.innerWidth * 0.08
+                : 120,
           },
           {
             Header: 'Resultado de Entrevista Virtual',
@@ -202,7 +227,12 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
-            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
+            width:
+              window.innerWidth > 768 && window.innerWidth < 1800
+                ? window.innerWidth * 0.1
+                : window.innerWidth > 1800
+                ? window.innerWidth * 0.08
+                : 120,
           },
           {
             Header: 'Resultado final',
@@ -221,7 +251,12 @@ const Convocatorias = () => {
                 )}
               </div>
             ),
-            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
+            width:
+              window.innerWidth > 768 && window.innerWidth < 1800
+                ? window.innerWidth * 0.1
+                : window.innerWidth > 1800
+                ? window.innerWidth * 0.08
+                : 120,
           },
           {
             Header: 'Estado de convocatoria',
@@ -232,7 +267,12 @@ const Convocatorias = () => {
                 </span>
               </div>
             ),
-            width: window.innerWidth > 768 ? window.innerWidth * 0.1 : 120,
+            width:
+              window.innerWidth > 768 && window.innerWidth < 1800
+                ? window.innerWidth * 0.1
+                : window.innerWidth > 1800
+                ? window.innerWidth * 0.08
+                : 120,
           },
         ]}
         data={normasEmitidas}

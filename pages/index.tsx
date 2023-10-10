@@ -273,7 +273,7 @@ export default function Home() {
               Mantente al día con las últimas noticias y eventos del Instituto
               Catastral de Lima.
             </p>
-            <div className="flex flex-col gap-6 justify-center mt-8 w-11/12 mx-auto">
+            <div className="flex flex-col gap-6 justify-center mt-8 sm:w-[80vw] 2xl:w-[60vw] mx-auto">
               {newsData4?.map(
                 (news: NewsType, index: Key | null | undefined) => (
                   <News key={index} {...news} />
