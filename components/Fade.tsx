@@ -3,32 +3,39 @@ import { useState, useRef, useEffect, FC } from 'react';
 interface RevealOnScrollProps {
   children: React.ReactNode;
 }
+
 export const RevealOnScroll: FC<RevealOnScrollProps> = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onWindScroll = () => {
-      const element = ref.current as any;
-      if (element) {
-        const { top } = element.getBoundingClientRect();
-        const isVisible = top < window.innerHeight;
-        setIsVisible(isVisible);
-      }
-    };
+    if (!ref.current) return;
 
-    window.addEventListener('scroll', onWindScroll);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      }
+    );
+
+    observer.observe(ref.current);
+
+    // Initial check
+    const { top } = ref.current.getBoundingClientRect();
+    if (top < window.innerHeight) {
+      setIsVisible(true);
+    }
+
     return () => {
-      window.removeEventListener('scroll', onWindScroll);
+      if (ref.current) observer.unobserve(ref.current);
     };
   }, []);
 
-  const classes = `transition-opacity duration-[2000ms] ease-in-out
-        ${isVisible ? 'opacity-100' : 'opacity-0'}`;
+  const classes = `transition-opacity duration-[2000ms] ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`;
 
-  return (
-    <div ref={ref} className={classes}>
-      {children}
-    </div>
-  );
+  return <div ref={ref} className={classes}>{children}</div>;
 };
