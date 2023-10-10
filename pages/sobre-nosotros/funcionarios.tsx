@@ -11,7 +11,7 @@ export interface Funcionario {
   link: string;
 }
 
-const funcionarios = () => {
+export default function Funcionarios() {
   return (
     <Layout>
       <div>
@@ -20,7 +20,7 @@ const funcionarios = () => {
           caption="Sobre nosotros"
           description="Presentamos a nuestros funcionarios comprometidos con la excelencia y el servicio público en el Instituto Catastral de Lima."
         />
-        <div className="flex flex-col mx-8 py-12">
+        <div className="flex flex-col mx-8 sm:mx-20 py-12">
           {funcionariosList?.map((funcionario, index) => (
             <CardFuncionario key={index} index={index} {...funcionario} />
           ))}
@@ -28,6 +28,4 @@ const funcionarios = () => {
       </div>
     </Layout>
   );
-};
-
-export default funcionarios;
+}

@@ -9,7 +9,7 @@ interface ProjectItemProps {
 
 export const ProjectItem: FC<ProjectItemProps> = ({ image, title, id }) => {
   return (
-    <div className="flex flex-col items-start justify-center h-full p-4  w-4/12">
+    <div className="flex flex-col items-start justify-center h-full sm:p-4 sm:w-4/12">
       <img src={image} alt={title} className="w-full h-full" />
       <h3 className="my-4 text-2xl font-semibold text-left font-acto text-primary">
         {title}

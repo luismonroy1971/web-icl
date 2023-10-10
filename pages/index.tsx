@@ -242,9 +242,6 @@ export default function Home() {
                 <div className="w-full mx-auto sm:mt-0 mt-4">
                   <Accordion items={faqItems} />
                 </div>
-                {/* <div className="flex flex-col w-72 justify-center mx-auto sm:mt-8">
-                <Button>Conoce más</Button>
-              </div> */}
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { SectionBanner } from '../../components/SectionBanner';
 import { Layout } from '../../components/Layout';
 
-const quienesSomos = () => {
+export default function QuienesSomos() {
   return (
     <Layout>
       <SectionBanner
@@ -72,6 +72,4 @@ const quienesSomos = () => {
       </div>
     </Layout>
   );
-};
-
-export default quienesSomos;
+}

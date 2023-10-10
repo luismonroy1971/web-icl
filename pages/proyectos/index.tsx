@@ -313,7 +313,7 @@ export default function Proyectos() {
         caption="Proyectos"
         description="Desde desarrollos recientes hasta seminarios y talleres, aquí encontrarás todo lo que necesitas saber para estar al tanto de nuestras actividades."
       />
-      <div className="flex flex-wrap justify-start px-8 py-12">
+      <div className="flex sm:flex-wrap sm:flex-row flex-col justify-start sm:px-20 px-8 py-12 gap-4 sm:gap-0">
         {projects.map((project: any) => (
           <ProjectItem
             key={project.title}

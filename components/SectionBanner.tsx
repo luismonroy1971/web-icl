@@ -58,7 +58,7 @@ export const SectionBanner: FC<Props> = ({
       </div>
 
       {titlePage && (
-        <div className="mx-8 py-12">
+        <div className="sm:mx-20 mx-8 py-12">
           <h3 className="font-acto text-4xl text-primary">
             {titlePage || title}
           </h3>

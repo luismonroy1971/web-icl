@@ -452,8 +452,8 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
             ))}
         </div>
       </div>
-      <div className="flex justify-start mt-4 w-full h-16 items-center px-20 border-t-2 border-white">
-        <p className="font-acto text-lg text-primary mr-12">Links de interés</p>
+      <div className="flex justify-start mt-4 w-full h-16 items-center sm:px-20 px-4 border-t-2 border-white">
+        <p className="font-acto text-lg text-primary sm:mr-12">Links de interés</p>
         <div className="flex flex-col gap-8 ml-4">
           <Link href="/contacto">
             <span className="text-primary text-2xl font-semibold hover:text-gray-900 cursor-pointer">

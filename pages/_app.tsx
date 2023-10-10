@@ -11,17 +11,15 @@ export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <Component {...pageProps} />
-        <Modal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          title="My Modal Title"
-        >
-          This is the content of the modal.
-        </Modal>
-      </Provider>
-    </QueryClientProvider>
+    <Provider store={store}>
+      <Component {...pageProps} />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="My Modal Title"
+      >
+        This is the content of the modal.
+      </Modal>
+    </Provider>
   );
 }

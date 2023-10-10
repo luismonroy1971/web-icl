@@ -1,19 +1,23 @@
 import Head from 'next/head';
 import { Layout } from '../../components/Layout';
-import { Banner } from '../../components/Banner';
 import React from 'react';
 import { useGetServicioQuery } from '../../redux/reduxQuery/servicios';
 import { List } from '../../components/List';
 import { SectionBanner } from '../../components/SectionBanner';
 import FAQComponent from '../../components/Faq';
+import { useRouter } from 'next/router';
 
-export default function Servicios({ data }: any) {
+export default function Servicios() {
+  const router = useRouter();
+  const { id } = router.query;
+  const idUpperCased = (id as string)?.toUpperCase();
   const [loaded, setLoaded] = React.useState(false);
+  const data = idUpperCased === 'TUPA' ? firstObj : secondObj;
   const {
     data: dataServicio,
     error: errorServicio,
     refetch: refetchServicio,
-  } = useGetServicioQuery(data.id.toUpperCase());
+  } = useGetServicioQuery(idUpperCased);
   const dataServicioFiltered = dataServicio?.filter(
     (item: any) => item.flag_seleccion === '1'
   );
@@ -75,33 +79,3 @@ const secondObj = {
     'Explora la variedad de servicios no exclusivos ofrecidos por el Instituto Catastral de Lima a través de nuestro portal TUSNE.',
   image: 'https://picsum.photos/200/300',
 };
-
-//if url is /servicios/1 then show firstObj else show secondObj
-
-export async function getStaticPaths() {
-  return {
-    paths: [
-      {
-        params: {
-          id: 'tupa',
-        },
-      },
-      {
-        params: {
-          id: 'tusne',
-        },
-      },
-    ],
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }: any) {
-  const { id } = params;
-  const data = id === 'tupa' ? firstObj : secondObj;
-  return {
-    props: {
-      data,
-    },
-  };
-}

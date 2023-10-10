@@ -3,7 +3,7 @@ import { SectionBanner } from '../../components/SectionBanner';
 import { Layout } from '../../components/Layout';
 import Image from 'next/image';
 
-const Objetivos = () => {
+export default function Objetivos() {
   return (
     <Layout>
       <SectionBanner
@@ -12,7 +12,7 @@ const Objetivos = () => {
         caption="Sobre nosotros"
         titlePage="Los objetivos generales del ICL son los siguientes:"
       />
-      <div className="mx-8 pb-12">
+      <div className="sm:px-20 px-8 pb-12">
         <div>
           <div className="flex gap-2 py-2">
             <Image
@@ -165,6 +165,4 @@ const Objetivos = () => {
       </div>
     </Layout>
   );
-};
-
-export default Objetivos;
+}

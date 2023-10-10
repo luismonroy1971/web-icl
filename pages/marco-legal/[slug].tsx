@@ -395,8 +395,8 @@ export default function LeyDeMarcoLegal({ slug }: any) {
                   <Image
                     src="/images/download.svg"
                     alt="download"
-                    width={30}
-                    height={30}
+                    width={20}
+                    height={20}
                   />
                   <span>{item.buttonText}</span>
                 </div>

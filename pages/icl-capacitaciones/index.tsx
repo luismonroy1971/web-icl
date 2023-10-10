@@ -79,7 +79,7 @@ export default function ICLCapacitaciones() {
         description="Desde desarrollos recientes hasta seminarios y talleres, aquí encontrarás todo lo que necesitas saber para estar al tanto de nuestras actividades."
         caption="ICL Capacitaciones"
       />
-      <div className="px-8 py-12 flex flex-col gap-8">
+      <div className="sm:px-20 px-8 py-12 flex flex-col gap-8">
         {capacitaciones?.map((capacitacion) => (
           <div
             key={capacitacion.id}
