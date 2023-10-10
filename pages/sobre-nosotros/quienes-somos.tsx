@@ -11,7 +11,7 @@ export default function QuienesSomos() {
         caption="Sobre nosotros"
         titlePage="Instituto Catastral de Lima"
       />
-      <div className="mx-8 pb-12">
+      <div className="sm:px-20 px-8 pb-12">
         <p className="text-justify text-lg font-lato">
           El Instituto Catastral de Lima – ICL es un organismo público
           descentralizado de la Municipalidad Metropolitana de Lima, creado el
