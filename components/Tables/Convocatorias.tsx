@@ -7,8 +7,8 @@ import {
 } from '../../redux/reduxQuery/convocatorias';
 import { Controller, useForm } from 'react-hook-form';
 import { CustomSelect } from '../Select';
-import { useGetTiposDocumentoQuery } from '../../redux/reduxQuery/utils';
 import { forEach } from 'lodash';
+import { useGetAreasQuery } from '../../redux/reduxQuery/utils';
 
 const Convocatorias = () => {
   const form = useForm();
@@ -20,10 +20,10 @@ const Convocatorias = () => {
     refetch: refetchConvocatorias,
   } = useGetConvocatoriasQuery(params);
   const {
-    data: dataTiposDocumento,
-    isLoading: isLoadingTiposDocumento,
-    isError: isErrorTiposDocumento,
-  } = useGetTiposDocumentoQuery('');
+    data: dataAreas,
+    isLoading: isLoadingAreas,
+    isError: isErrorAreas,
+  } = useGetAreasQuery('');
   const {
     data: dataPeriodosConvocatorias,
     isLoading: isLoadingPeriodosConvocatorias,
@@ -31,11 +31,11 @@ const Convocatorias = () => {
   } = useGetConvocatoriasPeriodoQuery('');
 
   const handleSubmit = form.handleSubmit((data) => {
-    data.id_tipo_documento = data.id_tipo_documento?.value || '';
+    data.id_area = data.id_area?.value || '';
     data.periodo_convocatoria = data.periodo_convocatoria?.value || '';
     forEach(data, (value, key) => {
       if (value === '' || value === null || value === undefined) {
-        delete data[key];
+        delete data[key]; 
       }
     });
     const params = new URLSearchParams(data).toString();
@@ -50,18 +50,18 @@ const Convocatorias = () => {
       </p>
       <div className="flex sm:flex-row flex-col gap-4">
         <Controller
-          name="id_tipo_documento"
+          name="id_area"
           control={form.control}
           render={({ field }) => (
             <CustomSelect
               {...field}
-              id="id_tipo_documento"
-              options={dataTiposDocumento?.map((tipoDocumento: any) => ({
-                value: tipoDocumento.id,
-                label: tipoDocumento.descripcion_tipo_documento,
+              id="id_area"
+              options={dataAreas?.map((area: any) => ({
+                value: area.id,
+                label: area.descripcion_area,
               }))}
-              label="Tipo de documento"
-              placeholder="Filtrar por tipo de documento"
+              label="Área"
+              placeholder="Filtrar por área"
               className="w-full mb-4"
             />
           )}
@@ -89,7 +89,7 @@ const Convocatorias = () => {
           <Button
             color="border border-primary text-primary"
             onClick={() => {
-              form.setValue('id_tipo_documento', '');
+              form.setValue('id_area', '');
               form.setValue('periodo_convocatoria', '');
               setParams('');
               refetchConvocatorias();
@@ -199,7 +199,7 @@ const Convocatorias = () => {
             ),
             width:
               window.innerWidth > 768 && window.innerWidth < 1800
-              ? window.innerWidth * 0.0999
+                ? window.innerWidth * 0.0999
                 : window.innerWidth > 1800
                 ? window.innerWidth * 0.08
                 : 120,
@@ -226,7 +226,7 @@ const Convocatorias = () => {
             ),
             width:
               window.innerWidth > 768 && window.innerWidth < 1800
-              ? window.innerWidth * 0.0999
+                ? window.innerWidth * 0.0999
                 : window.innerWidth > 1800
                 ? window.innerWidth * 0.08
                 : 120,
