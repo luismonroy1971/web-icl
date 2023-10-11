@@ -97,7 +97,7 @@ export const Table = ({
               {' '}
               {/* Scroll Container */}
               <table className="w-max table-fixed border-collapse">
-                <thead style={{ borderBottom: `2px solid #F0F0F0` }}>
+                <thead style={{ borderBottom: `2px solid #F0F0F0`, backgroundColor: '#fff', position: 'sticky', top: '0' }}>
                   {headerGroups.map((headerGroup: any, index: any) => (
                     <tr
                       {...headerGroup.getHeaderGroupProps()}

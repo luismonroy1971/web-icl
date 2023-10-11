@@ -106,15 +106,15 @@ const Convocatorias = () => {
             Cell: ({ row }: any) => (
               <div className="flex items-center">
                 <span className="text-sm font-medium">
+                  {row.original.tipo_convocatoria} N°{' '}
                   {row.original.numero_convocatoria}-
-                  {row.original.tipo_convocatoria}-
                   {row.original.periodo_convocatoria}
                 </span>
               </div>
             ),
             width:
               window.innerWidth > 768 && window.innerWidth < 1800
-                ? window.innerWidth * 0.09
+                ? window.innerWidth * 0.1
                 : window.innerWidth > 1800
                 ? window.innerWidth * 0.08
                 : 120,
@@ -141,20 +141,44 @@ const Convocatorias = () => {
                       window.open(row.original.url_aviso, '_blank')
                     }
                   >
-                    Ver aviso
+                    Ver
                   </Button>
                 )}
               </div>
             ),
             width:
               window.innerWidth > 768 && window.innerWidth < 1800
-                ? window.innerWidth * 0.08
+                ? window.innerWidth * 0.04
                 : window.innerWidth > 1800
                 ? window.innerWidth * 0.06
                 : 120,
           },
           {
-            Header: 'Resultado de Evaluación Curricular',
+            Header: 'Comunicado',
+            Cell: ({ row }: any) => (
+              <div className="flex items-center">
+                {row.original.url_comunicado === '' ? (
+                  <span className="text-sm font-medium ">No hay documento</span>
+                ) : (
+                  <Button
+                    onClick={() =>
+                      window.open(row.original.url_comunicacion1, '_blank')
+                    }
+                  >
+                    Ver comunicado
+                  </Button>
+                )}
+              </div>
+            ),
+            width:
+              window.innerWidth > 768 && window.innerWidth < 1800
+                ? window.innerWidth * 0.113
+                : window.innerWidth > 1800
+                ? window.innerWidth * 0.06
+                : 120,
+          },
+          {
+            Header: 'Evaluación Curricular',
             Cell: ({ row }: any) => (
               <div className="flex items-center">
                 {row.original.url_resultado_evaluacion_curricular === '' ? (
@@ -175,13 +199,13 @@ const Convocatorias = () => {
             ),
             width:
               window.innerWidth > 768 && window.innerWidth < 1800
-                ? window.innerWidth * 0.1
+              ? window.innerWidth * 0.0999
                 : window.innerWidth > 1800
                 ? window.innerWidth * 0.08
                 : 120,
           },
           {
-            Header: 'Resultado de Examen Virtual',
+            Header: 'Examen',
             Cell: ({ row }: any) => (
               <div className="flex items-center">
                 {row.original.url_resultado_examen_virtual === '' ? (
@@ -202,13 +226,13 @@ const Convocatorias = () => {
             ),
             width:
               window.innerWidth > 768 && window.innerWidth < 1800
-                ? window.innerWidth * 0.1
+              ? window.innerWidth * 0.0999
                 : window.innerWidth > 1800
                 ? window.innerWidth * 0.08
                 : 120,
           },
           {
-            Header: 'Resultado de Entrevista Virtual',
+            Header: 'Entrevista',
             Cell: ({ row }: any) => (
               <div className="flex items-center">
                 {row.original.url_resultado_entrevista_virtual === '' ? (
@@ -229,7 +253,7 @@ const Convocatorias = () => {
             ),
             width:
               window.innerWidth > 768 && window.innerWidth < 1800
-                ? window.innerWidth * 0.1
+                ? window.innerWidth * 0.0999
                 : window.innerWidth > 1800
                 ? window.innerWidth * 0.08
                 : 120,
@@ -246,20 +270,20 @@ const Convocatorias = () => {
                       window.open(row.original.url_puntaje_final, '_blank')
                     }
                   >
-                    Ver resultado
+                    Ver
                   </Button>
                 )}
               </div>
             ),
             width:
               window.innerWidth > 768 && window.innerWidth < 1800
-                ? window.innerWidth * 0.1
+                ? window.innerWidth * 0.065
                 : window.innerWidth > 1800
                 ? window.innerWidth * 0.08
                 : 120,
           },
           {
-            Header: 'Estado de convocatoria',
+            Header: 'Estado',
             Cell: ({ row }: any) => (
               <div className="flex items-center w-full my-auto h-full">
                 <span className="text-sm font-lato-bold my-auto h-full">
@@ -269,7 +293,7 @@ const Convocatorias = () => {
             ),
             width:
               window.innerWidth > 768 && window.innerWidth < 1800
-                ? window.innerWidth * 0.1
+                ? window.innerWidth * 0.055
                 : window.innerWidth > 1800
                 ? window.innerWidth * 0.08
                 : 120,
