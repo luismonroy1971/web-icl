@@ -389,7 +389,6 @@ export default function Home() {
               </div>
             </div>
           </RevealOnScroll>
-          <Footer />
         </div>
       </Layout>
     </div>
