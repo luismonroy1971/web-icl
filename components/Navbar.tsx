@@ -5,9 +5,14 @@ import React, { FC } from 'react';
 interface NavbarProps {
   openMenu: boolean;
   setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenSearch: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
+export const Navbar: FC<NavbarProps> = ({
+  openMenu,
+  setOpenMenu,
+  setOpenSearch,
+}) => {
   return (
     <div className="sticky z-50 top-0 sm:h-[134px] w-screen">
       <div className={`${openMenu ? 'hidden' : 'sm:block hidden'}`}>
@@ -107,7 +112,7 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
             </div>
           </div>
         </div>
-        <div className="flex gap-8 h-full">
+        <div className="flex  h-full">
           <div
             className="my-auto cursor-pointer hidden sm:block w-56"
             onClick={() =>
@@ -125,7 +130,21 @@ export const Navbar: FC<NavbarProps> = ({ openMenu, setOpenMenu }) => {
             />
           </div>
           <div
-            className="flex gap-4 cursor-pointer items-center border-l border-x-[#D9D9D9] h-full transition-transform duration-300 ease-in-out justify-center w-[20vw] sm:w-[18vw] sm:pr-4"
+            className="flex gap-4 cursor-pointer items-center h-full transition-transform duration-300 ease-in-out justify-center w-fit sm:w-[12vw]"
+            onClick={() => setOpenSearch(true)}
+          >
+            <Image
+              src="/images/pagina-1/Search.svg"
+              alt="Buscar"
+              width={24}
+              height={24}
+            />
+            <span className="text-lg sm:text-[1.5vw] text-primary font-acto hidden sm:block">
+              Buscar
+            </span>
+          </div>
+          <div
+            className="flex gap-4 cursor-pointer items-center border-l border-x-[#D9D9D9] h-full transition-transform duration-300 ease-in-out justify-center w-[20vw] sm:w-[12vw] sm:mr-12"
             onClick={() => setOpenMenu(!openMenu)}
           >
             {!openMenu ? (

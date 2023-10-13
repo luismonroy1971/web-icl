@@ -1,6 +1,5 @@
 import React from 'react';
 import { Layout } from '../../components/Layout';
-import Image from 'next/image';
 import { SectionBanner } from '../../components/SectionBanner';
 import Link from 'next/link';
 import { Input } from '../../components/Input';
