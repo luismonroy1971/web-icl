@@ -1,5 +1,4 @@
 import React from 'react';
-import { useGetResolucionesQuery } from '../../redux/reduxQuery/resoluciones';
 import { Table } from '../Table';
 import { Button } from '../Button';
 import {
@@ -23,22 +22,18 @@ const GestionNormativa = () => {
     isError,
     refetch: refetchGestionNormativa,
   } = useGetDirectivasQuery(params);
-  const {
-    data: dataTiposDocumento,
-    isLoading: isLoadingTiposDocumento,
-    isError: isErrorTiposDocumento,
-  } = useGetTiposDocumentoQuery('');
-  const {
-    data: dataPeriodosDirectivas,
-    isLoading: isLoadingPeriodosDirectivas,
-    isError: isErrorPeriodosDirectivas,
-  } = useGetDirectivasPeriodoQuery('');
+  const { data: dataTiposDocumento } = useGetTiposDocumentoQuery('');
+  const { data: dataPeriodosDirectivas } = useGetDirectivasPeriodoQuery('');
 
-  const {
-    data: dataAreas,
-    isLoading: isLoadingAreas,
-    isError: isErrorAreas,
-  } = useGetAreasQuery('');
+  const { data: dataAreas } = useGetAreasQuery('');
+
+  const filteredDataByAutorizado = React.useMemo(() => {
+    if (gestionNormativaData) {
+      return gestionNormativaData.filter(
+        (gestionNormativa: any) => gestionNormativa.autorizado === '1'
+      );
+    }
+  }, [gestionNormativaData]);
 
   const handleSubmit = form.handleSubmit((data) => {
     data.id_tipo_documento = data.id_tipo_documento?.value || '';
@@ -63,7 +58,7 @@ const GestionNormativa = () => {
         A continuación, se presenta un listado detallado de las directivas
         emitidas por nuestra entidad:
       </p>
-      <div className="flex gap-4 items-center">
+      <div className="flex sm:flex-row flex-col gap-4 items-center">
         <Controller
           name="id_tipo_documento"
           control={form.control}
@@ -145,18 +140,17 @@ const GestionNormativa = () => {
                 </span>
               </div>
             ),
+            width:
+              window.innerWidth > 768 && window.innerWidth < 1800
+                ? window.innerWidth * 0.14
+                : window.innerWidth > 1800 
+                ? window.innerWidth * 0.23
+                : window.innerWidth * 0.4,
           },
           {
             Header: 'Sumilla',
             accessor: 'sumilla_resolucion',
             width: 800,
-            Cell: ({ row }: any) => (
-              <div className="flex items-center">
-                <span className="text-sm font-medium">
-                  {row.original.sumilla_resolucion}
-                </span>
-              </div>
-            ),
           },
           {
             Header: 'Ver documento',
@@ -178,9 +172,15 @@ const GestionNormativa = () => {
                 )}
               </div>
             ),
+            width:
+              window.innerWidth > 768 && window.innerWidth < 1800
+                ? window.innerWidth * 0.14
+                : window.innerWidth > 1800
+                ? window.innerWidth * 0.23
+                : window.innerWidth * 0.4,
           },
         ]}
-        data={gestionNormativaData}
+        data={filteredDataByAutorizado}
         loading={isLoading}
       />
     </>

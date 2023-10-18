@@ -1,44 +1,73 @@
 import React, { FC } from 'react';
 
-interface ItemListProps {
+interface ItemInfoProps {
   id: string;
-  selected: any; //[1, 2, 3]
-  setSelected: any;
   denominacion_servicio: string;
   monto_uit: string;
   monto_soles: string;
-  incrementCount?: any;
+  numero_servicio: string;
+  sub_nivel_servicio: string;
+}
+
+interface ItemListProps {
+  selected: any;
+  setSelected: any;
+  info: ItemInfoProps;
 }
 
 export const ItemList: FC<ItemListProps> = ({
-  id,
   selected,
   setSelected,
-  denominacion_servicio,
-  monto_uit,
-  monto_soles,
-  incrementCount,
+  info,
 }) => {
   return (
-    <div
-      className={`flex justify-between items-center p-6 cursor-pointer w-full border border-blue px-6 h-16 font-lato text-base  
-        ${selected.includes(parseInt(id)) ? 'bg-lightBlue' : 'bg-white '}
+    <div>
+      <div
+        className={`flex justify-between items-center p-6 cursor-pointer w-full border border-blue px-6 h-16 font-lato text-base  
+        ${
+          selected?.find((item: any) => item.id === info.id)
+            ? 'bg-lightBlue'
+            : 'bg-white '
+        }
         `}
-      onClick={() => {
-        incrementCount(id);
-      }}
-    >
-      <div className="flex flex-col w-7/12">
-        <span className="text-md font-lato">{denominacion_servicio}</span>
+        onClick={() => {
+          setSelected((prev: any) => {
+            const index = prev.findIndex((item: any) => item.id === info.id);
+            if (index !== -1) {
+              return prev.filter((item: any) => item.id !== info.id);
+            } else {
+              return [...prev, info];
+            }
+          });
+        }}
+      >
+        <div className="flex flex-col w-7/12">
+          <span className="text-md font-lato-bold">
+            {info.denominacion_servicio}
+          </span>
+        </div>
+        <div className="flex justify-end w-3/12">
+          {parseFloat(info.monto_soles) > 0 && (
+            <span className="text-md font-medium font-lato-bold">
+              S/ {info.monto_soles}
+            </span>
+          )}
+        </div>
       </div>
-      {/* <div className="flex justify-center gap-2 items-center w-2/12">
-        <span className="text-sm font-medium">{monto_uit}</span>
-        <span className="text-xs font-normal">UIT</span>
-      </div> */}
-      <div className="flex justify-end w-3/12">
-        {parseFloat(monto_soles) > 0 && (
-          <span className="text-md font-medium font-lato-bold">S/ {monto_soles}</span>
-        )}
+      <p className="text-sm font-lato text-gray-400 px-6">Requisitos</p>
+      <div className="flex justify-between items-center p-6 cursor-pointer w-full border border-blue px-6 h-16 font-lato text-base bg-white">
+        <div className="flex flex-col w-7/12">
+          <span className="text-md font-lato-bold">
+            {info.denominacion_servicio}
+          </span>
+        </div>
+        <div className="flex justify-end w-3/12">
+          {parseFloat(info.monto_soles) > 0 && (
+            <span className="text-md font-medium font-lato-bold">
+              S/ {info.monto_soles}
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );

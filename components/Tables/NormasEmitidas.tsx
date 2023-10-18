@@ -23,6 +23,15 @@ const NormasEmitidas = () => {
     isError,
     refetch: refetchNormasEmitidas,
   } = useGetResolucionesQuery(params);
+
+  const filteredDataByAutorizado = React.useMemo(() => {
+    if (normasEmitidas) {
+      return normasEmitidas.filter(
+        (normaEmitida: any) => normaEmitida.autorizado === '1'
+      );
+    }
+  }, [normasEmitidas]);
+
   const {
     data: dataPeriodosResoluciones,
     isLoading: isLoadingPeriodosResoluciones,
@@ -140,7 +149,8 @@ const NormasEmitidas = () => {
               <div className="flex items-center font-lato">
                 <span className="text-sm font-medium">
                   {row.original.numero_resolucion}-
-                  {row.original.periodo_resolucion}-{row.original.abreviacion_area}
+                  {row.original.periodo_resolucion}-
+                  {row.original.abreviacion_area}
                   -ICL/MML
                 </span>
               </div>
@@ -179,10 +189,10 @@ const NormasEmitidas = () => {
                 )}
               </div>
             ),
-            width: window.innerWidth * 0.15
+            width: window.innerWidth * 0.15,
           },
         ]}
-        data={normasEmitidas}
+        data={filteredDataByAutorizado}
         loading={isLoading}
       />
     </>

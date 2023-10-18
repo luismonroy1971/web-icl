@@ -46,7 +46,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
   }, [textSearch]);
 
   return (
-    <div>
+    <div className='overflow-x-hidden'>
       <Navbar
         openMenu={openMenu}
         setOpenMenu={setOpenMenu}

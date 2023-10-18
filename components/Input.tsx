@@ -18,6 +18,8 @@ interface InputProps {
   isInnerTooltip?: boolean;
   tooltipText?: string;
   disabled?: boolean;
+  name?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 interface CustomInputProps {
@@ -85,6 +87,8 @@ export const Input = React.forwardRef<any, InputProps>(
       setFormValue,
       type = 'text',
       disabled,
+      name,
+      onChange
     },
     ref
   ) => {
@@ -92,34 +96,30 @@ export const Input = React.forwardRef<any, InputProps>(
 
     return (
       <Label width={width}>
-        {noLabel && (
-          <p className="font-lato text-2xl">
+        {labelText && (
+          <p className="font-lato-bold text-md text-primary">
             {labelText} {required && <span className="text-danger">*</span>}
           </p>
         )}
         <div style={{ position: 'relative', width: 'inherit' }}>
           <CustomInput
             style={{
-              width: `98%`,
+              width: `100%`,
               paddingTop: 12,
               paddingBottom: 12,
               paddingRight: 0,
               paddingLeft: 12,
+              border: '1px solid #16236E',
+              borderRadius: 4,
             }}
             ref={ref}
             type={type === 'password' && hidePassword ? 'password' : 'text'}
             placeholder={placeholderText}
             error={error}
             icon={icon}
-            onChange={(e) => {
-              if (setFilter) {
-                setFilter(e.target.value || undefined);
-              }
-              if (setFormValue) {
-                setFormValue(e.target.value);
-              }
-            }}
             disabled={disabled}
+            name={name}
+            onChange={onChange}
           />
         </div>
 
