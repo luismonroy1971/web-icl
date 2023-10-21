@@ -118,7 +118,7 @@ export default function Home() {
         />
 
         <div className={`${openMenu ? 'hidden' : 'block'}`}>
-          <RevealOnScroll>
+          {/* <RevealOnScroll>
             <div className="text-center py-12 sm:pt-16 sm:w-10/12 mx-auto w-11/12">
               <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">
                 Sobre Nosotros
@@ -165,7 +165,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </RevealOnScroll>
+          </RevealOnScroll> */}
           <RevealOnScroll>
             <div className="text-center py-12 sm:w-[92vw] mx-auto w-11/12">
               <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">

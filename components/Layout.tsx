@@ -46,7 +46,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
   }, [textSearch]);
 
   return (
-    <div className='overflow-x-hidden'>
+    <div className="overflow-x-hidden">
       <Navbar
         openMenu={openMenu}
         setOpenMenu={setOpenMenu}
@@ -134,7 +134,11 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
                               onMouseLeave={() => setMouseOver('')}
                             >
                               <div className="flex gap-4">
-                                <span className={`font-acto text-2xl text-primary ${mouseOver === index ? 'text-white' : ''}`}>
+                                <span
+                                  className={`font-acto text-2xl text-primary ${
+                                    mouseOver === index ? 'text-white' : ''
+                                  }`}
+                                >
                                   {result.name}
                                 </span>
                                 <div className="flex items-center justify-center">
@@ -147,7 +151,9 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
                                   >
                                     <path
                                       d="M20.7071 8.70711C21.0976 8.31658 21.0976 7.68342 20.7071 7.29289L14.3431 0.928932C13.9526 0.538408 13.3195 0.538408 12.9289 0.928932C12.5384 1.31946 12.5384 1.95262 12.9289 2.34315L18.5858 8L12.9289 13.6569C12.5384 14.0474 12.5384 14.6805 12.9289 15.0711C13.3195 15.4616 13.9526 15.4616 14.3431 15.0711L20.7071 8.70711ZM0 9H20V7H0V9Z"
-                                      fill={mouseOver === index ? '#fff' : '#16236E'}
+                                      fill={
+                                        mouseOver === index ? '#fff' : '#16236E'
+                                      }
                                     />
                                   </svg>
                                 </div>
@@ -166,8 +172,14 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
           </div>
         </div>
       )}
-      <div className={`${openMenu ? 'hidden' : 'block'}`}>{children}</div>
-      <Footer />
+      <div
+        className={`${openMenu ? 'hidden' : 'block'} sm:mt-[140px] mt-[56px]`}
+      >
+        {children}
+      </div>
+      <div className={`${openMenu ? 'hidden' : 'block'}`}>
+        <Footer />
+      </div>
     </div>
   );
 };

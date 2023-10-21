@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Layout } from '../../components/Layout';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useGetServicioQuery } from '../../redux/reduxQuery/servicios';
 import { List } from '../../components/List';
 import { SectionBanner } from '../../components/SectionBanner';
@@ -15,13 +15,13 @@ import axios from 'axios';
 export default function Servicios() {
   const router = useRouter();
   const { id } = router.query;
+  console.log(id);
   const form = useForm();
-  const idUpperCased = (id as string)?.toUpperCase();
+  const idUpperCased = id?.toString().toUpperCase();
   const [loaded, setLoaded] = React.useState(false);
   const [selectedItems, setSelectedItems] = React.useState<any>([]);
   const [error, setError] = React.useState('');
   const [total, setTotal] = React.useState(0);
-  const data = idUpperCased === 'TUPA' ? firstObj : secondObj;
   const {
     data: dataServicio,
     error: errorServicio,
@@ -30,6 +30,7 @@ export default function Servicios() {
   const dataServicioFiltered = dataServicio?.filter(
     (item: any) => item.flag_seleccion === '1' && item.autorizado === '1'
   );
+  const [dataFiltered, setDataFiltered] = React.useState(dataServicioFiltered);
   const faqs = [
     {
       question: '¿Cómo puedo solicitar un procedimiento administrativo?',
@@ -65,6 +66,7 @@ export default function Servicios() {
                 tipo_servicio: idUpperCased,
                 numero_servicio: item.numero_servicio,
                 sub_nivel_servicio: item.sub_nivel_servicio,
+                periodo_servicio: item.periodo_servicio,
               },
             })
             .then((res) => {
@@ -80,6 +82,12 @@ export default function Servicios() {
     }
   });
 
+  useEffect(() => {
+    if (dataServicio) {
+      setDataFiltered(dataServicio);
+    }
+  }, [dataServicio]);
+
   return (
     <>
       <Head>
@@ -88,12 +96,12 @@ export default function Servicios() {
       <Layout>
         <SectionBanner
           caption="Servicios"
-          {...data}
-          image={`/images/servicios/${data.id}.svg`}
+          {...(idUpperCased === 'TUPA' ? firstObj : secondObj)}
+          image={`/images/servicios/${idUpperCased}.svg`}
         />
-        <div className="mx-20 py-12">
+        <div className="px-8 sm:px-20 py-12">
           <h3 className="font-acto text-4xl text-primary">
-            Calculadora del servicio {data.id.toUpperCase()}
+            Calculadora del servicio {idUpperCased}
           </h3>
           <div className="flex mt-8 gap-8">
             <Input
@@ -148,6 +156,10 @@ export default function Servicios() {
                 Nueva búsqueda
               </p>
             </div>
+            <div className="flex items-center justify-center w-40 mt-4 gap-4 bg-blue rounded-md ml-auto">
+              <p className="font-lato-bold text-md text-white">Total:</p>
+              <p className="font-lato-bold text-lg text-white ">S/{total.toFixed(2)}</p>
+            </div>
           </div>
           <div className="flex items-center">
             {error && (
@@ -155,18 +167,94 @@ export default function Servicios() {
             )}
           </div>
           <div>
+            {selectedItems.length > 0 && (
+              <div>
+                <p className="font-lato-bold text-md text-primary">
+                  Servicios seleccionados
+                </p>
+                <div className="grid sm:grid-cols-4 gap-6">
+                  {selectedItems.map((item: any) => (
+                    <div>
+                      <div className="grid col-span-full sm:col-span-6 xl:col-span-3 bg-white  shadow-lg rounded-md border border-primary overflow-hidden min-h-[260px]">
+                        <div className="flex flex-col justify-between">
+                          {/* Card Content */}
+                          <div className="grow flex flex-col p-5 pb-0">
+                            {/* Card body */}
+                            <div className="grow">
+                              {/* Header */}
+                              <header className="mb-3">
+                                <h3 className="text-lg text-primary  font-semibold">
+                                  {item.denominacion_servicio}
+                                </h3>
+                              </header>
+                              <div className="flex flex-wrap justify-between items-center mb-4">
+                                <div className="flex items-center space-x-2 mr-2">
+                                  {item.requisitos_servicio != '' && (
+                                    <p className="text-md text-primary  font-semibold">
+                                      Requisitos:
+                                    </p>
+                                  )}
+                                </div>
+                                <div>
+                                  <p className="text-xs text-primary">Costo:</p>
+                                  <div className="inline-flex text-md font-medium bg-emerald-100  text-emerald-600  rounded-full text-center px-2 py-0.5">
+                                    {/* S/{info.monto_soles} */}
+                                    {item.monto_soles == '0' &&
+                                    item.sub_nivel_servicio == '0'
+                                      ? 'Por calcular'
+                                      : 'S/' + item.monto_soles}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="mb-3">
+                                <p className="text-sm text-slate-400 dark:text-slate-500">
+                                  {item.requisitos_servicio}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          {/* Card footer */}
+                          <div className="p-5 pt-0">
+                            <Button
+                              onClick={() => {
+                                setSelectedItems((prev: any) => {
+                                  const index = prev.findIndex(
+                                    (item: any) => item.id === item.id
+                                  );
+                                  if (index !== -1) {
+                                    return prev.filter(
+                                      (item: any) => item.id !== item.id
+                                    );
+                                  } else {
+                                    return [...prev, item];
+                                  }
+                                });
+                                setTotal((prev) => prev - item.monto_soles);
+                              }}
+                            >
+                              Remover servicio
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             <p className="font-lato-bold text-md text-primary mt-4">
               Selecciona los servicios que deseas solicitar
             </p>
             <List
-              items={dataServicioFiltered}
+              items={dataFiltered}
+              setItems={setDataFiltered}
               selectedItems={selectedItems}
               setSelectedItems={setSelectedItems}
               total={total}
             />
           </div>
         </div>
-        <div className="mx-8 py-12">
+        <div className="px-8 sm:px-20 py-12">
           <FAQComponent items={faqs} />
         </div>
       </Layout>

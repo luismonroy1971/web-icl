@@ -14,7 +14,7 @@ export const Navbar: FC<NavbarProps> = ({
   setOpenSearch,
 }) => {
   return (
-    <div className="sticky z-50 top-0 sm:h-[134px] w-screen">
+    <div className="fixed z-50 top-0 w-screen">
       <div className={`${openMenu ? 'hidden' : 'sm:block hidden'}`}>
         <div className="flex justify-between items-center h-[48px] bg-lightBlue text-primary relative shadow-md font-acto sm:px-20 py-2">
           <div className="flex justify-center items-center">
@@ -130,7 +130,7 @@ export const Navbar: FC<NavbarProps> = ({
             />
           </div>
           <div
-            className="flex gap-4 cursor-pointer items-center h-full transition-transform duration-300 ease-in-out justify-center w-fit sm:w-[12vw]"
+            className="flex gap-4 cursor-pointer items-center h-full transition-transform duration-300 ease-in-out justify-center w-fit sm:w-[12vw] px-4"
             onClick={() => setOpenSearch(true)}
           >
             <Image

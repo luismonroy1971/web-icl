@@ -1,4 +1,4 @@
-import { useRef, MouseEvent, InputHTMLAttributes, useEffect } from 'react';
+import { useRef, MouseEvent, InputHTMLAttributes } from 'react';
 
 interface RadioButtonProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
@@ -7,33 +7,15 @@ interface RadioButtonProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const RadioButton: React.FC<RadioButtonProps> = ({ id, label, ...props }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
+
   const handleButtonClick = (event: MouseEvent) => {
     event.stopPropagation();
 
     if (inputRef.current) {
-      if (inputRef.current.checked) {
-        inputRef.current.checked = false;
-      } else {
-        inputRef.current.checked = true;
-        const newEvent = new Event('input', { bubbles: true });
-        inputRef.current.dispatchEvent(newEvent);
-      }
+      const newEvent = new Event('input', { bubbles: true });
+      inputRef.current.dispatchEvent(newEvent);
     }
   };
-
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.addEventListener('input', (event) => {
-        if (inputRef.current) {
-          if (inputRef.current.checked) {
-            inputRef.current.checked = false;
-          } else {
-            inputRef.current.checked = true;
-          }
-        }
-      });
-    }
-  }, []);
 
   return (
     <div className="flex items-center hover:bg-gray-200 p-2 rounded">

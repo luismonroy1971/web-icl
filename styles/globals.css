@@ -240,3 +240,43 @@ body {
 .radio-button input[type="radio"]:checked + .radio-inner {
   opacity: 1
 } 
+
+.category-name {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px; /* Adjust as needed */
+}
+
+.category-name::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px; /* Adjust as needed */
+  background-color: currentColor; /* Use the text color */
+  transition: width 0.3s ease;
+}
+
+.category-name.selected::after {
+  width: 100%;
+}
+
+/* Base opacity for menu items
+.megamenu-item {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+} */
+
+/* Initial state: Mega menu is translated upwards and not visible */
+.megamenu-slide {
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition: transform 0.4s ease, visibility 0.4s ease;
+}
+
+/* State when the menu is active: Mega menu slides down to its natural position */
+.megamenu-slide.active {
+  transform: translateY(0);
+  visibility: visible;
+}
