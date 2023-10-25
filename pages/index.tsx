@@ -118,55 +118,197 @@ export default function Home() {
         />
 
         <div className={`${openMenu ? 'hidden' : 'block'}`}>
-          {/* <RevealOnScroll>
-            <div className="text-center py-12 sm:pt-16 sm:w-10/12 mx-auto w-11/12">
-              <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">
-                Sobre Nosotros
-              </h2>
-              <p className="font-lato sm:text-[1.2vw] text-md mt-4 sm:mb-0 mb-4">
-                ¡Bienvenidos a la página web del Instituto Catastral de Lima!
-                <br /> Bajo mi liderazgo y firme compromiso con la transparencia
-                y gobierno electrónico, nos enorgullece brindarles una ventana
-                digital a nuestro trabajo e información territorial y servicios
-                catastrales. Espero que encuentren en este espacio web una
-                herramienta valiosa para explorar, aprender y colaborar con el
-                Sistema Nacional Integrado de Catastro para el desarrollo de la
-                ciudad de Lima y de nuestro país.
-              </p>
-              <div className="sm:flex gap-20 sm:mt-8 mx-auto sm:px-20">
-                <div className="sm:h-fit">
-                  <Image
-                    src="/images/aboutPresident.png"
-                    alt="Foto presidente"
-                    objectFit="cover"
-                    width={1080}
-                    height={1080}
-                    className="rounded-md"
-                  />
-                </div>
-                <div className="flex flex-col w-full sm:mt-0 mt-4">
-                  <div className="flex gap-2">
-                    <Image
-                      src="/images/shortArrow.svg"
-                      width={10}
-                      height={5}
-                      alt="Flecha"
-                    />
-                    <h3 className="font-acto text-primary text-3xl">
-                      Presidente Ejecutivo
-                    </h3>
+
+          <div className="py-12 md:py-20 sm:px-20 px-8 overflow-hidden">
+            <div className="lg:flex items-start">
+              {/* Left content */}
+              <div className="flex-1 mb-12 lg:mb-0">
+                <div className="mb-6">
+                  <h2 className="text-3xl md:text-4xl font-acto font-extrabold text-primary mb-2">
+                    Bienvenido al Instituto Catastral de Lima
+                  </h2>
+                  <div className="text-black space-y-3 mt-4">
+                    <Link href="/bienvenida">
+                      <span className="text-white bg-primary px-4 py-2 rounded-md font-lato font-bold text-lg">
+                        Ver más
+                      </span>
+                    </Link>
                   </div>
-                  <p className="font-lato mt-2 text-left text-lg mb-2 ml-4">
-                    Molina Arles, Luis Alfonso
-                  </p>
-                  <div className="w-full mx-auto sm:mt-0 mt-4">
-                    <Accordion items={faqItems} />
+                </div>
+              </div>
+              {/* Right content */}
+              <div className="lg:w-[640px] lg:ml-12 xl:ml-20">
+                <div className="grid sm:grid-cols-2 gap-4 space-y-4">
+                  {/* Host */}
+                  <div className="flex items-start">
+                    <Link
+                      href="https://sit.icl.gob.pe/conoce_lima/"
+                      target="_blank"
+                    >
+                      <div className="flex gap-4 items-center ">
+                        <Image
+                          src="/images/pagina-1/recursos/conoce-lima.svg"
+                          width={80}
+                          height={80}
+                          alt="Conoce Lima"
+                          className="rounded-md"
+                        />
+                        <div className="text-lg font-lato font-extrabold text-primary">
+                          Conoce Lima
+                        </div>
+                      </div>
+                      {/* <div className="text-slate-400 mb-4">
+                        Permite a los usuarios obtener detalles específicos
+                        sobre propiedades en Lima, como ubicación y dimensiones.
+                      </div>
+                      <Button
+                        onClick={() =>
+                          window.open(
+                            'https://sit.icl.gob.pe/conoce_lima/',
+                            '_blank'
+                          )
+                        }
+                      >
+                        Realizar Consulta
+                      </Button> */}
+                    </Link>
+                  </div>
+                  {/* Host */}
+                  <div className="flex items-start">
+                    <Link
+                      href="https://sit.icl.gob.pe/appconsulta/"
+                      target="_blank"
+                    >
+                      <div className="flex gap-4 items-center ">
+                        <Image
+                          src="/images/consultaCatastral.svg"
+                          width={80}
+                          height={80}
+                          alt="Conoce Lima"
+                          className="rounded-md"
+                        />
+                        <div className="text-lg font-lato font-extrabold text-primary">
+                          Consulta Catastral en Línea
+                        </div>
+                      </div>
+                      {/* <div className="text-slate-400 mb-4">
+                        Permite a los usuarios obtener detalles específicos
+                        sobre propiedades en Lima, como ubicación y dimensiones.
+                      </div>
+                      <Button
+                        onClick={() =>
+                          window.open(
+                            'https://sit.icl.gob.pe/conoce_lima/',
+                            '_blank'
+                          )
+                        }
+                      >
+                        Realizar Consulta
+                      </Button> */}
+                    </Link>
+                  </div>
+                  {/* Host */}
+                  <div className="flex items-start">
+                    <Link href="https://sit.icl.gob.pe/sit/" target="_blank">
+                      <div className="flex gap-4 items-center ">
+                        <Image
+                          src="/images/sistemaInformacion.svg"
+                          width={80}
+                          height={80}
+                          alt="Conoce Lima"
+                          className="rounded-md"
+                        />
+                        <div className="text-lg font-lato font-extrabold text-primary">
+                          Sistema de información territorial
+                        </div>
+                      </div>
+                      {/* <div className="text-slate-400 mb-4">
+                        Permite a los usuarios obtener detalles específicos
+                        sobre propiedades en Lima, como ubicación y dimensiones.
+                      </div>
+                      <Button
+                        onClick={() =>
+                          window.open(
+                            'https://sit.icl.gob.pe/conoce_lima/',
+                            '_blank'
+                          )
+                        }
+                      >
+                        Realizar Consulta
+                      </Button> */}
+                    </Link>
+                  </div>
+                  <div className="flex items-start">
+                    <Link
+                      href="https://sit.icl.gob.pe/portafolio/"
+                      target="_blank"
+                    >
+                      <div className="flex gap-4 items-center ">
+                        <Image
+                          src="/images/portafolioAplicaciones.svg"
+                          width={80}
+                          height={80}
+                          alt="Conoce Lima"
+                          className="rounded-md"
+                        />
+                        <div className="text-lg font-lato font-extrabold text-primary">
+                          Portafolio de Aplicaciones GIS
+                        </div>
+                      </div>
+                      {/* <div className="text-slate-400 mb-4">
+                        Permite a los usuarios obtener detalles específicos
+                        sobre propiedades en Lima, como ubicación y dimensiones.
+                      </div>
+                      <Button
+                        onClick={() =>
+                          window.open(
+                            'https://sit.icl.gob.pe/conoce_lima/',
+                            '_blank'
+                          )
+                        }
+                      >
+                        Realizar Consulta
+                      </Button> */}
+                    </Link>
+                  </div>
+                  <div className="flex items-start">
+                    <Link
+                      href="https://icl.gob.pe/mesa/administrado/login.aspx"
+                      target="_blank"
+                    >
+                      <div className="flex gap-4 items-center ">
+                        <Image
+                          src="/images/mesaDePartes.svg"
+                          width={80}
+                          height={80}
+                          alt="Conoce Lima"
+                          className="rounded-md"
+                        />
+                        <div className="text-lg font-lato font-extrabold text-primary">
+                          Mesa de Partes Virtual
+                        </div>
+                      </div>
+                      {/* <div className="text-slate-400 mb-4">
+                        Permite a los usuarios obtener detalles específicos
+                        sobre propiedades en Lima, como ubicación y dimensiones.
+                      </div>
+                      <Button
+                        onClick={() =>
+                          window.open(
+                            'https://sit.icl.gob.pe/conoce_lima/',
+                            '_blank'
+                          )
+                        }
+                      >
+                        Realizar Consulta
+                      </Button> */}
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
-          </RevealOnScroll> */}
-          <RevealOnScroll>
+          </div>
+          {/* <RevealOnScroll>
             <div className="text-center py-12 sm:w-[92vw] mx-auto w-11/12">
               <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">
                 Nuestros Recursos
@@ -186,7 +328,7 @@ export default function Home() {
                 )}
               </div>
             </div>
-          </RevealOnScroll>
+          </RevealOnScroll> */}
           <RevealOnScroll>
             <div className="text-center py-12 sm:w-10/12 w-11/12 mx-auto">
               <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">

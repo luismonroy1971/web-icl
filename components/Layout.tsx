@@ -178,7 +178,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
         {children}
       </div>
       <div className={`${openMenu ? 'hidden' : 'block'}`}>
-        <Footer />
+        <Footer openMenu={openMenu} setOpenMenu={setOpenMenu} />
       </div>
     </div>
   );

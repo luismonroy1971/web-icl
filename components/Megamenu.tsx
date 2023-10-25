@@ -36,11 +36,11 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
             return (
               <div
                 key={category.id}
-                className={`my-6 ml-4 megamenu-item hover:opacity-100 ${
+                className={`my-6 ml-4 megamenu-item ${
                   selectedCategory?.id === category.id &&
                   firstChildren?.length > 0
                     ? 'opacity-100'
-                    : 'opacity-50'
+                    : 'opacity-50 '
                 }`}
                 id={category.slug}
               >
@@ -74,7 +74,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
                       className={`${
                         selectedCategory?.id === category.id &&
                         firstChildren?.length > 0
-                          ? 'block'
+                          ? 'block sm:hidden'
                           : 'hidden'
                       }`}
                     >

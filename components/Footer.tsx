@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-export const Footer = () => {
+export const Footer = ({ openMenu, setOpenMenu }: any) => {
   return (
     <div className="flex flex-col  bg-primary p-8 sm:p-10">
       <div className="flex sm:flex-row flex-col justify-between gap-4">
@@ -11,17 +11,17 @@ export const Footer = () => {
         <div className="flex flex-col gap-4">
           <h2 className="text-white font-acto text-xl">Enlaces Rápidos</h2>
           <div className="flex flex-col gap-2 font-lato">
-            <Link href="/sobre-nosotros">
+            <Link href="/sobre-nosotros/quienes-somos">
               <span className="text-white">¿Quiénes somos?</span>
             </Link>
-            <Link href="/servicios">
+            <div
+              className="cursor-pointer"
+              onClick={() => setOpenMenu(!openMenu)}
+            >
               <span className="text-white">Servicios</span>
-            </Link>
+            </div>
             <Link href="/noticias">
               <span className="text-white">Noticias</span>
-            </Link>
-            <Link href="/preguntas-frecuentes">
-              <span className="text-white">Preguntas Frecuentes</span>
             </Link>
           </div>
         </div>
