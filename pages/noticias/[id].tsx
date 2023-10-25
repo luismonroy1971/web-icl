@@ -12,9 +12,9 @@ export default function Noticia({ data }: { data: any }) {
         description="Desde desarrollos recientes hasta seminarios y talleres, aquí encontrarás todo lo que necesitas saber para estar al tanto de nuestras actividades."
       />
       <div className="sm:px-20 py-12 px-8">
-        <p className="font-lato text-md">{data.fecha_publicacion}</p>
+        <p className="font-lato text-md">{data?.fecha_publicacion}</p>
         <h3 className="font-acto text-4xl text-primary sm:w-2/3 mb-8">
-          {data.titulo_noticia}
+          {data?.titulo_noticia}
         </h3>
         <div className="flex justify-between items-center">
           <Image
@@ -24,9 +24,9 @@ export default function Noticia({ data }: { data: any }) {
             height={500}
           />
         </div>
-        <p className="font-lato text-md my-8">{data.descripcion_noticia}</p>
+        <p className="font-lato text-md my-8">{data?.descripcion_noticia}</p>
         <div className="flex justify-center sm:justify-end gap-4">
-          {data.images.map((image: any) => (
+          {data?.images.map((image: any) => (
             <div className="h-96 relative w-1/3" key={image.id}>
               <Image
                 src={image.url_imagen}
