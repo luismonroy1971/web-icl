@@ -174,7 +174,7 @@ export default function Servicios() {
                 </p>
                 <div className="grid sm:grid-cols-4 gap-6">
                   {selectedItems.map((item: any) => (
-                    <div>
+                    <div key={item.id}>
                       <div className="grid col-span-full sm:col-span-6 xl:col-span-3 bg-white  shadow-lg rounded-md border border-primary overflow-hidden min-h-[260px]">
                         <div className="flex flex-col justify-between">
                           {/* Card Content */}
