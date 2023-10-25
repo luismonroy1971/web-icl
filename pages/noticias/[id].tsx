@@ -2,6 +2,7 @@ import axios from 'axios'; // Assuming you're using axios with react-query
 import { Layout } from '../../components/Layout';
 import Image from 'next/image';
 import { SectionBanner } from '../../components/SectionBanner';
+import Head from 'next/head';
 
 export default function Noticia({ data }: { data: any }) {
   return (
@@ -18,7 +19,7 @@ export default function Noticia({ data }: { data: any }) {
         </h3>
         <div className="flex justify-between items-center">
           <Image
-            src={data.url_imagen_portada}
+            src={data?.url_imagen_portada}
             alt="news"
             width={500}
             height={500}
