@@ -15,7 +15,6 @@ import axios from 'axios';
 export default function Servicios() {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
   const form = useForm();
   const idUpperCased = id?.toString().toUpperCase();
   const [loaded, setLoaded] = React.useState(false);
@@ -30,6 +29,7 @@ export default function Servicios() {
   const dataServicioFiltered = dataServicio?.filter(
     (item: any) => item.flag_seleccion === '1' && item.autorizado === '1'
   );
+  console.log(dataServicioFiltered);
   const [dataFiltered, setDataFiltered] = React.useState(dataServicioFiltered);
   const faqs = [
     {
@@ -42,10 +42,6 @@ export default function Servicios() {
       answer: 'Puedes encontrar más información sobre las tasas en el TUPA.',
     },
   ];
-
-  React.useEffect(() => {
-    setLoaded(true);
-  }, []);
 
   const handleCalculate = form.handleSubmit((data) => {
     if (data.metraje === '' || data.construido === '') {
@@ -72,7 +68,7 @@ export default function Servicios() {
             .then((res) => {
               console.log(res.data);
               const total = res.data.valor_servicio;
-              setTotal((prev) => prev + parseFloat(total));
+              setTotal(total)
             })
             .catch((err) => console.log(err));
         })
@@ -83,10 +79,29 @@ export default function Servicios() {
   });
 
   useEffect(() => {
-    if (dataServicio) {
-      setDataFiltered(dataServicio);
+    setLoaded(true);
+    reset();
+  }, [])
+
+  useEffect(() => {
+    if (loaded) {
+      reset();
+      refetchServicio();
     }
-  }, [dataServicio]);
+  }, [id])
+
+  const reset = () => {
+    form.setValue('metraje', '');
+    setError('');
+    setSelectedItems([]);
+    setTotal(0);
+  };
+
+  useEffect(() => {
+    if (dataServicioFiltered) {
+      setDataFiltered(dataServicioFiltered);
+    }
+  }, [selectedItems])
 
   return (
     <>
@@ -151,6 +166,7 @@ export default function Servicios() {
                   setError('');
                   setSelectedItems([]);
                   setTotal(0);
+                  refetchServicio();
                 }}
               >
                 Nueva búsqueda
@@ -158,7 +174,7 @@ export default function Servicios() {
             </div>
             <div className="flex items-center justify-center w-40 mt-4 gap-4 bg-blue rounded-md ml-auto">
               <p className="font-lato-bold text-md text-white">Total:</p>
-              <p className="font-lato-bold text-lg text-white ">S/{total.toFixed(2)}</p>
+              <p className="font-lato-bold text-lg text-white ">S/{total}</p>
             </div>
           </div>
           <div className="flex items-center">
