@@ -129,6 +129,15 @@ export default function Home() {
                   </h2>
                   <div className="text-black space-y-3 mt-4">
                     <Link href="/bienvenida">
+                      <div className="relative mb-4">
+                        <Image
+                          src="/images/bienvenida.webp"
+                          alt="Bienvenida"
+                          width={600} // Especifica el ancho deseado
+                          height={500} // Especifica el alto deseado
+                          className="rounded-md"
+                        />
+                      </div>
                       <span className="text-white bg-primary px-4 py-2 rounded-md font-lato font-bold text-lg">
                         Ver más
                       </span>
@@ -137,7 +146,7 @@ export default function Home() {
                 </div>
               </div>
               {/* Right content */}
-              <div className="lg:w-[640px] lg:ml-12 xl:ml-20">
+              <div className="lg:w-[940px] lg:ml-12 xl:ml-20">
                 <div className="grid sm:grid-cols-2 gap-4 space-y-4">
                   {/* Host */}
                   <div className="flex items-start">
