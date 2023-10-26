@@ -15,6 +15,7 @@ import axios from 'axios';
 export default function Servicios() {
   const router = useRouter();
   const { id } = router.query;
+  console.log(id);
   const form = useForm();
   const idUpperCased = id?.toString().toUpperCase();
   const [loaded, setLoaded] = React.useState(false);
@@ -26,10 +27,10 @@ export default function Servicios() {
     error: errorServicio,
     refetch: refetchServicio,
   } = useGetServicioQuery(idUpperCased);
+
   const dataServicioFiltered = dataServicio?.filter(
     (item: any) => item.flag_seleccion === '1' && item.autorizado === '1'
   );
-  console.log(dataServicioFiltered);
   const [dataFiltered, setDataFiltered] = React.useState(dataServicioFiltered);
   const faqs = [
     {
@@ -43,6 +44,18 @@ export default function Servicios() {
     },
   ];
 
+  React.useEffect(() => {
+    setLoaded(true);
+    InitialProcess();
+  }, [router.asPath]);
+
+  const InitialProcess = () => {
+    form.setValue('metraje', '');
+    setError('');
+    setDataFiltered(dataServicioFiltered);
+    setSelectedItems([]);
+    setTotal(0);
+  }
   const handleCalculate = form.handleSubmit((data) => {
     if (data.metraje === '' || data.construido === '') {
       setError('Por favor, complete todos los campos');
@@ -52,6 +65,7 @@ export default function Servicios() {
       return;
     }
     try {
+      setTotal(0);
       Promise.all(
         selectedItems.map((item: any) => {
           axios
@@ -68,7 +82,7 @@ export default function Servicios() {
             .then((res) => {
               console.log(res.data);
               const total = res.data.valor_servicio;
-              setTotal(total)
+              setTotal((prev) => prev + parseFloat(total));
             })
             .catch((err) => console.log(err));
         })
@@ -79,29 +93,10 @@ export default function Servicios() {
   });
 
   useEffect(() => {
-    setLoaded(true);
-    reset();
-  }, [])
-
-  useEffect(() => {
-    if (loaded) {
-      reset();
-      refetchServicio();
+    if (dataServicio) {
+      setDataFiltered(dataServicio);
     }
-  }, [id])
-
-  const reset = () => {
-    form.setValue('metraje', '');
-    setError('');
-    setSelectedItems([]);
-    setTotal(0);
-  };
-
-  useEffect(() => {
-    if (dataServicioFiltered) {
-      setDataFiltered(dataServicioFiltered);
-    }
-  }, [selectedItems])
+  }, [dataServicio]);
 
   return (
     <>
@@ -161,20 +156,14 @@ export default function Servicios() {
             <div className="flex items-center w-40 mt-4">
               <p
                 className="font-lato-bold text-md text-primary cursor-pointer"
-                onClick={() => {
-                  form.setValue('metraje', '');
-                  setError('');
-                  setSelectedItems([]);
-                  setTotal(0);
-                  refetchServicio();
-                }}
+                onClick={InitialProcess}
               >
                 Nueva búsqueda
               </p>
             </div>
             <div className="flex items-center justify-center w-40 mt-4 gap-4 bg-blue rounded-md ml-auto">
               <p className="font-lato-bold text-md text-white">Total:</p>
-              <p className="font-lato-bold text-lg text-white ">S/{total}</p>
+              <p className="font-lato-bold text-lg text-white ">S/{total.toFixed(2)}</p>
             </div>
           </div>
           <div className="flex items-center">
