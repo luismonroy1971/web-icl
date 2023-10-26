@@ -60,7 +60,7 @@ export default function Home() {
               titleSecond: 'Lima del mañana',
               description:
                 'Tu aliado en la gestión catastral y territorial, facilitando un desarrollo urbano sostenible y planificado.',
-              image: '/images/pagina-1/banner-1.jpg',
+              image: '/images/pagina-1/banner-1.webp',
               buttonText: 'Accede a nuestros servicios',
               link: '/#servicios',
               background: 'bg-primary',
@@ -72,7 +72,7 @@ export default function Home() {
               titleSecond: 'comprometido',
               description:
                 'Nuestro equipo: pasión y compromiso en cada paso hacia el futuro de Lima. ',
-              image: '/images/pagina-1/banner-2.jpg',
+              image: '/images/pagina-1/banner-2.webp',
               buttonText: 'Conoce a nuestro equipo',
               background: 'bg-primary',
               align: 'text-left',
@@ -84,7 +84,7 @@ export default function Home() {
               titleSecond: 'Institucionales:',
               description:
                 'Alianzas estratégicas para un desarrollo responsable',
-              image: '/images/pagina-1/banner-3.jpg',
+              image: '/images/pagina-1/banner-3.webp',
               buttonText: 'Ver Convenios',
               background: 'bg-primary',
               align: 'text-left',
@@ -96,7 +96,7 @@ export default function Home() {
               titleSecond: 'ICL',
               description:
                 'Desde desarrollos recientes hasta seminarios y talleres, aquí encontrarás todo lo que necesitas saber para estar al tanto de nuestras actividades.',
-              image: '/images/pagina-1/banner-4.jpg',
+              image: '/images/pagina-1/banner-4.webp',
               buttonText: 'Ver Capacitaciones',
               background: 'bg-primary',
               align: 'text-left',
@@ -108,7 +108,7 @@ export default function Home() {
               titleSecond: 'un mañana mejor',
               description:
                 'Nuestra misión: Transformar el futuro a través de una gestión territorial sólida.',
-              image: '/images/pagina-1/banner-5.jpg',
+              image: '/images/pagina-1/banner-5.webp',
               buttonText: 'Ver Recursos',
               background: 'bg-primary',
               align: 'text-left',

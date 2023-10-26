@@ -142,41 +142,41 @@
 
 @media screen and (min-width: 760px) {
   .bg-image-1 {
-    background-image: url('/images/pagina-1/banner-1.jpg');
+    background-image: url('/images/pagina-1/banner-1.webp');
   }
   .bg-image-2 {
-    background-image: url('/images/pagina-1/banner-2.jpg');
+    background-image: url('/images/pagina-1/banner-2.webp');
   }
   .bg-image-3 {
-    background-image: url('/images/pagina-1/banner-3.jpg');
+    background-image: url('/images/pagina-1/banner-3.webp');
   }
   .bg-image-4 {
-    background-image: url('/images/pagina-1/banner-4.jpg');
+    background-image: url('/images/pagina-1/banner-4.webp');
   }
   .bg-image-5 {
-    background-image: url('/images/pagina-1/banner-5.jpg');
+    background-image: url('/images/pagina-1/banner-5.webp');
   }
 }
 
 @media screen and (max-width: 760px) {
   .bg-image-1 {
-    background-image: url('/images/pagina-1/banner-1-mobile.jpg');
+    background-image: url('/images/pagina-1/banner-1-mobile.webp');
   }
 
   .bg-image-2 {
-    background-image: url('/images/pagina-1/banner-2-mobile.jpg');
+    background-image: url('/images/pagina-1/banner-2-mobile.webp');
   }
 
   .bg-image-3 {
-    background-image: url('/images/pagina-1/banner-3-mobile.jpg');
+    background-image: url('/images/pagina-1/banner-3-mobile.webp');
   }
 
   .bg-image-4 {
-    background-image: url('/images/pagina-1/banner-4-mobile.jpg');
+    background-image: url('/images/pagina-1/banner-4-mobile.webp');
   }
 
   .bg-image-5 {
-    background-image: url('/images/pagina-1/banner-5-mobile.jpg');
+    background-image: url('/images/pagina-1/banner-5-mobile.webp');
   }
 }
 

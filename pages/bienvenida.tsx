@@ -26,7 +26,7 @@ const bienvenida = () => {
           <div className="sm:flex gap-20 sm:mt-8 mx-auto sm:px-20">
             <div className="sm:h-fit">
               <Image
-                src="/images/aboutPresident.png"
+                src="/images/aboutPresident.webp"
                 alt="Foto presidente"
                 objectFit="cover"
                 width={1080}

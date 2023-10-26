@@ -5,7 +5,7 @@ import { ProjectItem } from '../../components/ProjectItem';
 export const projects = [
   {
     id: '1',
-    image: '/images/proyectos/1.jpg',
+    image: '/images/proyectos/1.webp',
     title: 'Sistema Proyecto Arbolado',
     content: () => (
       <div>
@@ -40,7 +40,7 @@ export const projects = [
   },
   {
     id: '2',
-    image: '/images/proyectos/2.jpg',
+    image: '/images/proyectos/2.webp',
     title:
       'Actualización Y Adecuación De La Cartografía Y Ortofotografía De Lima Cercado',
     content: () => (
@@ -115,7 +115,7 @@ export const projects = [
 
   {
     id: '3',
-    image: '/images/proyectos/3.jpg',
+    image: '/images/proyectos/3.webp',
     title: 'Sistema de Gestión de Contratos',
     content: () => (
       <div>
@@ -156,7 +156,7 @@ export const projects = [
   },
   {
     id: '4',
-    image: '/images/proyectos/4.jpg',
+    image: '/images/proyectos/4.webp',
     title: 'Sistema de Información Territorial',
     content: () => (
       <div>
@@ -178,7 +178,7 @@ export const projects = [
   },
   {
     id: '5',
-    image: '/images/proyectos/5.jpg',
+    image: '/images/proyectos/5.webp',
     title: 'Rellenos Sanitarios. Disposición final de residuos urbanos',
     content: () => (
       <div>
@@ -203,7 +203,7 @@ export const projects = [
   },
   {
     id: '6',
-    image: '/images/proyectos/6.jpg',
+    image: '/images/proyectos/6.webp',
     title: 'Levantamiento y georeferenciación de escaleras',
     content: () => (
       <div>
@@ -245,7 +245,7 @@ export const projects = [
   },
   {
     id: '7',
-    image: '/images/proyectos/7.jpg',
+    image: '/images/proyectos/7.webp',
     title: 'Inventario de Parques de Lima Cercado',
     content: () => (
       <div>
