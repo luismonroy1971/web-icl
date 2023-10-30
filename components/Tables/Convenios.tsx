@@ -16,7 +16,7 @@ import { forEach } from 'lodash';
 
 const Convenios = () => {
   const form = useForm();
-  const [params, setParams] = React.useState('');
+  const [params, setParams] = React.useState('autorizado=1');
   const {
     data: normasEmitidas,
     isLoading,
@@ -77,6 +77,7 @@ const Convenios = () => {
     delete data.año;
     data.periodo_mes = data.mes?.value ?? null;
     delete data.mes;
+    data.autorizado = 1;
 
     forEach(data, (value, key) => {
       if (value === '' || value === null || value === undefined) {
@@ -89,6 +90,7 @@ const Convenios = () => {
 
     refetchConvenios();
   });
+  
 
   return normasEmitidas ? (
     <>
