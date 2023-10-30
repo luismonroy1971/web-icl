@@ -15,7 +15,7 @@ import { forEach } from 'lodash';
 
 const NormasEmitidas = () => {
   const form = useForm();
-  const [params, setParams] = React.useState('');
+  const [params, setParams] = React.useState('autorizado=1&activo=1');
 
   const {
     data: normasEmitidas,
@@ -59,6 +59,8 @@ const NormasEmitidas = () => {
         delete data[key];
       }
     });
+    data.autorizado = 1;
+    data.activo=1;
     const params = new URLSearchParams(data).toString();
     setParams(params);
     refetchNormasEmitidas();

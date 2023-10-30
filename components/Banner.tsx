@@ -25,7 +25,20 @@ export const Banner: FC<BannerProps> = ({ slides, setOpenMenu }) => {
   const [direction, setDirection] = useState<string | null>(null);
 
   const [shouldRenderContent, setShouldRenderContent] = useState(false);
+  const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
 
+  useEffect(() => {
+    const slideTimer = setInterval(nextSlide, 6000); // 6000 ms = 6 segundos
+    setTimer(slideTimer);
+  
+    return () => {
+      // Limpia el temporizador cuando el componente se desmonta
+      if (slideTimer) {
+        clearInterval(slideTimer);
+      }
+    };
+  }, []);
+  
   const renderContent = (slide: SlideProps) => {
     return (
       <>
@@ -62,11 +75,17 @@ export const Banner: FC<BannerProps> = ({ slides, setOpenMenu }) => {
   };
 
   const nextSlide = () => {
+    if (timer) {
+      clearInterval(timer); // Limpia el temporizador actual
+    }
     setDirection('next');
     setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
+    if (timer) {
+      clearInterval(timer); // Limpia el temporizador actual
+    }
     setDirection('prev');
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };

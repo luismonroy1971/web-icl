@@ -11,7 +11,7 @@ import { forEach } from 'lodash';
 
 const MemoriasInstitucionales = () => {
   const form = useForm();
-  const [params, setParams] = React.useState('');
+  const [params, setParams] = React.useState('autorizado=1&activo=1');
   const {
     data: normasEmitidas,
     isLoading,
@@ -31,7 +31,8 @@ const MemoriasInstitucionales = () => {
       }
     });
     const params = new URLSearchParams(data).toString();
-
+    data.autorizado = 1;
+    data.activo=1;
     setParams(params);
     refetchMemoriasInstitucionales();
   });
