@@ -8,7 +8,7 @@ import { SectionBanner } from '../../components/SectionBanner';
 import { Button } from '../../components/Button';
 
 export default function Noticias() {
-  const { data: newsData, error, refetch } = useGetNewsQuery('');
+  const { data: newsData, error, refetch } = useGetNewsQuery('autorizado=1&activo=1');
   
   // Initial count of news items to show
   const INITIAL_COUNT = 5;
