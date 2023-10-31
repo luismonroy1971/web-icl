@@ -311,27 +311,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {/* <RevealOnScroll>
-            <div className="text-center py-12 sm:w-[92vw] mx-auto w-11/12">
-              <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">
-                Nuestros Recursos
-              </h2>
-              <p className="font-lato mt-4 sm:text-[1.2vw] text-md">
-                En el Instituto Catastral de Lima, estamos comprometidos a
-                brindar servicios de alta calidad que faciliten una gestión
-                territorial efectiva y sostenible. Descubre cómo podemos
-                ayudarte a navegar por el paisaje urbano en constante cambio de
-                Lima.
-              </p>
-              <div className="flex sm:flex-row flex-col gap-4 justify-center items-center mt-8 mx-auto">
-                {resources.map(
-                  (resource: any, index: Key | null | undefined) => (
-                    <Card key={index} {...resource} />
-                  )
-                )}
-              </div>
-            </div>
-          </RevealOnScroll> */}
           <RevealOnScroll>
             <div className="text-center py-12 sm:w-10/12 w-11/12 mx-auto">
               <h2 className="font-acto text-primary sm:text-[3vw] text-3xl">
