@@ -29,7 +29,7 @@ export default function Servicios() {
   } = useGetServicioQuery(idUpperCased);
 
   const dataServicioFiltered = dataServicio?.filter(
-    (item: any) => item.flag_seleccion === '1' && item.autorizado === '1'
+    (item: any) => item.flag_seleccion === '1' && item.autorizado === '1' && item.activo === '1'
   );
   const [dataFiltered, setDataFiltered] = React.useState(dataServicioFiltered);
   const faqs = [
