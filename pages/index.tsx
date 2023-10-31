@@ -1,21 +1,15 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import MegaMenu from '../components/Megamenu';
-import { Navbar } from '../components/Navbar';
-import { Key, useEffect, useState } from 'react';
+import { Key, useState } from 'react';
 import { Banner } from '../components/Banner';
-import { Card } from '../components/Card';
 import { News } from '../components/News';
 import { Button } from '../components/Button';
-import { Footer } from '../components/Footer';
 import { RevealOnScroll } from '../components/Fade';
 import { useGetNewsQuery } from '../redux/reduxQuery/news';
 import { NewsType, VideoType } from '../utils/types';
 import { useGetVideosQuery } from '../redux/reduxQuery/videos';
 import Link from 'next/link';
-import Accordion from '../components/Accordion';
 import { useRouter } from 'next/navigation';
-import { categoriesMegamenu, faqItems, resources } from '../utils/data';
 import { Layout } from '../components/Layout';
 
 export default function Home() {
