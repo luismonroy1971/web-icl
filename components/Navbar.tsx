@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { FC } from 'react';
 
 interface NavbarProps {
@@ -13,6 +14,11 @@ export const Navbar: FC<NavbarProps> = ({
   setOpenMenu,
   setOpenSearch,
 }) => {
+  const route = useRouter();
+  const deleteInRoute = () => {
+    const newRoute = route.asPath.split('#')[0];
+    route.replace(newRoute);
+  }
   return (
     <div className="fixed z-50 top-0 w-screen">
       <div className={`${openMenu ? 'hidden' : 'sm:block hidden'}`}>
@@ -177,7 +183,7 @@ export const Navbar: FC<NavbarProps> = ({
                 </span>
               </>
             ) : (
-              <>
+              <div className='flex gap-4' onClick={() => route.asPath.includes('#') && deleteInRoute()}>
                 <svg
                   className="transition-transform duration-300 ease-in-out transform rotate-90"
                   width="27"
@@ -206,7 +212,7 @@ export const Navbar: FC<NavbarProps> = ({
                 <span className="text-lg sm:text-[1.5vw] text-primary font-acto hidden sm:block">
                   Cerrar
                 </span>
-              </>
+              </div>
             )}
           </div>
         </div>

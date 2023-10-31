@@ -146,7 +146,7 @@ export default function Home() {
                 </div>
               </div>
               {/* Right content */}
-              <div className="lg:w-[720px] lg:ml-12 xl:ml-20 lg:mt-20">
+              <div className="lg:w-[720px] lg:ml-12 xl:ml-20 lg:mt-20 2xl:w-[960px]">
                 <div className="grid sm:grid-cols-2 gap-4 space-y-4">
                   {/* Host */}
                   <div className="flex items-start">

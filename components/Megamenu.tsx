@@ -34,7 +34,7 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
   return (
     <div
       className={`megamenu-slide absolute sm:top-24 top-12 w-screen z-0 h-unset bg-lightBlue flex-col ${
-        openMenu ? ' active sm:flex' : 'one-time-fade-out opacity-0 z-0 hidden'
+        openMenu ? ' active sm:flex z-10' : 'one-time-fade-out opacity-0 z-0 hidden'
       }`}
       style={{ transitionDelay: openMenu ? '0ms' : '1000ms' }}
     >
