@@ -1,25 +1,20 @@
-import React, { FC } from 'react';
-import { projects } from '.';
+import React from 'react';
 import { Button } from '../../components/Button';
 import { Layout } from '../../components/Layout';
 import { SectionBanner } from '../../components/SectionBanner';
 import Image from 'next/image';
+import { useGetProyectoQuery } from '../../redux/reduxQuery/proyectos';
+import { useRouter } from 'next/router';
 
-interface ProyectoProps {
-  id: number;
-  image: string;
-  title: string;
-  description: string;
-  link: string;
-}
+export default function Proyecto() {
+  const router = useRouter();
+  const { id } = router.query;
+  const { data: project } = useGetProyectoQuery(id);
 
-export default function Proyecto({ proyecto }: any) {
-  const project = projects.find((project) => project.id === proyecto.id) || {
-    image: '',
-    title: '',
-    content: () => '',
-    link: '',
-  };
+  if (!project) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Layout>
       <SectionBanner
@@ -36,11 +31,13 @@ export default function Proyecto({ proyecto }: any) {
           alt={project.title}
           width={500}
           height={500}
+          className="rounded-md"
         />
 
-        <div className="my-4 text-xl  text-left font-lato ">
-          {project.content()}
-        </div>
+        <div
+          className="font-lato my-4 leading-relaxed text-md"
+          dangerouslySetInnerHTML={{ __html: project.content }}
+        ></div>
 
         <div className="w-40">
           <Button
@@ -54,52 +51,4 @@ export default function Proyecto({ proyecto }: any) {
       </div>
     </Layout>
   );
-}
-
-export async function getStaticPaths() {
-  return {
-    paths: [
-      {
-        params: {
-          id: '1',
-        },
-      },
-      {
-        params: {
-          id: '2',
-        },
-      },
-      {
-        params: {
-          id: '3',
-        },
-      },
-      {
-        params: {
-          id: '4',
-        },
-      },
-      {
-        params: {
-          id: '5',
-        },
-      },
-      {
-        params: {
-          id: '6',
-        },
-      },
-    ],
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }: any) {
-  return {
-    props: {
-      proyecto: {
-        id: params.id,
-      },
-    },
-  };
 }
