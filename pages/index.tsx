@@ -140,7 +140,7 @@ export default function Home() {
                 </div>
               </div>
               {/* Right content */}
-              <div className="lg:ml-8 xl:ml-10 lg:mt-10 md:w-[600px] lg:w-[680px] xl:w-[960px] 2xl:w-[1024px]">
+              <div className="lg:w-[720px] lg:ml-12 xl:ml-20 lg:mt-12 2xl:w-[1020px] 2xl:mt-12">
                 <div className="grid sm:grid-cols-2 gap-4 space-y-4">
                   {/* Host */}
                   <div className="flex items-start">
@@ -154,9 +154,9 @@ export default function Home() {
                           width={100}
                           height={100}
                           alt="Conoce Lima"
-                          className="rounded-md w-20 h-20 sm:w-22 sm:h-22 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-24 xl:h-24 2xl:w-28 2xl:h-28"
+                          className="rounded-md"
                         />
-                        <div className="text-xl font-lato font-extrabold text-primary sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-2xl">
+                        <div className="text-lg font-lato font-extrabold text-primary">
                           Conoce Lima
                         </div>
                       </div>
@@ -187,10 +187,10 @@ export default function Home() {
                           src="/images/consultaCatastral.svg"
                           width={100}
                           height={100}
-                          alt="Consulta Catastral"
-                          className="rounded-md w-20 h-20 sm:w-22 sm:h-22 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-22 xl:h-22 2xl:w-24 2xl:h-24"
-                          />
-                        <div className="text-xl font-lato font-extrabold text-primary sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-2xl">
+                          alt="Conoce Lima"
+                          className="rounded-md"
+                        />
+                        <div className="text-lg font-lato font-extrabold text-primary">
                           Consulta Catastral en Línea
                         </div>
                       </div>
@@ -218,10 +218,10 @@ export default function Home() {
                           src="/images/sistemaInformacion.svg"
                           width={100}
                           height={100}
-                          alt="Sistema de Información"
-                          className="rounded-md w-20 h-20 sm:w-22 sm:h-22 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-22 xl:h-22 2xl:w-24 2xl:h-24"
-                          />
-                        <div className="text-xl font-lato font-extrabold text-primary sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-2xl">
+                          alt="Conoce Lima"
+                          className="rounded-md"
+                        />
+                        <div className="text-lg font-lato font-extrabold text-primary">
                           Sistema de información territorial
                         </div>
                       </div>
@@ -251,10 +251,10 @@ export default function Home() {
                           src="/images/portafolioAplicaciones.svg"
                           width={100}
                           height={100}
-                          alt="Portafolio aplicaciones"
-                          className="rounded-md w-20 h-20 sm:w-22 sm:h-22 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-22 xl:h-22 2xl:w-24 2xl:h-24"
-                          />
-                      <div className="text-xl font-lato font-extrabold text-primary sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-2xl">
+                          alt="Conoce Lima"
+                          className="rounded-md"
+                        />
+                        <div className="text-lg font-lato font-extrabold text-primary">
                           Portafolio de Aplicaciones GIS
                         </div>
                       </div>
@@ -284,10 +284,10 @@ export default function Home() {
                           src="/images/mesaDePartes.svg"
                           width={100}
                           height={100}
-                          alt="Mesa de Partes"
-                          className="rounded-md w-20 h-20 sm:w-22 sm:h-22 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-22 xl:h-22 2xl:w-24 2xl:h-24"
-                          />
-                      <div className="text-xl font-lato font-extrabold text-primary sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-2xl">
+                          alt="Conoce Lima"
+                          className="rounded-md"
+                        />
+                        <div className="text-lg font-lato font-extrabold text-primary">
                           Mesa de Partes Virtual
                         </div>
                       </div>
