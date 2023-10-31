@@ -2,7 +2,7 @@ import React from 'react';
 import CardFuncionario from '../../components/CardFuncionario';
 import { SectionBanner } from '../../components/SectionBanner';
 import { Layout } from '../../components/Layout';
-import { funcionariosList } from '../../utils/data';
+import { useGetFuncionariosQuery } from '../../redux/reduxQuery/funcionarios';
 
 export interface Funcionario {
   image: string;
@@ -12,6 +12,10 @@ export interface Funcionario {
 }
 
 export default function Funcionarios() {
+  const { data: funcionarios } = useGetFuncionariosQuery('');
+  if (!funcionarios) {
+    return <div>Loading...</div>;
+  }
   return (
     <Layout>
       <div>
@@ -21,7 +25,7 @@ export default function Funcionarios() {
           description="Presentamos a nuestros funcionarios comprometidos con la excelencia y el servicio público en el Instituto Catastral de Lima."
         />
         <div className="flex flex-col mx-8 sm:mx-20 py-12">
-          {funcionariosList?.map((funcionario, index) => (
+          {funcionarios?.map((funcionario: any, index: any) => (
             <CardFuncionario key={index} index={index} {...funcionario} />
           ))}
         </div>

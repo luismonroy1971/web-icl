@@ -3,8 +3,14 @@ import { Button } from '../../components/Button';
 import { Layout } from '../../components/Layout';
 import { SectionBanner } from '../../components/SectionBanner';
 import { capacitacionesData } from '../../utils/data';
+import { useGetCursosQuery } from '../../redux/reduxQuery/cursos';
 
 export default function ICLCapacitaciones() {
+  const { data: cursosData } = useGetCursosQuery('');
+
+  if (!cursosData) {
+    return <div>Loading...</div>;
+  }
   return (
     <Layout>
       <SectionBanner
@@ -13,7 +19,7 @@ export default function ICLCapacitaciones() {
         caption="ICL Capacitaciones"
       />
       <div className="sm:px-20 px-8 py-12 flex flex-col gap-8">
-        {capacitacionesData?.map((capacitacion) => (
+        {cursosData?.map((capacitacion: any) => (
           <div
             key={capacitacion.id}
             className="border border-primary rounded-md p-4 flex"
@@ -28,7 +34,7 @@ export default function ICLCapacitaciones() {
               <h2 className="font-acto text-2xl text-primary">
                 {capacitacion.title}
               </h2>
-              <capacitacion.content />
+              <p className="font-lato text-md" dangerouslySetInnerHTML={{ __html: capacitacion.content }}></p>
               <div className="w-80">
                 <Button
                   onClick={() => window.open(capacitacion.link, '_blank')}

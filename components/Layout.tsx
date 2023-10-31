@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, Dispatch } from 'react';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
 import MegaMenu from './Megamenu';
@@ -8,10 +8,16 @@ import { useRouter } from 'next/navigation';
 
 interface LayoutProps {
   children: React.ReactNode;
+  openMenu?: boolean;
+  setOpenMenu?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Layout: FC<LayoutProps> = ({ children }) => {
-  const [openMenu, setOpenMenu] = useState(false);
+export const Layout: FC<LayoutProps> = ({
+  children,
+  openMenu,
+  setOpenMenu,
+}) => {
+  const [openMenuLayout, setOpenMenuLayout] = useState(openMenu || false);
   const [openSearch, setOpenSearch] = useState(false);
   const [textSearch, setTextSearch] = useState('');
   const [results, setResults] = useState<any>([]);
@@ -48,11 +54,14 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <div className="overflow-x-hidden">
       <Navbar
-        openMenu={openMenu}
-        setOpenMenu={setOpenMenu}
+        openMenu={openMenu || openMenuLayout}
+        setOpenMenu={setOpenMenu || setOpenMenuLayout}
         setOpenSearch={setOpenSearch}
       />
-      <MegaMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
+      <MegaMenu
+        openMenu={openMenu || openMenuLayout}
+        setOpenMenu={setOpenMenu || setOpenMenuLayout}
+      />
       {openSearch && (
         <div className="fixed z-50 inset-0 overflow-y-auto">
           <div className="flex items-end justify-center min-h-[70vh] pt-4 pb-20 text-center">

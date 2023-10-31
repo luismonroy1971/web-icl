@@ -50,7 +50,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
+      <Layout setOpenMenu={setOpenMenu} openMenu={openMenu}>
         <Banner
           setOpenMenu={setOpenMenu}
           slides={[
@@ -119,7 +119,7 @@ export default function Home() {
 
         <div className={`${openMenu ? 'hidden' : 'block'}`}>
 
-          <div className="py-12 md:py-20 sm:px-20 px-8 overflow-hidden">
+          <div className="py-12 md:pt-20 md:pb-8 sm:px-20 px-8 overflow-hidden">
             <div className="lg:flex items-start">
               {/* Left content */}
               <div className="flex-1 mb-12 lg:mb-0">
@@ -131,7 +131,7 @@ export default function Home() {
                     <Link href="/bienvenida">
                       <div className="relative mb-4">
                         <Image
-                          src="/images/bienvenida.webp"
+                          src="/images/bienvenida.jpeg"
                           alt="Bienvenida"
                           width={600} // Especifica el ancho deseado
                           height={500} // Especifica el alto deseado
@@ -146,7 +146,7 @@ export default function Home() {
                 </div>
               </div>
               {/* Right content */}
-              <div className="lg:w-[940px] lg:ml-12 xl:ml-20">
+              <div className="lg:w-[720px] lg:ml-12 xl:ml-20 lg:mt-20">
                 <div className="grid sm:grid-cols-2 gap-4 space-y-4">
                   {/* Host */}
                   <div className="flex items-start">

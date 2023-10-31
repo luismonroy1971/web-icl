@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { FC, useState } from 'react';
+import { useRouter as route } from 'next/router';
+import { FC, useEffect, useState } from 'react';
 import { categoriesMegamenu } from '../utils/data';
 
 interface MegaMenuProps {
@@ -17,8 +18,18 @@ const MegaMenu: FC<MegaMenuProps> = ({ openMenu, setOpenMenu }) => {
   const [selectedCategory, setSelectedCategory] = useState<any>(
     categoriesMegamenu[0]
   );
-  const [classNameTransition, setClassNameTransition] = useState<any>('');
   const router = useRouter();
+  const url = route();
+
+  useEffect(() => {
+    if(url.asPath.includes('recursos')){
+      setFirstChildren(categoriesMegamenu[1].children)
+      setSelectedCategory(categoriesMegamenu[1])
+    } else if(url.asPath.includes('servicios')){
+      setFirstChildren(categoriesMegamenu[0].children)
+      setSelectedCategory(categoriesMegamenu[0])
+    }
+  }, [url]);
 
   return (
     <div
