@@ -12,7 +12,7 @@ export interface Funcionario {
 }
 
 export default function Funcionarios() {
-  const { data: funcionarios } = useGetFuncionariosQuery('');
+  const { data: funcionarios } = useGetFuncionariosQuery('autorizado=1&activo=1');
   if (!funcionarios) {
     return <div>Loading...</div>;
   }

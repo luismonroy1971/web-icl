@@ -21,13 +21,13 @@ import { Layout } from '../components/Layout';
 export default function Home() {
   const [openMenu, setOpenMenu] = useState(false);
 
-  const { data: newsData, error, refetch } = useGetNewsQuery('');
+  const { data: newsData, error, refetch } = useGetNewsQuery('autorizado=1&activo=1');
   const router = useRouter();
   const {
     data: videosData,
     error: errorVideos,
     refetch: refetchVideos,
-  } = useGetVideosQuery('');
+  } = useGetVideosQuery('autorizado=1&activo=1');
   const newsData4 = newsData?.slice(0, 4);
   const videosData4 = videosData?.slice(0, 4);
 

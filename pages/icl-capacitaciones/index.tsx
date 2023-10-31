@@ -6,7 +6,7 @@ import { capacitacionesData } from '../../utils/data';
 import { useGetCursosQuery } from '../../redux/reduxQuery/cursos';
 
 export default function ICLCapacitaciones() {
-  const { data: cursosData } = useGetCursosQuery('');
+  const { data: cursosData } = useGetCursosQuery('autorizado=1&activo=1');
 
   if (!cursosData) {
     return <div>Loading...</div>;

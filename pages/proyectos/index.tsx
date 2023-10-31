@@ -5,7 +5,7 @@ import { ProjectItem } from '../../components/ProjectItem';
 import { useGetProyectosQuery } from '../../redux/reduxQuery/proyectos';
 
 export default function Proyectos() {
-  const { data: projectsData } = useGetProyectosQuery('');
+  const { data: projectsData } = useGetProyectosQuery('autorizado=1&activo=1');
   return (
     <Layout>
       <SectionBanner
