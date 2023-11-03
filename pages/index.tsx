@@ -11,6 +11,7 @@ import { useGetVideosQuery } from '../redux/reduxQuery/videos';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Layout } from '../components/Layout';
+import WhatsAppButton from '../components/WhatsappButton';
 
 export default function Home() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -515,6 +516,7 @@ export default function Home() {
           </RevealOnScroll>
         </div>
       </Layout>
+      <WhatsAppButton />
     </div>
   );
 }
