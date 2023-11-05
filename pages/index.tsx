@@ -12,11 +12,20 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Layout } from '../components/Layout';
 import WhatsAppButton from '../components/WhatsappButton';
+import { useGetPopupQuery } from '../redux/reduxQuery/popup';
+import Modal from '../components/Modal';
 
 export default function Home() {
+  const { data: popupData } = useGetPopupQuery('autorizado=1&activo=1');
+  console.log(popupData);
+  const [openModal, setOpenModal] = useState(true);
   const [openMenu, setOpenMenu] = useState(false);
 
-  const { data: newsData, error, refetch } = useGetNewsQuery('autorizado=1&activo=1');
+  const {
+    data: newsData,
+    error,
+    refetch,
+  } = useGetNewsQuery('autorizado=1&activo=1');
   const router = useRouter();
   const {
     data: videosData,
@@ -113,7 +122,6 @@ export default function Home() {
         />
 
         <div className={`${openMenu ? 'hidden' : 'block'}`}>
-
           <div className="py-12 md:pt-20 md:pb-8 sm:px-20 px-8 overflow-hidden">
             <div className="lg:flex items-start">
               {/* Left content */}
@@ -517,6 +525,18 @@ export default function Home() {
         </div>
       </Layout>
       <WhatsAppButton />
+      <Modal isOpen={openModal} onClose={() => setOpenModal(false)} title="">
+        {popupData?.map((popup: any, index: number) => (
+          <div key={index} className="mb-4">
+            <h3 className="text-lg leading-6 font-medium text-gray-900">
+              {popup.titulo}
+            </h3>
+            <div className="mt-2">
+              <p className="text-sm text-gray-500">{popup.descripcion}</p>
+            </div>
+          </div>
+        ))}
+      </Modal>
     </div>
   );
 }

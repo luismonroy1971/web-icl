@@ -33,8 +33,8 @@ export default function WhatsAppButton() {
               fill="url(#paint1_linear_68_13)"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M19.3447 14.8106C18.8759 13.7697 18.383 13.7458 17.9382 13.7338C17.5776 13.7219 17.1568 13.7219 16.736 13.7219C16.3153 13.7219 15.6421 13.8774 15.065 14.4996C14.488 15.1217 12.8771 16.6292 12.8771 19.7041C12.8771 22.767 15.1251 25.7342 15.4377 26.153C15.7503 26.5717 19.7775 33.0684 26.1369 35.569C31.4264 37.6508 32.5084 37.2321 33.6504 37.1244C34.7925 37.0167 37.3531 35.6169 37.882 34.1572C38.399 32.6975 38.399 31.4532 38.2427 31.19C38.0864 30.9268 37.6657 30.7712 37.0405 30.4602C36.4154 30.1491 33.3379 28.6416 32.7608 28.4262C32.1838 28.2228 31.7631 28.1151 31.3543 28.7373C30.9336 29.3594 29.7314 30.7593 29.3708 31.178C29.0101 31.5968 28.6374 31.6447 28.0123 31.3336C27.3872 31.0225 25.3676 30.3645 22.9753 28.2348C21.1119 26.5837 19.8496 24.5378 19.489 23.9156C19.1283 23.2934 19.4529 22.9584 19.7655 22.6474C20.042 22.3722 20.3906 21.9175 20.7032 21.5586C21.0157 21.1997 21.1239 20.9364 21.3283 20.5177C21.5327 20.0989 21.4365 19.74 21.2802 19.4289C21.1239 19.1298 19.8977 16.043 19.3447 14.8106Z"
               fill="white"
             />
@@ -47,8 +47,8 @@ export default function WhatsAppButton() {
                 y2="1.16944"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#20B038" />
-                <stop offset="1" stop-color="#60D66A" />
+                <stop stopColor="#20B038" />
+                <stop offset="1" stopColor="#60D66A" />
               </linearGradient>
               <linearGradient
                 id="paint1_linear_68_13"
@@ -58,8 +58,8 @@ export default function WhatsAppButton() {
                 y2="0.297729"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#F9F9F9" />
-                <stop offset="1" stop-color="white" />
+                <stop stopColor="#F9F9F9" />
+                <stop offset="1" stopColor="white" />
               </linearGradient>
             </defs>
           </svg>
