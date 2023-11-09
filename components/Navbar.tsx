@@ -93,7 +93,7 @@ export const Navbar: FC<NavbarProps> = ({
                 onClick={() => setOpenMenu(false)}
               >
                 <Image
-                  src="/images/institutoCatastral.webp"
+                  src="/images/institutocatastral.webp"
                   alt="logo"
                   width={172}
                   height={80}
@@ -110,7 +110,7 @@ export const Navbar: FC<NavbarProps> = ({
               }
             >
               <Image
-                src="/images/muniLima.webp"
+                src="/images/munilima.webp"
                 alt="logo"
                 width={128}
                 height={43}
