@@ -53,6 +53,10 @@ export default function Home() {
         <meta name="description" content="Instituto Catastral de Lima" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="frame-ancestors 'self' https://drive.google.com;"
+        />
       </Head>
       <Layout setOpenMenu={setOpenMenu} openMenu={openMenu}>
         <Banner
