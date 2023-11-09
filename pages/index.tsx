@@ -525,18 +525,24 @@ export default function Home() {
         </div>
       </Layout>
       <WhatsAppButton />
-      <Modal isOpen={openModal} onClose={() => setOpenModal(false)} title="">
-        {popupData?.map((popup: any, index: number) => (
-          <div key={index} className="mb-4">
-            <h3 className="text-lg leading-6 font-medium text-gray-900">
-              {popup.titulo}
-            </h3>
-            <div className="mt-2">
-              <p className="text-sm text-gray-500">{popup.descripcion}</p>
+      {popupData?.length > 0 &&
+        popupData?.map((popup: any, index: number) => (
+          <Modal
+            key={index}
+            isOpen={openModal}
+            onClose={() => setOpenModal(false)}
+            title=""
+          >
+            <div className="mb-4">
+              <h3 className="text-lg leading-6 font-medium text-gray-900">
+                {popup.titulo}
+              </h3>
+              <div className="mt-2">
+                <p className="text-sm text-gray-500">{popup.descripcion}</p>
+              </div>
             </div>
-          </div>
+          </Modal>
         ))}
-      </Modal>
     </div>
   );
 }
