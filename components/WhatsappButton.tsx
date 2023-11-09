@@ -10,11 +10,11 @@ export default function WhatsAppButton() {
       <div className="fixed bottom-4 right-4 z-50">
         <button
           onClick={handleClick}
-          className="bg-green-500 text-white w-16 h-16 rounded-full"
+          className="bg-green-500 text-white w-14 h-14 rounded-full"
         >
           <svg
-            width="51"
-            height="51"
+            width="30"
+            height="30"
             viewBox="0 0 51 51"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
